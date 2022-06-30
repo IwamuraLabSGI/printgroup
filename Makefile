@@ -28,3 +28,6 @@ migrate-drop:
 	@DATABASE_URL=$(DATABASE_URL) dbmate -d $(DBMATE_MIGRATIONS_DIR) -s $(DBMATE_SCHEMA_FILE) drop
 
 migrate-reset: migrate-drop migrate-up migrate-seed
+
+gen-db-schema:
+	mysqldump --no-data -h$(RDB_HOST) -u$(RDB_USER) -p$(RDB_PASS) $(RDB_NAME)
