@@ -1,2 +1,6 @@
-# printgroup
-印刷班：菅井・三輪用のリポジトリ
+# QR Authenticity Judgment
+QR真贋判定プロジェクト
+
+# dependencies
+- mysql 5.7
+- dbmate

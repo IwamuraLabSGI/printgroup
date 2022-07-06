@@ -1,0 +1,6 @@
+dist/*
+!.gitkeep
+.idea
+.env
+.env*
+!.env.template
