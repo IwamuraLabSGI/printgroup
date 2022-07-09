@@ -1,0 +1,19 @@
+{
+  "channel_targets": "conda-forge main",
+  "gmp": "6",
+  "x265": "3.5",
+  "svt_av1": "1.1.0",
+  "c_compiler_version": "13",
+  "zlib": "1.2",
+  "c_compiler": "clang",
+  "libiconv": "1.16",
+  "cxx_compiler": "clangxx",
+  "target_platform": "osx-arm64",
+  "gnutls": "3.7",
+  "libxml2": "2.9",
+  "CONDA_BUILD_SYSROOT": "/Applications/Xcode_12.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk",
+  "cxx_compiler_version": "13",
+  "bzip2": "1",
+  "x264": "1!161.*",
+  "freetype": "2"
+}

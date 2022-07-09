@@ -1,0 +1,11 @@
+prefix=/Users/runner/miniforge3/conda-bld/libwebp-base_1642799204685/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libwebp
+Description: Library for the WebP graphics format
+Version: 1.2.2
+Cflags: -I${includedir}
+Libs: -L${libdir} -lwebp
+Libs.private: -lm -D_THREAD_SAFE -pthread 

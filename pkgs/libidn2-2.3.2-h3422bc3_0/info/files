@@ -1,0 +1,5 @@
+bin/idn2
+include/idn2.h
+lib/libidn2.0.dylib
+lib/libidn2.dylib
+lib/pkgconfig/libidn2.pc

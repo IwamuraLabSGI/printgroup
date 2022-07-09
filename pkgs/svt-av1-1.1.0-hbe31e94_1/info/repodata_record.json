@@ -1,0 +1,24 @@
+{
+  "arch": "arm64",
+  "build": "hbe31e94_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libcxx >=13.0.1"
+  ],
+  "features": "",
+  "fn": "svt-av1-1.1.0-hbe31e94_1.tar.bz2",
+  "license": "BSD-2-Clause",
+  "license_family": "BSD",
+  "md5": "fbae24daca5d787e08e8237e28751e9f",
+  "name": "svt-av1",
+  "platform": "darwin",
+  "sha256": "e600926504f34eae270b67bd1652e50317dfc8f70927137e3b5a49dbcddddb6b",
+  "size": 1755235,
+  "subdir": "osx-arm64",
+  "timestamp": 1653002174631,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/svt-av1-1.1.0-hbe31e94_1.tar.bz2",
+  "version": "1.1.0"
+}

@@ -1,0 +1,15 @@
+{
+  "arch": "arm64",
+  "build": "h049c9fb_1008",
+  "build_number": 1008,
+  "depends": [
+    "libffi >=3.4.2,<3.5.0a0",
+    "libiconv >=1.16,<1.17.0a0"
+  ],
+  "license": "LGPL-2.1-or-later AND GPL-3.0-or-later",
+  "name": "gettext",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1632490112303,
+  "version": "0.19.8.1"
+}

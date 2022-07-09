@@ -1,0 +1,19 @@
+{
+  "arch": "arm64",
+  "build": "py39hb18efdd_1",
+  "build_number": 1,
+  "depends": [
+    "python >=3.9,<3.10.0a0",
+    "python >=3.9,<3.10.0a0 *_cpython",
+    "python_abi 3.9.* *_cp39",
+    "six",
+    "tqdm"
+  ],
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "name": "conda-package-handling",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1649385356406,
+  "version": "1.8.1"
+}

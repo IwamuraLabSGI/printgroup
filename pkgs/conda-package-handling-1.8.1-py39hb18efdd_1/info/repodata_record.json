@@ -1,0 +1,24 @@
+{
+    "arch": "arm64",
+    "build": "py39hb18efdd_1",
+    "build_number": 1,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [
+        "python >=3.9,<3.10.0a0",
+        "python >=3.9,<3.10.0a0 *_cpython",
+        "python_abi 3.9.* *_cp39",
+        "six",
+        "tqdm"
+    ],
+    "fn": "conda-package-handling-1.8.1-py39hb18efdd_1.tar.bz2",
+    "license": "BSD-3-Clause",
+    "license_family": "BSD",
+    "md5": "ca500f4f41299c0baecf9187dc80b489",
+    "name": "conda-package-handling",
+    "platform": "osx",
+    "size": 1622606,
+    "subdir": "osx-arm64",
+    "timestamp": 1649385356406,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/conda-package-handling-1.8.1-py39hb18efdd_1.tar.bz2",
+    "version": "1.8.1"
+}

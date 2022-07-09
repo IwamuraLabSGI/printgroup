@@ -1,0 +1,58 @@
+==> /Users/runner/miniforge3/bin/git log -n1 <==
+commit 8bd6d28025c9dcc101cb194f9141bcff3ea91500
+Author: Janne Grunau <janne-x264@jannau.net>
+Date:   Thu Oct 1 21:08:37 2020 +0000
+
+    aarch64/asm: optimize cabac asm
+    
+    0.5% - 2% overall speedup on
+    `./x264 --threads X --profile high --preset veryfast --crf 15 -o /dev/null park_joy_420_720p50.y4m`
+    cabac is responsible for roughly 1/6 of the CPU use.
+    Branch mispredictions are reduced by 15% to 20%.
+    
+    cortex-s53: 0.5% faster
+    cortex-a72: 2%  faster
+    neoverse-n1: 0.9% faster
+==> /Users/runner/miniforge3/bin/git describe --tags --dirty <==
+commit 8bd6d28025c9dcc101cb194f9141bcff3ea91500
+Author: Janne Grunau <janne-x264@jannau.net>
+Date:   Thu Oct 1 21:08:37 2020 +0000
+
+    aarch64/asm: optimize cabac asm
+    
+    0.5% - 2% overall speedup on
+    `./x264 --threads X --profile high --preset veryfast --crf 15 -o /dev/null park_joy_420_720p50.y4m`
+    cabac is responsible for roughly 1/6 of the CPU use.
+    Branch mispredictions are reduced by 15% to 20%.
+    
+    cortex-s53: 0.5% faster
+    cortex-a72: 2%  faster
+    neoverse-n1: 0.9% faster
+==> /Users/runner/miniforge3/bin/git status <==
+HEAD detached at 8bd6d280
+Changes not staged for commit:
+	modified:   config.guess
+	modified:   config.sub
+
+Untracked files:
+	build_env_setup.sh
+	common/aarch64/.ldid.bitstream-a-10.o.strip
+	common/aarch64/.ldid.bitstream-a-8.o.strip
+	common/aarch64/.ldid.cabac-a-10.o.strip
+	common/aarch64/.ldid.cabac-a-8.o.strip
+	common/aarch64/.ldid.dct-a-10.o.strip
+	common/aarch64/.ldid.dct-a-8.o.strip
+	common/aarch64/.ldid.deblock-a-10.o.strip
+	common/aarch64/.ldid.deblock-a-8.o.strip
+	common/aarch64/.ldid.mc-a-10.o.strip
+	common/aarch64/.ldid.mc-a-8.o.strip
+	common/aarch64/.ldid.pixel-a-10.o.strip
+	common/aarch64/.ldid.pixel-a-8.o.strip
+	common/aarch64/.ldid.predict-a-10.o.strip
+	common/aarch64/.ldid.predict-a-8.o.strip
+	common/aarch64/.ldid.quant-a-10.o.strip
+	common/aarch64/.ldid.quant-a-8.o.strip
+	conda_build.sh
+	metadata_conda_debug.yaml
+
+no changes added to commit

@@ -1,0 +1,18 @@
+{
+  "arch": "arm64",
+  "build": "hf114ba7_23",
+  "build_number": 23,
+  "constrains": [
+    "libgfortran 5.0.0.dev0 *_23"
+  ],
+  "depends": [
+    "llvm-openmp >=8.0.0"
+  ],
+  "license": "GPL-3.0-only WITH GCC-exception-3.1",
+  "license_family": "GPL",
+  "name": "libgfortran5",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1627441261110,
+  "version": "11.0.1.dev0"
+}

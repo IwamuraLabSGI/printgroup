@@ -1,0 +1,30 @@
+{
+  "arch": "arm64",
+  "build": "py38h6724fcd_2",
+  "build_number": 2,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libcxx >=13.0.1",
+    "numpy >=1.19.5,<2.0a0",
+    "python >=3.8,<3.9.0a0",
+    "python >=3.8,<3.9.0a0 *_cpython",
+    "python-dateutil >=2.8.1",
+    "python_abi 3.8.* *_cp38",
+    "pytz >=2020.1"
+  ],
+  "features": "",
+  "fn": "pandas-1.4.2-py38h6724fcd_2.tar.bz2",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "md5": "308855e0685a1229ee683b37b5696106",
+  "name": "pandas",
+  "platform": "darwin",
+  "sha256": "49ecb148a111a7fe58534cfede6fa6d06d3b12534cd9b1da51cb0511c3cf725b",
+  "size": 12124339,
+  "subdir": "osx-arm64",
+  "timestamp": 1653498028476,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/pandas-1.4.2-py38h6724fcd_2.tar.bz2",
+  "version": "1.4.2"
+}

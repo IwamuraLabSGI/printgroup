@@ -1,0 +1,22 @@
+{
+    "arch": "arm64",
+    "build": "py39h2804cbe_0",
+    "build_number": 0,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [
+        "python >=3.9,<3.10.0a0",
+        "python >=3.9,<3.10.0a0 *_cpython",
+        "python_abi 3.9.* *_cp39"
+    ],
+    "fn": "setuptools-62.3.2-py39h2804cbe_0.tar.bz2",
+    "license": "MIT",
+    "license_family": "MIT",
+    "md5": "f4c8de5a01229d755b25dd7b04223b7a",
+    "name": "setuptools",
+    "platform": "osx",
+    "size": 1457061,
+    "subdir": "osx-arm64",
+    "timestamp": 1653002943609,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/setuptools-62.3.2-py39h2804cbe_0.tar.bz2",
+    "version": "62.3.2"
+}

@@ -1,0 +1,139 @@
+{
+  "paths": [
+    {
+      "_path": "bin/pcre-config",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/pcre_1623788712098/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+      "sha256": "e64cf49be96d48ea44050abea900cedab7ab90af2b83e567840bd1ab030e3d55",
+      "size_in_bytes": 2608
+    },
+    {
+      "_path": "bin/pcregrep",
+      "path_type": "hardlink",
+      "sha256": "5cd1a5aaab1e17207717e6ada9b61ad0bafe319539177a5627ac29b6b12b3599",
+      "size_in_bytes": 89136
+    },
+    {
+      "_path": "bin/pcretest",
+      "path_type": "hardlink",
+      "sha256": "dfb796cffe848c1ad55d5238b242736f4a516370edd7f6ce8995dfa89127daa5",
+      "size_in_bytes": 122624
+    },
+    {
+      "_path": "include/pcre.h",
+      "path_type": "hardlink",
+      "sha256": "1a960e5f4752eec93bb81da47901e1a00f546820777fb0fbbfcfa1dac6c8eafd",
+      "size_in_bytes": 31718
+    },
+    {
+      "_path": "include/pcre_scanner.h",
+      "path_type": "hardlink",
+      "sha256": "7442638d75522e87497d442425dc51a6d69ef6bed73c8ab266dbb73343039fb6",
+      "size_in_bytes": 6600
+    },
+    {
+      "_path": "include/pcre_stringpiece.h",
+      "path_type": "hardlink",
+      "sha256": "3510f9eb6e848a586c6313c9641de7434e0dcdabd1532118935f2adce58b4d07",
+      "size_in_bytes": 6312
+    },
+    {
+      "_path": "include/pcrecpp.h",
+      "path_type": "hardlink",
+      "sha256": "165767e52e03797cbbce3e6147e2436459f8b468ffecefedfd8477c157aecfe7",
+      "size_in_bytes": 26529
+    },
+    {
+      "_path": "include/pcrecpparg.h",
+      "path_type": "hardlink",
+      "sha256": "89912f03f8da84f71c4645385d45e7d6af6e286601285e432249da3b5420b98b",
+      "size_in_bytes": 6783
+    },
+    {
+      "_path": "include/pcreposix.h",
+      "path_type": "hardlink",
+      "sha256": "1770f2b30c0af2f24543428173cf6e6479e921045efdbd009fd07817b84e04ad",
+      "size_in_bytes": 5452
+    },
+    {
+      "_path": "lib/libpcre.1.dylib",
+      "path_type": "hardlink",
+      "sha256": "2296c0755e40ee9672769b57b00f67b4d7384f6f96a01c72566c53f09dd96d17",
+      "size_in_bytes": 304608
+    },
+    {
+      "_path": "lib/libpcre.a",
+      "path_type": "hardlink",
+      "sha256": "890d56a394ef0de9282d59fba60182066f40677d58884e827c7280b31144453a",
+      "size_in_bytes": 280360
+    },
+    {
+      "_path": "lib/libpcre.dylib",
+      "path_type": "softlink",
+      "sha256": "2296c0755e40ee9672769b57b00f67b4d7384f6f96a01c72566c53f09dd96d17",
+      "size_in_bytes": 304608
+    },
+    {
+      "_path": "lib/libpcrecpp.0.dylib",
+      "path_type": "hardlink",
+      "sha256": "5f6d34b6965dc559dda36ed3a88ab23e2c5aaf1520b283f91afcf40984b0030f",
+      "size_in_bytes": 99520
+    },
+    {
+      "_path": "lib/libpcrecpp.a",
+      "path_type": "hardlink",
+      "sha256": "68930f4dc583d96269e72823eb724099ce3d43e3c0308196a73c7bf0d7cdf6bc",
+      "size_in_bytes": 48760
+    },
+    {
+      "_path": "lib/libpcrecpp.dylib",
+      "path_type": "softlink",
+      "sha256": "5f6d34b6965dc559dda36ed3a88ab23e2c5aaf1520b283f91afcf40984b0030f",
+      "size_in_bytes": 99520
+    },
+    {
+      "_path": "lib/libpcreposix.0.dylib",
+      "path_type": "hardlink",
+      "sha256": "535fef503a9b345f4cc7f11507e4f079db07184d0a79da3b59b6905e8829173e",
+      "size_in_bytes": 67840
+    },
+    {
+      "_path": "lib/libpcreposix.a",
+      "path_type": "hardlink",
+      "sha256": "76a05ec2c2a358a6028798bf13ade633fbac424322ee47811bb5aa573f04923e",
+      "size_in_bytes": 4672
+    },
+    {
+      "_path": "lib/libpcreposix.dylib",
+      "path_type": "softlink",
+      "sha256": "535fef503a9b345f4cc7f11507e4f079db07184d0a79da3b59b6905e8829173e",
+      "size_in_bytes": 67840
+    },
+    {
+      "_path": "lib/pkgconfig/libpcre.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/pcre_1623788712098/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+      "sha256": "4618e1406f12a9b6c58db56d2e3ebb2d91e9a11221ad0009f610af3740da89ab",
+      "size_in_bytes": 568
+    },
+    {
+      "_path": "lib/pkgconfig/libpcrecpp.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/pcre_1623788712098/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+      "sha256": "30615e892ea0967498079d8ad9192d183acc3a4da7bb0c65ddf7c013ff968a65",
+      "size_in_bytes": 514
+    },
+    {
+      "_path": "lib/pkgconfig/libpcreposix.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/pcre_1623788712098/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+      "sha256": "4b5a1e3bb9151ee3def9f84e4000782ebe871b258d7a9a3d5170561ac10bad10",
+      "size_in_bytes": 556
+    }
+  ],
+  "paths_version": 1
+}

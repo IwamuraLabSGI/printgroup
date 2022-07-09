@@ -1,0 +1,15 @@
+{
+  "arch": "arm64",
+  "build": "ha287fd2_1",
+  "build_number": 1,
+  "depends": [
+    "libzlib 1.2.12 ha287fd2_1"
+  ],
+  "license": "Zlib",
+  "license_family": "Other",
+  "name": "zlib",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1655243903784,
+  "version": "1.2.12"
+}

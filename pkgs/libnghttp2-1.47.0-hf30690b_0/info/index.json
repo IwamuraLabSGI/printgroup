@@ -1,0 +1,22 @@
+{
+  "arch": "arm64",
+  "build": "hf30690b_0",
+  "build_number": 0,
+  "depends": [
+    "c-ares >=1.18.1,<2.0a0",
+    "c-ares >=1.7.5",
+    "libcxx >=12.0.1",
+    "libev >=4.11",
+    "libev >=4.33,<4.34.0a0",
+    "libzlib >=1.2.11,<1.3.0a0",
+    "openssl >=3.0.0,<4.0a0",
+    "zlib >=1.2.11,<1.3.0a0"
+  ],
+  "license": "MIT",
+  "license_family": "MIT",
+  "name": "libnghttp2",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1645636885688,
+  "version": "1.47.0"
+}

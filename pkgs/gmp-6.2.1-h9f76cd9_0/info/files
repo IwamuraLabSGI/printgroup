@@ -1,0 +1,13 @@
+include/gmp.h
+include/gmpxx.h
+lib/libgmp.10.dylib
+lib/libgmp.a
+lib/libgmp.dylib
+lib/libgmpxx.4.dylib
+lib/libgmpxx.a
+lib/libgmpxx.dylib
+lib/pkgconfig/gmp.pc
+lib/pkgconfig/gmpxx.pc
+share/info/gmp.info
+share/info/gmp.info-1
+share/info/gmp.info-2

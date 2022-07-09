@@ -1,0 +1,21 @@
+{
+  "arch": "arm64",
+  "build": "h27ca646_1001",
+  "build_number": 1001,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [],
+  "features": "",
+  "fn": "lame-3.100-h27ca646_1001.tar.bz2",
+  "license": "LGPL",
+  "md5": "22026ae7a46d32bbdf7e34a3483d6e9f",
+  "name": "lame",
+  "platform": "darwin",
+  "sha256": "339fdc97337c5058316521a1998379aa7920c402003d2802cc457d8413369169",
+  "size": 528309,
+  "subdir": "osx-arm64",
+  "timestamp": 1609339977709,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/lame-3.100-h27ca646_1001.tar.bz2",
+  "version": "3.100"
+}

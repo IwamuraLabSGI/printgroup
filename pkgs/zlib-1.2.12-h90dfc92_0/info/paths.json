@@ -1,0 +1,37 @@
+{
+  "paths": [
+    {
+      "_path": "include/zconf.h",
+      "path_type": "hardlink",
+      "sha256": "77304005ceb5f0d03ad4c37eb8386a10866e4ceeb204f7c3b6599834c7319541",
+      "size_in_bytes": 16262
+    },
+    {
+      "_path": "include/zlib.h",
+      "path_type": "hardlink",
+      "sha256": "045cf777c6c9109b28ddcf3a413c5ca15e39fc513c13ef87bd9a3132a59d1b51",
+      "size_in_bytes": 97317
+    },
+    {
+      "_path": "lib/libz.a",
+      "path_type": "hardlink",
+      "sha256": "b8594e8b3cf4d178f6baa4c9ddb3373f12802e494dcd52f2a467f9bd65b6c35f",
+      "size_in_bytes": 100240
+    },
+    {
+      "_path": "lib/libz.dylib",
+      "path_type": "softlink",
+      "sha256": "df76878ffcd925b70a1d3e65b64bc6ee6e4b64ab80992fa03202d67f8e6e5b6a",
+      "size_in_bytes": 122686
+    },
+    {
+      "_path": "lib/pkgconfig/zlib.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/zlib-split_1653673575947/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol",
+      "sha256": "9c7cd861998dd1fa54abaa077b11bd2db038dab16a93a649f4307b552c976031",
+      "size_in_bytes": 504
+    }
+  ],
+  "paths_version": 1
+}

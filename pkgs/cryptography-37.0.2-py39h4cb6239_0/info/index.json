@@ -1,0 +1,19 @@
+{
+  "arch": "arm64",
+  "build": "py39h4cb6239_0",
+  "build_number": 0,
+  "depends": [
+    "cffi >=1.12",
+    "openssl >=1.1.1o,<1.1.2a",
+    "python >=3.9,<3.10.0a0",
+    "python >=3.9,<3.10.0a0 *_cpython",
+    "python_abi 3.9.* *_cp39"
+  ],
+  "license": "Apache-2.0 AND BSD-3-Clause AND PSF-2.0 AND MIT",
+  "license_family": "BSD",
+  "name": "cryptography",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1652967903988,
+  "version": "37.0.2"
+}

@@ -1,0 +1,80 @@
+# This file created by conda-build 3.21.7
+# meta.yaml template originally from:
+# /Users/runner/work/1/s/recipe, last modified Fri Jan 21 21:04:56 2022
+# ------------------------------------------------
+
+package:
+  name: libwebp-base
+  version: 1.2.2
+source:
+  sha256: 7656532f837af5f4cec3ff6bafe552c044dc39bf453587bd5b77450802f4aee6
+  url: http://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.2.2.tar.gz
+build:
+  number: '1'
+  run_exports:
+    - libwebp-base
+  string: h3422bc3_1
+requirements:
+  build:
+    - ca-certificates 2021.10.8 h033912b_0
+    - cctools_osx-64 973.0.1 h609b070_5
+    - cctools_osx-arm64 973.0.1 hd1d4517_5
+    - clang 11.1.0 h694c41f_1
+    - clang-11 11.1.0 default_he082bbe_1
+    - clang_osx-arm64 11.1.0 h7730a26_6
+    - clangxx 11.1.0 default_he082bbe_1
+    - compiler-rt 11.1.0 h654b07c_0
+    - compiler-rt_osx-64 11.1.0 h8c5fa43_0
+    - ld64_osx-64 609 h6adca69_5
+    - ld64_osx-arm64 609 h70d1651_5
+    - libclang-cpp11.1 11.1.0 default_he082bbe_1
+    - libcxx 12.0.1 habf9029_1
+    - libllvm11 11.1.0 hd011deb_2
+    - libllvm12 12.0.1 hd011deb_2
+    - libtool 2.4.6 he49afe7_1008
+    - libzlib 1.2.11 h9173be1_1013
+    - llvm-tools 11.1.0 hd011deb_2
+    - make 4.3 h22f3db7_1
+    - openssl 3.0.0 h0d85af4_2
+    - sigtool 0.1.2 h45d4a6f_1
+    - tapi 1100.0.11 h9ce4665_0
+    - zlib 1.2.11 h9173be1_1013
+  run: []
+  run_constrained:
+    - libwebp 1.2.2
+test:
+  commands:
+    - test -f $PREFIX/lib/libwebp.a
+    - test -f $PREFIX/lib/libwebp.dylib
+    - test -f $PREFIX/lib/libwebpmux.dylib
+    - test -f $PREFIX/include/webp/decode.h
+    - test -f $PREFIX/include/webp/encode.h
+    - test -f $PREFIX/include/webp/types.h
+about:
+  description: 'WebP is a method of lossy and lossless compression that can be used
+    on a
+
+    large variety of photographic, translucent and graphical images found on the
+
+    web. The degree of lossy compression is adjustable so a user can choose the
+
+    trade-off between file size and image quality.
+
+    libwebp-base provides the headers and shared libraries. For cwebp and dwep,
+
+    binaries install libwebp.
+
+    '
+  dev_url: https://chromium.googlesource.com/webm/libwebp
+  doc_url: https://developers.google.com/speed/webp/docs/using
+  home: https://developers.google.com/speed/webp
+  license: BSD-3-Clause
+  license_file: COPYING
+  summary: WebP image library
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - carterbox
+    - dschreij
+    - ocefpaf

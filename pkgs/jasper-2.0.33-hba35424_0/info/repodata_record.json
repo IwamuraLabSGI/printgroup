@@ -1,0 +1,23 @@
+{
+  "arch": "arm64",
+  "build": "hba35424_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "jpeg >=9d,<10a"
+  ],
+  "features": "",
+  "fn": "jasper-2.0.33-hba35424_0.tar.bz2",
+  "license": "JasPer 2.0",
+  "md5": "bd1d25dbc93c761973c2aebc489bed97",
+  "name": "jasper",
+  "platform": "darwin",
+  "sha256": "7d6e91a75f7f141dd5979cbfd8375e900fedd5f0d5a116b41a844ec731e3e23e",
+  "size": 1095425,
+  "subdir": "osx-arm64",
+  "timestamp": 1634230536355,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/jasper-2.0.33-hba35424_0.tar.bz2",
+  "version": "2.0.33"
+}

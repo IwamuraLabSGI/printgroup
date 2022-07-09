@@ -1,0 +1,16 @@
+{
+  "cxx_compiler": "clangxx",
+  "CONDA_BUILD_SYSROOT": "/Applications/Xcode_12.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk",
+  "openssl": "3",
+  "c_compiler_version": "12",
+  "zlib": "1.2",
+  "target_platform": "osx-arm64",
+  "fortran_compiler_version": "11",
+  "c_compiler": "clang",
+  "cxx_compiler_version": "12",
+  "mpi": "nompi",
+  "channel_targets": "conda-forge main",
+  "build_platform": "osx-64",
+  "fortran_compiler": "gfortran",
+  "libcurl": "7"
+}

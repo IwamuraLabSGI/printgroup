@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>真贋判定システム</title>
+</head>
+
+<body>
+<header>
+
+</header>
+<main>
+    <h1>インクジェット印刷物の真贋判定システム</h1>
+    <p>以下にファイルをアップロードしてください</p>
+    <p>※使用できる形式：<span style="color:red">jpg,.jpeg</span>のみです。</p>
+    {% block content %}{% endblock %}
+    <p>　</p>
+    <a href="{{ url_for('form') }}">登録をしたい方はこちらから</a>
+</main>
+<footer>
+    <p>　</p>
+    <a href="https://www.rs.tus.ac.jp/iwamuralab/">岩村研究室</a>
+</footer>
+</body>
+
+</html>

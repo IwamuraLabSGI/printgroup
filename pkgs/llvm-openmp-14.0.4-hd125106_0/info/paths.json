@@ -1,0 +1,41 @@
+{
+  "paths": [
+    {
+      "_path": "include/omp-tools.h",
+      "path_type": "hardlink",
+      "sha256": "c341fb7c97975911dacd5a205d98a4538c5ef3024f8ea5ceaeaa44bb7764730a",
+      "size_in_bytes": 48958
+    },
+    {
+      "_path": "include/omp.h",
+      "path_type": "hardlink",
+      "sha256": "2f66990422ae7bfa7bb4728d65aa550e9fe73e4c24207d52b97d189c6b05db14",
+      "size_in_bytes": 23553
+    },
+    {
+      "_path": "include/ompt.h",
+      "path_type": "hardlink",
+      "sha256": "c341fb7c97975911dacd5a205d98a4538c5ef3024f8ea5ceaeaa44bb7764730a",
+      "size_in_bytes": 48958
+    },
+    {
+      "_path": "lib/clang/14.0.4/include/omp.h",
+      "path_type": "hardlink",
+      "sha256": "2f66990422ae7bfa7bb4728d65aa550e9fe73e4c24207d52b97d189c6b05db14",
+      "size_in_bytes": 23553
+    },
+    {
+      "_path": "lib/libiomp5.dylib",
+      "path_type": "softlink",
+      "sha256": "b441ae201a6cce1c7674256965e3da8f61c3a7c63e757c8e29de339685524413",
+      "size_in_bytes": 777552
+    },
+    {
+      "_path": "lib/libomp.dylib",
+      "path_type": "hardlink",
+      "sha256": "b441ae201a6cce1c7674256965e3da8f61c3a7c63e757c8e29de339685524413",
+      "size_in_bytes": 777552
+    }
+  ],
+  "paths_version": 1
+}

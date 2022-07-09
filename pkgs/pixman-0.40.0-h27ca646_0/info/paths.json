@@ -1,0 +1,49 @@
+{
+  "paths": [
+    {
+      "_path": "include/pixman-1/pixman-version.h",
+      "path_type": "hardlink",
+      "sha256": "599ec911a0e74f06478b11d285d723c1f52daa96f8a64afa96ab8bb8d95c2c29",
+      "size_in_bytes": 1786
+    },
+    {
+      "_path": "include/pixman-1/pixman.h",
+      "path_type": "hardlink",
+      "sha256": "6f20da43029984c7ac880adb9302cc52af293f6c864a00d270433701393ca57b",
+      "size_in_bytes": 47735
+    },
+    {
+      "_path": "lib/libpixman-1.0.40.0.dylib",
+      "path_type": "hardlink",
+      "sha256": "91a3da4ee38fc85b1e2851015052e066c650253d61fd368443ee453c67b6bb8c",
+      "size_in_bytes": 473392
+    },
+    {
+      "_path": "lib/libpixman-1.0.dylib",
+      "path_type": "softlink",
+      "sha256": "91a3da4ee38fc85b1e2851015052e066c650253d61fd368443ee453c67b6bb8c",
+      "size_in_bytes": 473392
+    },
+    {
+      "_path": "lib/libpixman-1.a",
+      "path_type": "hardlink",
+      "sha256": "2601ed1e27463941d597a3c3a64ee3729454ed8ef0fe9467f3ae7daa680b7cc5",
+      "size_in_bytes": 529600
+    },
+    {
+      "_path": "lib/libpixman-1.dylib",
+      "path_type": "softlink",
+      "sha256": "91a3da4ee38fc85b1e2851015052e066c650253d61fd368443ee453c67b6bb8c",
+      "size_in_bytes": 473392
+    },
+    {
+      "_path": "lib/pkgconfig/pixman-1.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/pixman_1604342198644/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl",
+      "sha256": "2ca26ef69916f404724c9cd595f7a9ee144bfbd604dd564aa094e3e10d257f4a",
+      "size_in_bytes": 477
+    }
+  ],
+  "paths_version": 1
+}

@@ -1,0 +1,29 @@
+{
+  "arch": "arm64",
+  "build": "h27a1928_5",
+  "build_number": 5,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "gettext >=0.19.8.1,<1.0a0",
+    "libcxx >=13.0.1",
+    "libidn2 >=2,<3.0a0",
+    "libtasn1 >=4.18.0,<5.0a0",
+    "nettle >=3.8,<3.9.0a0",
+    "p11-kit >=0.24.1,<0.25.0a0"
+  ],
+  "features": "",
+  "fn": "gnutls-3.7.6-h27a1928_5.tar.bz2",
+  "license": "LGPL-2.1-or-later",
+  "license_family": "LGPL",
+  "md5": "a3508a9fd25fc101c147ec1891ef6907",
+  "name": "gnutls",
+  "platform": "darwin",
+  "sha256": "e658d440205bb0bd694c3f7efa1c0213a35c9717b2c2adc02ca1d44f3fc0471b",
+  "size": 2120301,
+  "subdir": "osx-arm64",
+  "timestamp": 1655105409399,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/gnutls-3.7.6-h27a1928_5.tar.bz2",
+  "version": "3.7.6"
+}

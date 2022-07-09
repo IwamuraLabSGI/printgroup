@@ -1,0 +1,15 @@
+{
+  "arch": "arm64",
+  "build": "h3422bc3_0",
+  "build_number": 0,
+  "depends": [
+    "gettext >=0.19.8.1,<1.0a0",
+    "libunistring >=0,<1.0a0"
+  ],
+  "license": "LGPLv2",
+  "name": "libidn2",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1627042445029,
+  "version": "2.3.2"
+}

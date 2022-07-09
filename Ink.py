@@ -101,6 +101,8 @@ def main(args):
     src = cv2.imread(args[1])
     src = cv2.imread(args[1])
     src_img_orig = src
+    x = int(src.shape[0]*(1280/src.shape[1]))
+    src = cv2.resize(src, dsize=(1280,x))
     print("画像前処理アルゴリズム: " ,args[1])
     alpha = 1.0
     size = src.shape
@@ -167,29 +169,34 @@ def main(args):
     x_MY = Hue
     y_Cyan = (1.429 * x_MY) + 45.71
     img_Cyan = np.zeros([size[0], size[1],size[2]])
-    img_Cyan = colorInk(src,90, 150 ,y_Cyan,255, 120, 255)
+    img_Cyan = colorInk(src,90, 150 ,70,255, 180, 255)
     img_Magenda = np.zeros([size[0], size[1],size[2]])
-    img_Magenda = colorInk(src,150, 180 ,140,255, 120, 255)
+    img_Magenda = colorInk(src,150, 255 ,60,255, 180, 255)
     img_Yellow = np.zeros([size[0], size[1],size[2]])
-    img_Yellow = colorInk(src,20, 40 ,140,255, 120, 255)
+    img_Yellow = colorInk(src,15,65,60,255,180,255)
+    img_White = np.zeros([size[0], size[1],size[2]])
+    img_White = colorInk(src,0, 255 ,0,60, 200, 255)
 
     "7.グレースケール変換"
     print("グレースケール")
     img_Cyan = cv2.cvtColor(img_Cyan,cv2.COLOR_BGR2GRAY)
     img_Magenda = cv2.cvtColor(img_Magenda,cv2.COLOR_BGR2GRAY)
     img_Yellow = cv2.cvtColor(img_Yellow,cv2.COLOR_BGR2GRAY)
+    img_White = cv2.cvtColor(img_White,cv2.COLOR_BGR2GRAY)
 
     "8.適応2値化"
     print("適応")
     img_Cyan = cv2.adaptiveThreshold(img_Cyan,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,101,0)
     img_Magenda = cv2.adaptiveThreshold(img_Magenda,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,101,0)
     img_Yellow = cv2.adaptiveThreshold(img_Yellow,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,101,0)
+    img_White = cv2.adaptiveThreshold(img_White,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,101,0)
 
     "9.2値化"
     print("通常")
     retC, img_Cyan = cv2.threshold(img_Cyan,127,255,cv2.THRESH_BINARY)
     retM, img_Magenda = cv2.threshold(img_Magenda,127,255,cv2.THRESH_BINARY)
     retY, img_Yellow = cv2.threshold(img_Yellow,127,255,cv2.THRESH_BINARY)
+    retW, img_White = cv2.threshold(img_White,127,255,cv2.THRESH_BINARY)
     
     "10.出力画像の保存"
     print("保存")
@@ -197,9 +204,11 @@ def main(args):
     out[0] = "Cyan"  + args[2]
     out[1] = "Magenda"  + args[2]
     out[2] = "Yellow"  + args[2]
+    out[3] = "White"  + args[2]
     cv2.imwrite(out[0], img_Cyan)
     cv2.imwrite(out[1], img_Magenda)
     cv2.imwrite(out[2], img_Yellow)
+    cv2.imwrite(out[3], img_White)
     
     return None
 

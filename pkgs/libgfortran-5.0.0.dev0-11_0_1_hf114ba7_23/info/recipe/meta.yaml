@@ -1,0 +1,35 @@
+# This file created by conda-build 3.21.4
+# ------------------------------------------------
+
+package:
+  name: libgfortran
+  version: 5.0.0.dev0
+source:
+  patches: null
+  sha256: 6b20738e5fac3933456829b67eb3e89bde7f42ef7d649ee67ba8240420372632
+  url: https://github.com/iains/gcc-darwin-arm64/archive/bd796f1b0d4f8ff170ce51831916e9038dd8b1b9.tar.gz
+build:
+  number: 23
+  string: 11_0_1_hf114ba7_23
+requirements:
+  build: []
+  run:
+    - libgfortran5
+test:
+  files:
+    - gfortran_test.sh
+    - hello.f90
+    - maths.f90
+    - omp-threadprivate.f90
+about:
+  home: http://gcc.gnu.org/
+  license: GPL-3.0-only WITH GCC-exception-3.1
+  license_family: GPL
+  license_file: COPYING3
+  summary: Fortran compiler and libraries from the GNU Compiler Collection
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - beckermr
+    - isuruf

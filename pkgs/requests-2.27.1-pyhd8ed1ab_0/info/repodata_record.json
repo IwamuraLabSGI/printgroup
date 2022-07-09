@@ -1,0 +1,24 @@
+{
+    "arch": null,
+    "build": "pyhd8ed1ab_0",
+    "build_number": 0,
+    "channel": "conda-forge/noarch",
+    "depends": [
+        "certifi >=2017.4.17",
+        "charset-normalizer >=2.0.0,<2.1",
+        "idna >=2.5,<4",
+        "python >=3.6",
+        "urllib3 >=1.21.1,<1.27"
+    ],
+    "fn": "requests-2.27.1-pyhd8ed1ab_0.tar.bz2",
+    "license": "Apache-2.0",
+    "md5": "7c1c427246b057b8fa97200ecdb2ed62",
+    "name": "requests",
+    "noarch": "python",
+    "platform": null,
+    "size": 53896,
+    "subdir": "noarch",
+    "timestamp": 1641580280182,
+    "url": "https://conda.anaconda.org/conda-forge/noarch/requests-2.27.1-pyhd8ed1ab_0.tar.bz2",
+    "version": "2.27.1"
+}

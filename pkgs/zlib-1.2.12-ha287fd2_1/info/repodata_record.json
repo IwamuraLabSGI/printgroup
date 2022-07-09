@@ -1,0 +1,24 @@
+{
+  "arch": "arm64",
+  "build": "ha287fd2_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libzlib 1.2.12 ha287fd2_1"
+  ],
+  "features": "",
+  "fn": "zlib-1.2.12-ha287fd2_1.tar.bz2",
+  "license": "Zlib",
+  "license_family": "Other",
+  "md5": "7fbb261a0ba13ac1c8aa5180eee36064",
+  "name": "zlib",
+  "platform": "darwin",
+  "sha256": "04ca6c9ddb16752163904235fb1d2860f8f3cbbdd032238bf2e926f01dc5fa81",
+  "size": 78874,
+  "subdir": "osx-arm64",
+  "timestamp": 1655243903784,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/zlib-1.2.12-ha287fd2_1.tar.bz2",
+  "version": "1.2.12"
+}

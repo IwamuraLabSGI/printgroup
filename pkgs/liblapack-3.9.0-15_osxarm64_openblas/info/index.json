@@ -1,0 +1,19 @@
+{
+  "arch": "arm64",
+  "build": "15_osxarm64_openblas",
+  "build_number": 15,
+  "constrains": [
+    "liblapacke 3.9.0 15_osxarm64_openblas",
+    "libcblas 3.9.0 15_osxarm64_openblas",
+    "blas * openblas"
+  ],
+  "depends": [
+    "libblas 3.9.0 15_osxarm64_openblas"
+  ],
+  "license": "BSD-3-Clause",
+  "name": "liblapack",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1654549728342,
+  "version": "3.9.0"
+}

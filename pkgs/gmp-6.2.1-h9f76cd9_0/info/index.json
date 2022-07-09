@@ -1,0 +1,14 @@
+{
+  "arch": "arm64",
+  "build": "h9f76cd9_0",
+  "build_number": 0,
+  "depends": [
+    "libcxx >=11.0.0"
+  ],
+  "license": "GPL-2.0-or-later AND LGPL-3.0-or-later",
+  "name": "gmp",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1605751606013,
+  "version": "6.2.1"
+}

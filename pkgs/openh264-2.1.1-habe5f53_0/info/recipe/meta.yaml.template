@@ -1,0 +1,50 @@
+{% set name = "openh264" %}
+{% set version = "2.1.1" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-v{{ version }}.tar.gz
+  url: https://github.com/cisco/openh264/archive/v{{ version }}.tar.gz
+  sha256: af173e90fce65f80722fa894e1af0d6b07572292e76de7b65273df4c0a8be678
+
+build:
+  number: 0
+  skip: true  # [win]
+  run_exports:
+    # new so names and compatibility changes on minor version
+    # https://abi-laboratory.pro/?view=timeline&l=openh264
+    - {{ pin_subpackage('openh264', max_pin='x.x') }}
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}
+    - pkg-config
+    - nasm
+    - make  # [unix]
+  host:
+    - zlib
+
+test:
+  commands:
+    - h264enc -h                                    # [not win]
+    - test -f $PREFIX/bin/h264dec                   # [not win]
+    - test -f $PREFIX/lib/libopenh264.dylib         # [osx]
+    - test -f $PREFIX/lib/libopenh264.so            # [linux]
+
+about:
+  home: http://www.openh264.org/
+  license: BSD-2-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: OpenH264 is a codec library which supports H.264 encoding and decoding
+  dev_url: https://github.com/cisco/openh264
+  doc_url: https://github.com/cisco/openh264
+
+extra:
+  recipe-maintainers:
+    - 183amir
+    - sdvillal

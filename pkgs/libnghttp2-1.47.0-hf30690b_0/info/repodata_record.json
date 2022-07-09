@@ -1,0 +1,31 @@
+{
+  "arch": "arm64",
+  "build": "hf30690b_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "c-ares >=1.18.1,<2.0a0",
+    "c-ares >=1.7.5",
+    "libcxx >=12.0.1",
+    "libev >=4.11",
+    "libev >=4.33,<4.34.0a0",
+    "libzlib >=1.2.11,<1.3.0a0",
+    "openssl >=3.0.0,<4.0a0",
+    "zlib >=1.2.11,<1.3.0a0"
+  ],
+  "features": "",
+  "fn": "libnghttp2-1.47.0-hf30690b_0.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "e9ab0446801303b492f3dd6d4a90a511",
+  "name": "libnghttp2",
+  "platform": "darwin",
+  "sha256": "358a2e8087cf0b87381955da43f539e34bc1b74cb98d072f0868dc6d60199a92",
+  "size": 852929,
+  "subdir": "osx-arm64",
+  "timestamp": 1645636885688,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libnghttp2-1.47.0-hf30690b_0.tar.bz2",
+  "version": "1.47.0"
+}

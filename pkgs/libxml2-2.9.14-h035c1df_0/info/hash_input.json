@@ -1,0 +1,12 @@
+{
+  "icu": "70",
+  "c_compiler": "clang",
+  "zlib": "1.2",
+  "VERBOSE_AT": "V=1",
+  "libiconv": "1.16",
+  "xz": "5.2",
+  "CONDA_BUILD_SYSROOT": "/Applications/Xcode_12.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk",
+  "channel_targets": "conda-forge main",
+  "c_compiler_version": "13",
+  "target_platform": "osx-arm64"
+}

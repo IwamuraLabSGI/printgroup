@@ -1,0 +1,12 @@
+prefix=/Users/runner/miniforge3/conda-bld/cairo_1648682278711/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: cairo-png
+Description: PNG functions for cairo graphics library
+Version: 1.16.0
+
+Requires: cairo libpng
+Libs:  
+Cflags: -I${includedir}/cairo 

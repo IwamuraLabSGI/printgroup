@@ -1,0 +1,21 @@
+{
+  "arch": "arm64",
+  "build": "h3422bc3_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [],
+  "features": "",
+  "fn": "x264-1!161.3030-h3422bc3_1.tar.bz2",
+  "license": "GPL-2.0",
+  "md5": "8e89219ee303071f52eba72bbb325ebc",
+  "name": "x264",
+  "platform": "darwin",
+  "sha256": "84848fa8549f40b681b9d04d5ff081ef73edbd91e759e1bad929025c48532a59",
+  "size": 2095440,
+  "subdir": "osx-arm64",
+  "timestamp": 1623827626602,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/x264-1!161.3030-h3422bc3_1.tar.bz2",
+  "version": "1!161.3030"
+}

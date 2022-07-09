@@ -1,0 +1,14 @@
+prefix=/Users/sugaikazuaki/miniforge3/envs/NRIpy
+exec_prefix=${prefix}
+libdir=/Users/sugaikazuaki/miniforge3/envs/NRIpy/lib
+includedir=/Users/sugaikazuaki/miniforge3/envs/NRIpy/include
+
+Name: libpostproc
+Description: FFmpeg postprocessing library
+Version: 55.9.100
+Requires: 
+Requires.private: libavutil >= 56.70.100
+Conflicts:
+Libs: -L${libdir}  -lpostproc 
+Libs.private: -lm
+Cflags: -I${includedir}

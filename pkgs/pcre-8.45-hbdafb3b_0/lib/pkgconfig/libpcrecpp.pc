@@ -1,0 +1,12 @@
+# Package Information for pkg-config
+
+prefix=/Users/runner/miniforge3/conda-bld/pcre_1623788712098/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libpcrecpp
+Description: PCRECPP - C++ wrapper for PCRE
+Version: 8.45
+Libs: -L${libdir} -lpcre -lpcrecpp
+Cflags: -I${includedir} 

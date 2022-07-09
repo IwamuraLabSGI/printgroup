@@ -1,0 +1,24 @@
+{
+  "arch": "arm64",
+  "build": "hbc6ce65_3",
+  "build_number": 3,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libcxx >=12.0.1"
+  ],
+  "features": "",
+  "fn": "x265-3.5-hbc6ce65_3.tar.bz2",
+  "license": "GPL-2.0-or-later",
+  "license_family": "GPL",
+  "md5": "b1f7f2780feffe310b068c021e8ff9b2",
+  "name": "x265",
+  "platform": "darwin",
+  "sha256": "2fed6987dba7dee07bd9adc1a6f8e6c699efb851431bcb6ebad7de196e87841d",
+  "size": 1832744,
+  "subdir": "osx-arm64",
+  "timestamp": 1646609481185,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/x265-3.5-hbc6ce65_3.tar.bz2",
+  "version": "3.5"
+}

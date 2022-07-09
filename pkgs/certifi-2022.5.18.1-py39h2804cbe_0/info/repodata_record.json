@@ -1,0 +1,21 @@
+{
+    "arch": "arm64",
+    "build": "py39h2804cbe_0",
+    "build_number": 0,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [
+        "python >=3.9,<3.10.0a0",
+        "python >=3.9,<3.10.0a0 *_cpython",
+        "python_abi 3.9.* *_cp39"
+    ],
+    "fn": "certifi-2022.5.18.1-py39h2804cbe_0.tar.bz2",
+    "license": "ISC",
+    "md5": "d9f1be425a38d0c0124fb5ab6395528b",
+    "name": "certifi",
+    "platform": "osx",
+    "size": 154631,
+    "subdir": "osx-arm64",
+    "timestamp": 1653012389218,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/certifi-2022.5.18.1-py39h2804cbe_0.tar.bz2",
+    "version": "2022.5.18.1"
+}

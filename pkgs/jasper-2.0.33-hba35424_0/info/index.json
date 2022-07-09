@@ -1,0 +1,14 @@
+{
+  "arch": "arm64",
+  "build": "hba35424_0",
+  "build_number": 0,
+  "depends": [
+    "jpeg >=9d,<10a"
+  ],
+  "license": "JasPer 2.0",
+  "name": "jasper",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1634230536355,
+  "version": "2.0.33"
+}

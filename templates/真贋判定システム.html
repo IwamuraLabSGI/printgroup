@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>真贋判定システム</title>
+</head>
+
+<body>
+<header>
+
+</header>
+<main>
+    <h1>インクジェット印刷物の真贋判定システム</h1>
+    <p>以下にファイルをアップロードしてください</p>
+    <p>※使用できる形式：<span style="color:red">jpg,.jpegのみです。</span></p>
+    
+
+<form action="/" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/png, image/jpeg">
+    <button type="submit">真贋判定開始</button>
+</form>
+<p>真贋判定状況：画像入力待ち　⇨ 真贋判定開始　⇨ 真贋判定終了</p>
+<p>真贋判定スコア：0</p>
+
+<p>該当画像なし：偽造品</p>
+
+<img src="INPUT.JPG" alt="入力画像", height="300" >
+<img src="Cyan.JPG" alt="シアン画像", height="300" >
+<img src="Magenda.JPG" alt="マゼンダ画像", height="300" >
+<img src="Yellow.JPG" alt="イエロー画像", height="300" >
+<img src="AKAZE.JPG" alt="結果の画像", height="300" >
+
+
+
+    <p>　</p>
+    <a href="/form">登録をしたい方はこちらから</a>
+</main>
+<footer>
+    <p>　</p>
+    <a href="https://www.rs.tus.ac.jp/iwamuralab/">岩村研究室</a>
+</footer>
+</body>
+
+</html>

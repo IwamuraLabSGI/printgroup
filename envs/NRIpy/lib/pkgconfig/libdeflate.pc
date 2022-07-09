@@ -1,0 +1,10 @@
+prefix=/Users/sugaikazuaki/miniforge3/envs/NRIpy
+exec_prefix=${prefix}
+includedir=/Users/sugaikazuaki/miniforge3/envs/NRIpy/include
+libdir=/Users/sugaikazuaki/miniforge3/envs/NRIpy/lib
+
+Name: libdeflate
+Description: Fast implementation of DEFLATE, zlib, and gzip
+Version: 1.12
+Libs: -L${libdir} -ldeflate
+Cflags: -I${includedir}

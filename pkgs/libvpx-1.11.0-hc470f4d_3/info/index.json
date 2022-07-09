@@ -1,0 +1,15 @@
+{
+  "arch": "arm64",
+  "build": "hc470f4d_3",
+  "build_number": 3,
+  "depends": [
+    "libcxx >=11.1.0"
+  ],
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "name": "libvpx",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1635005254807,
+  "version": "1.11.0"
+}

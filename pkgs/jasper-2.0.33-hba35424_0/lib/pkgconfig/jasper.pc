@@ -1,0 +1,9 @@
+libdir=/Users/runner/miniforge3/conda-bld/jasper_1634230106062/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl/lib
+includedir=/Users/runner/miniforge3/conda-bld/jasper_1634230106062/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl/include
+
+Name: JasPer
+Description: Image Processing/Coding Tool Kit with JPEG-2000 Support
+Version: 2.0.33
+
+Libs: -L${libdir} -ljasper
+Cflags: -I${includedir}/jasper -I${includedir}

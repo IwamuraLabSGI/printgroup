@@ -1,0 +1,12 @@
+{
+  "arch": "arm64",
+  "build": "h3422bc3_1",
+  "build_number": 1,
+  "depends": [],
+  "license": "GPL-2.0",
+  "name": "x264",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1623827626602,
+  "version": "1!161.3030"
+}

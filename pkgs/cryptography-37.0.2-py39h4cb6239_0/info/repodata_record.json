@@ -1,0 +1,24 @@
+{
+    "arch": "arm64",
+    "build": "py39h4cb6239_0",
+    "build_number": 0,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [
+        "cffi >=1.12",
+        "openssl >=1.1.1o,<1.1.2a",
+        "python >=3.9,<3.10.0a0",
+        "python >=3.9,<3.10.0a0 *_cpython",
+        "python_abi 3.9.* *_cp39"
+    ],
+    "fn": "cryptography-37.0.2-py39h4cb6239_0.tar.bz2",
+    "license": "Apache-2.0 AND BSD-3-Clause AND PSF-2.0 AND MIT",
+    "license_family": "BSD",
+    "md5": "025866e425e17ea9ef71437c357ca85c",
+    "name": "cryptography",
+    "platform": "osx",
+    "size": 1205372,
+    "subdir": "osx-arm64",
+    "timestamp": 1652967903988,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/cryptography-37.0.2-py39h4cb6239_0.tar.bz2",
+    "version": "37.0.2"
+}

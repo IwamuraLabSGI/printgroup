@@ -1,0 +1,63 @@
+# This file created by conda-build 3.21.4
+# meta.yaml template originally from:
+# /Users/runner/work/1/s/recipe, last modified Wed Jun 16 07:08:49 2021
+# ------------------------------------------------
+
+package:
+  name: x264
+  version: 1!161.3030
+source:
+  git_rev: 8bd6d28025c9dcc101cb194f9141bcff3ea91500
+  git_url: https://code.videolan.org/videolan/x264
+build:
+  number: '1'
+  run_exports:
+    - x264 >=1!161.3030,<1!162
+  string: h3422bc3_1
+requirements:
+  build:
+    - cctools_osx-64 949.0.1 h6407bdd_22
+    - cctools_osx-arm64 949.0.1 h55de48a_22
+    - clang 11.1.0 h694c41f_1
+    - clang-11 11.1.0 default_he082bbe_1
+    - clang_osx-arm64 11.1.0 h40be2b1_2
+    - clangxx 11.1.0 default_he082bbe_1
+    - compiler-rt 11.1.0 h654b07c_0
+    - compiler-rt_osx-64 11.1.0 h8c5fa43_0
+    - gnuconfig 2020.11.07 hd8ed1ab_0
+    - ld64_osx-64 530 he8994da_21
+    - ld64_osx-arm64 530 h3681fde_21
+    - ldid 2.1.2 h7660a38_2
+    - libclang-cpp11.1 11.1.0 default_he082bbe_1
+    - libcxx 11.1.0 habf9029_0
+    - libllvm11 11.1.0 hd011deb_2
+    - libllvm12 12.0.0 hd011deb_1
+    - llvm-tools 11.1.0 hd011deb_2
+    - make 4.3 h22f3db7_1
+    - nasm 2.14.02 h0d85af4_0
+    - perl 5.26.2 hbcb3906_1008
+    - tapi 1100.0.11 h9ce4665_0
+    - zlib 1.2.11 h7795811_1010
+  host: []
+  run: []
+test:
+  commands:
+    - test -f ${PREFIX}/include/x264.h
+    - test -f ${PREFIX}/lib/libx264.a
+    - test -f ${PREFIX}/lib/libx264.dylib
+    - test -f ${PREFIX}/lib/libx264.161.dylib
+    - x264 --help
+about:
+  home: http://www.videolan.org/developers/x264.html
+  license: GPL-2.0
+  license_file: COPYING
+  summary: A free software library for encoding video streams into the H.264/MPEG-4
+    AVC format.
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - 183amir
+    - carlodri
+    - jakirkham
+    - sdvillal

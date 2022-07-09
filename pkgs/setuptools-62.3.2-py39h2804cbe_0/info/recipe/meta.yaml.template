@@ -1,0 +1,53 @@
+{% set version = "62.3.2" %}
+
+package:
+  name: setuptools
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/s/setuptools/setuptools-{{ version }}.tar.gz
+  sha256: a43bdedf853c670e5fed28e5623403bad2f73cf02f9a2774e91def6bda8265a7
+  patches:
+    # distutils patches from python-feedstock
+    - patches/0012-Disable-new-dtags-in-unixccompiler.py.patch  # [py<=37]
+    - patches/0021-Add-d1trimfile-SRC_DIR-to-make-pdbs-more-relocatable.patch
+
+build:
+  skip: true  # [py<36]
+  number: 0
+
+requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+  host:
+    - python
+  run:
+    - python
+
+test:
+  imports:
+    - setuptools
+    - pkg_resources
+
+about:
+  home: https://github.com/pypa/setuptools
+  license: MIT
+  license_file: LICENSE
+  license_family: MIT
+  summary: Download, build, install, upgrade, and uninstall Python packages
+  description: |
+    Setuptools is a fully-featured, actively-maintained, and stable library
+    designed to facilitate packaging Python projects.
+  doc_url: http://pythonhosted.org/setuptools/
+  dev_url: https://github.com/pypa/setuptools
+  doc_source_url: https://github.com/pypa/setuptools/tree/master/docs
+
+extra:
+  recipe-maintainers:
+    - rgommers
+    - jakirkham
+    - msarahan
+    - ocefpaf
+    - nicoddemus
+    - isuruf

@@ -1,0 +1,28 @@
+{
+  "arch": "arm64",
+  "build": "15_osxarm64_openblas",
+  "build_number": 15,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [
+    "blas * openblas"
+  ],
+  "depends": [
+    "libblas 3.9.0 15_osxarm64_openblas",
+    "libcblas 3.9.0 15_osxarm64_openblas",
+    "liblapack 3.9.0 15_osxarm64_openblas"
+  ],
+  "features": "",
+  "fn": "liblapacke-3.9.0-15_osxarm64_openblas.tar.bz2",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "md5": "bc93aed8a69a2cf257b616c4e53b3f1d",
+  "name": "liblapacke",
+  "platform": "darwin",
+  "sha256": "df07e94abb596ae26806463fab223483a832cd7daff1b7ffb2163cba60bdf773",
+  "size": 12725,
+  "subdir": "osx-arm64",
+  "timestamp": 1654549742155,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/liblapacke-3.9.0-15_osxarm64_openblas.tar.bz2",
+  "version": "3.9.0"
+}

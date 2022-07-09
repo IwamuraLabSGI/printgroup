@@ -1,0 +1,15 @@
+{
+  "arch": "arm64",
+  "build": "h07bb92c_1",
+  "build_number": 1,
+  "depends": [
+    "libcxx >=12.0.1"
+  ],
+  "license": "BSD-2-Clause",
+  "license_family": "BSD",
+  "name": "aom",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1645728106899,
+  "version": "3.3.0"
+}

@@ -1,0 +1,14 @@
+prefix=/Users/sugaikazuaki/miniforge3/envs/NRIpy
+exec_prefix=/Users/sugaikazuaki/miniforge3/envs/NRIpy
+libdir=/Users/sugaikazuaki/miniforge3/envs/NRIpy/lib
+includedir=/Users/sugaikazuaki/miniforge3/envs/NRIpy/include
+
+Name: FreeType 2
+URL: https://freetype.org
+Description: A free, high-quality, and portable font engine.
+Version: 23.4.17
+Requires:
+Requires.private: 
+Libs: -L${libdir} -lfreetype
+Libs.private: -lz -L/Users/sugaikazuaki/miniforge3/envs/NRIpy/lib -lpng16 -lz
+Cflags: -I${includedir}/freetype2

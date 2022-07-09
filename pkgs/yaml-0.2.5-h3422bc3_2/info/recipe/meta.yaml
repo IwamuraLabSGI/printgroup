@@ -1,0 +1,72 @@
+# This file created by conda-build 3.21.7
+# meta.yaml template originally from:
+# /Users/runner/work/1/s/recipe, last modified Wed Jan  5 01:40:11 2022
+# ------------------------------------------------
+
+package:
+  name: yaml
+  version: 0.2.5
+source:
+  sha256: fa240dbf262be053f3898006d502d514936c818e422afdcf33921c63bed9bf2e
+  url: https://github.com/yaml/libyaml/archive/0.2.5.tar.gz
+build:
+  number: '2'
+  run_exports:
+    - yaml >=0.2.5,<0.3.0a0
+  string: h3422bc3_2
+requirements:
+  build:
+    - autoconf 2.69 pl5321hc0e15e3_11
+    - automake 1.16.5 pl5321h694c41f_0
+    - cctools_osx-64 949.0.1 h6407bdd_23
+    - cctools_osx-arm64 949.0.1 h55de48a_23
+    - clang 11.1.0 h694c41f_1
+    - clang-11 11.1.0 default_he082bbe_1
+    - clang_osx-arm64 11.1.0 h7730a26_5
+    - clangxx 11.1.0 default_he082bbe_1
+    - compiler-rt 11.1.0 h654b07c_0
+    - compiler-rt_osx-64 11.1.0 h8c5fa43_0
+    - ld64_osx-64 530 he8994da_21
+    - ld64_osx-arm64 530 h3681fde_21
+    - ldid 2.1.2 h6a69015_3
+    - libclang-cpp11.1 11.1.0 default_he082bbe_1
+    - libcxx 12.0.1 habf9029_1
+    - libllvm11 11.1.0 hd011deb_2
+    - libllvm12 12.0.1 hd011deb_2
+    - libtool 2.4.6 he49afe7_1008
+    - libzlib 1.2.11 h9173be1_1013
+    - llvm-tools 11.1.0 hd011deb_2
+    - m4 1.4.18 haf1e3a3_1001
+    - make 4.3 h22f3db7_1
+    - perl 5.32.1 1_h0d85af4_perl5
+    - tapi 1100.0.11 h9ce4665_0
+    - zlib 1.2.11 h9173be1_1013
+  run: []
+test:
+  commands:
+    - test -f "${PREFIX}/include/yaml.h"
+    - test -f "${PREFIX}/lib/libyaml${SHLIB_EXT}"
+    - test -f "${PREFIX}/lib/pkgconfig/yaml-0.1.pc"
+about:
+  description: 'YAML is a human friendly data serialization standard for all programming
+
+    languages.
+
+    '
+  dev_url: https://github.com/yaml
+  doc_source_url: https://github.com/yaml/www.yaml.org/tree/master/docs
+  doc_url: http://www.yaml.org/spec/1.2/spec.html
+  home: http://pyyaml.org/wiki/LibYAML
+  license: MIT
+  license_file: License
+  summary: A C library for parsing and emitting YAML
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - jakirkham
+    - mingwandroid
+    - msarahan
+    - ocefpaf
+    - pelson
+    - seanyen

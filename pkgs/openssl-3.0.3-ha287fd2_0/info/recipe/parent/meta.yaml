@@ -1,0 +1,81 @@
+{% set version = "3.0.3" %}
+
+package:
+  name: openssl_split
+  version: {{ version }}
+
+source:
+  url: http://www.openssl.org/source/openssl-{{ version }}.tar.gz
+  sha256: ee0078adcef1de5f003c62c80cc96527721609c6f3bb42b7795df31f8b558c0b
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - nasm               # [win]
+    - make               # [unix]
+    - perl *
+  # Empty host section to ensure that this is identified as cb3
+  host:
+
+outputs:
+  - name: openssl
+    build:
+      no_link: lib/libcrypto.so.3.0  # [linux]
+      no_link: lib/libcrypto.3.0.dylib  # [osx]
+      run_exports:
+        # openssl's versioning used to be X.Y.Z(rev), but is MAJOR.MINOR.PATCH since 3.0.0;
+        # see https://www.openssl.org/policies/releasestrat.html
+        - {{ pin_subpackage('openssl', max_pin='x') }}
+    requirements:
+      build:
+        - {{ compiler('c') }}
+        - make
+        - perl *
+      # Empty host section to ensure that this is identified as cb3
+      # FIXME: this doesn't seem to be enough. We need a compiler in build
+      # with `compiler` jinja used to not use legacy cb2 build==host
+      host:
+      run:
+        - ca-certificates
+    script: install_openssl.sh  # [unix]
+    script: install_openssl.bat  # [win]
+    test:
+      commands:
+        - copy NUL checksum.txt        # [win]
+        - touch checksum.txt           # [unix]
+        - $PREFIX/bin/openssl sha256 checksum.txt       # [unix]
+        - '%LIBRARY_BIN%\openssl sha256 checksum.txt'   # [win]
+
+  - name: libopenssl-static
+    requirements:
+      build:
+        - {{ compiler('c') }}
+    script: install_libopenssl-static.sh  # [unix]
+    script: install_libopenssl-static.bat  # [win]
+    test:
+      commands:
+        - test -f ${PREFIX}/lib/libcrypto.a                   # [unix]
+        - test -f ${PREFIX}/lib/libssl.a                      # [unix]
+        - if exist %LIBRARY_PREFIX%\lib\libcrypto_static.lib (exit 0) else (exit 1)  # [win]
+        - if exist %LIBRARY_PREFIX%\lib\libssl_static.lib (exit 0) else (exit 1)     # [win]
+
+about:
+  home: http://www.openssl.org/
+  license_file: LICENSE.txt
+  license: Apache-2.0
+  license_family: Apache
+  summary: OpenSSL is an open-source implementation of the SSL and TLS protocols
+  dev_url: https://github.com/openssl/openssl
+  doc_url: https://www.openssl.org/docs/man3.0/
+
+extra:
+  recipe-maintainers:
+    - jakirkham
+    - msarahan
+    - ocefpaf
+    - pelson
+    - carlodri
+  feedstock-name: openssl

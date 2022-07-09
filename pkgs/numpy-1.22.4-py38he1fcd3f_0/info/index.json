@@ -1,0 +1,23 @@
+{
+  "arch": "arm64",
+  "build": "py38he1fcd3f_0",
+  "build_number": 0,
+  "constrains": [
+    "numpy-base <0a0"
+  ],
+  "depends": [
+    "libblas >=3.9.0,<4.0a0",
+    "libcblas >=3.9.0,<4.0a0",
+    "libcxx >=13.0.1",
+    "liblapack >=3.9.0,<4.0a0",
+    "python >=3.8,<3.9.0a0",
+    "python >=3.8,<3.9.0a0 *_cpython",
+    "python_abi 3.8.* *_cp38"
+  ],
+  "license": "BSD-3-Clause",
+  "name": "numpy",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1653326616833,
+  "version": "1.22.4"
+}

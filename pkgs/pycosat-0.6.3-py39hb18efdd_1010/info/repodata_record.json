@@ -1,0 +1,21 @@
+{
+    "arch": "arm64",
+    "build": "py39hb18efdd_1010",
+    "build_number": 1010,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [
+        "python >=3.9,<3.10.0a0",
+        "python >=3.9,<3.10.0a0 *_cpython",
+        "python_abi 3.9.* *_cp39"
+    ],
+    "fn": "pycosat-0.6.3-py39hb18efdd_1010.tar.bz2",
+    "license": "MIT",
+    "md5": "1154d45caf3ff8f059b3b190b823a53e",
+    "name": "pycosat",
+    "platform": "osx",
+    "size": 112615,
+    "subdir": "osx-arm64",
+    "timestamp": 1649385131151,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/pycosat-0.6.3-py39hb18efdd_1010.tar.bz2",
+    "version": "0.6.3"
+}

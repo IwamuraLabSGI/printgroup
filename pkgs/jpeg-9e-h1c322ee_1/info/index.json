@@ -1,0 +1,12 @@
+{
+  "arch": "arm64",
+  "build": "h1c322ee_1",
+  "build_number": 1,
+  "depends": [],
+  "license": "IJG",
+  "name": "jpeg",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1650286048087,
+  "version": "9e"
+}

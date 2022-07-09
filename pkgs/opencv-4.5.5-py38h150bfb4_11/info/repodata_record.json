@@ -1,0 +1,26 @@
+{
+  "arch": "arm64",
+  "build": "py38h150bfb4_11",
+  "build_number": 11,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libopencv 4.5.5 py38he52a0c8_11",
+    "py-opencv 4.5.5 py38hab544c7_11",
+    "python_abi 3.8.* *_cp38"
+  ],
+  "features": "",
+  "fn": "opencv-4.5.5-py38h150bfb4_11.tar.bz2",
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "md5": "9461ac74f90269de750887c9c847a34a",
+  "name": "opencv",
+  "platform": "darwin",
+  "sha256": "b70767f82ba697ec387d2761bd510295a5980027baa8bf8e6b43f5b8840a5f3f",
+  "size": 23000,
+  "subdir": "osx-arm64",
+  "timestamp": 1654296813875,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/opencv-4.5.5-py38h150bfb4_11.tar.bz2",
+  "version": "4.5.5"
+}

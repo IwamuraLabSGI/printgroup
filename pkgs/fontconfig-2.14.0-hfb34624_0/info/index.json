@@ -1,0 +1,15 @@
+{
+  "arch": "arm64",
+  "build": "hfb34624_0",
+  "build_number": 0,
+  "depends": [
+    "expat >=2.4.8,<3.0a0",
+    "freetype >=2.10.4,<3.0a0"
+  ],
+  "license": "MIT",
+  "name": "fontconfig",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1649160530225,
+  "version": "2.14.0"
+}

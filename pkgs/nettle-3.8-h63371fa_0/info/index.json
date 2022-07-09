@@ -1,0 +1,13 @@
+{
+  "arch": "arm64",
+  "build": "h63371fa_0",
+  "build_number": 0,
+  "depends": [],
+  "license": "GPL 2 and LGPL3",
+  "license_family": "GPL",
+  "name": "nettle",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1654323697400,
+  "version": "3.8"
+}

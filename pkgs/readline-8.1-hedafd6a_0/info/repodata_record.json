@@ -1,0 +1,19 @@
+{
+    "arch": "arm64",
+    "build": "hedafd6a_0",
+    "build_number": 0,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [
+        "ncurses >=6.2,<6.3.0a0"
+    ],
+    "fn": "readline-8.1-hedafd6a_0.tar.bz2",
+    "license": "GPL-3.0-only",
+    "md5": "3ab98d5fd433cd392a1b0781391a9e38",
+    "name": "readline",
+    "platform": "osx",
+    "size": 264758,
+    "subdir": "osx-arm64",
+    "timestamp": 1618863037252,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/readline-8.1-hedafd6a_0.tar.bz2",
+    "version": "8.1"
+}

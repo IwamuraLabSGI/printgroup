@@ -1,0 +1,12 @@
+{
+  "arch": "arm64",
+  "build": "h4653dfc_0",
+  "build_number": 0,
+  "depends": [],
+  "license": "ISC",
+  "name": "ca-certificates",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1655341043587,
+  "version": "2022.6.15"
+}

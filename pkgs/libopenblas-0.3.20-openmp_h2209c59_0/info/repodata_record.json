@@ -1,0 +1,28 @@
+{
+  "arch": "arm64",
+  "build": "openmp_h2209c59_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [
+    "openblas >=0.3.20,<0.3.21.0a0"
+  ],
+  "depends": [
+    "libgfortran 5.*",
+    "libgfortran5 >=11.0.1.dev0",
+    "llvm-openmp >=12.0.1"
+  ],
+  "features": "",
+  "fn": "libopenblas-0.3.20-openmp_h2209c59_0.tar.bz2",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "md5": "5c316594c85e2adb3617890fc405d031",
+  "name": "libopenblas",
+  "platform": "darwin",
+  "sha256": "a3fb4664d1770476d0455db018e6aed01c24d28880556c843d8998302067d788",
+  "size": 3985926,
+  "subdir": "osx-arm64",
+  "timestamp": 1649198694960,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libopenblas-0.3.20-openmp_h2209c59_0.tar.bz2",
+  "version": "0.3.20"
+}

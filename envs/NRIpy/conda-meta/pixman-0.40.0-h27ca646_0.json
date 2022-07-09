@@ -1,0 +1,90 @@
+{
+  "build": "h27ca646_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [],
+  "extracted_package_dir": "/Users/sugaikazuaki/miniforge3/pkgs/pixman-0.40.0-h27ca646_0",
+  "features": "",
+  "files": [
+    "include/pixman-1/pixman-version.h",
+    "include/pixman-1/pixman.h",
+    "lib/libpixman-1.0.40.0.dylib",
+    "lib/libpixman-1.0.dylib",
+    "lib/libpixman-1.a",
+    "lib/libpixman-1.dylib",
+    "lib/pkgconfig/pixman-1.pc"
+  ],
+  "fn": "pixman-0.40.0-h27ca646_0.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "link": {
+    "source": "/Users/sugaikazuaki/miniforge3/pkgs/pixman-0.40.0-h27ca646_0",
+    "type": 1
+  },
+  "md5": "0cedfe37c9aee28f5e926a870965466a",
+  "name": "pixman",
+  "package_tarball_full_path": "/Users/sugaikazuaki/miniforge3/pkgs/pixman-0.40.0-h27ca646_0.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "include/pixman-1/pixman-version.h",
+        "path_type": "hardlink",
+        "sha256": "599ec911a0e74f06478b11d285d723c1f52daa96f8a64afa96ab8bb8d95c2c29",
+        "sha256_in_prefix": "599ec911a0e74f06478b11d285d723c1f52daa96f8a64afa96ab8bb8d95c2c29",
+        "size_in_bytes": 1786
+      },
+      {
+        "_path": "include/pixman-1/pixman.h",
+        "path_type": "hardlink",
+        "sha256": "6f20da43029984c7ac880adb9302cc52af293f6c864a00d270433701393ca57b",
+        "sha256_in_prefix": "6f20da43029984c7ac880adb9302cc52af293f6c864a00d270433701393ca57b",
+        "size_in_bytes": 47735
+      },
+      {
+        "_path": "lib/libpixman-1.0.40.0.dylib",
+        "path_type": "hardlink",
+        "sha256": "91a3da4ee38fc85b1e2851015052e066c650253d61fd368443ee453c67b6bb8c",
+        "sha256_in_prefix": "91a3da4ee38fc85b1e2851015052e066c650253d61fd368443ee453c67b6bb8c",
+        "size_in_bytes": 473392
+      },
+      {
+        "_path": "lib/libpixman-1.0.dylib",
+        "path_type": "softlink",
+        "sha256": "91a3da4ee38fc85b1e2851015052e066c650253d61fd368443ee453c67b6bb8c",
+        "size_in_bytes": 473392
+      },
+      {
+        "_path": "lib/libpixman-1.a",
+        "path_type": "hardlink",
+        "sha256": "2601ed1e27463941d597a3c3a64ee3729454ed8ef0fe9467f3ae7daa680b7cc5",
+        "sha256_in_prefix": "2601ed1e27463941d597a3c3a64ee3729454ed8ef0fe9467f3ae7daa680b7cc5",
+        "size_in_bytes": 529600
+      },
+      {
+        "_path": "lib/libpixman-1.dylib",
+        "path_type": "softlink",
+        "sha256": "91a3da4ee38fc85b1e2851015052e066c650253d61fd368443ee453c67b6bb8c",
+        "size_in_bytes": 473392
+      },
+      {
+        "_path": "lib/pkgconfig/pixman-1.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/pixman_1604342198644/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl",
+        "sha256": "2ca26ef69916f404724c9cd595f7a9ee144bfbd604dd564aa094e3e10d257f4a",
+        "sha256_in_prefix": "d1e9c29deb56355d10e7278581bd5c91259ae370c284627bd541af25ab023be2",
+        "size_in_bytes": 477
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "a3bde72b3f9344ede1a189612d997f775b503a8eec61fb9720d18551f3c71080",
+  "size": 291804,
+  "subdir": "osx-arm64",
+  "timestamp": 1604342450513,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/pixman-0.40.0-h27ca646_0.tar.bz2",
+  "version": "0.40.0"
+}

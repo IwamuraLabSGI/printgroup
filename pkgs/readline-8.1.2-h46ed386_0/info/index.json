@@ -1,0 +1,14 @@
+{
+  "arch": "arm64",
+  "build": "h46ed386_0",
+  "build_number": 0,
+  "depends": [
+    "ncurses >=6.3,<7.0a0"
+  ],
+  "license": "GPL-3.0-only",
+  "name": "readline",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1654822780581,
+  "version": "8.1.2"
+}

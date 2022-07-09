@@ -1,0 +1,25 @@
+{
+  "arch": "arm64",
+  "build": "py310hbe9552e_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "python >=3.10,<3.11.0a0",
+    "python >=3.10,<3.11.0a0 *_cpython",
+    "python_abi 3.10.* *_cp310"
+  ],
+  "features": "",
+  "fn": "certifi-2022.6.15-py310hbe9552e_0.tar.bz2",
+  "license": "ISC",
+  "md5": "d160d446b707a4d121ba7d335c95a4c3",
+  "name": "certifi",
+  "platform": "darwin",
+  "sha256": "9fe3b28af5339ed75cf3f09c784455b2ecf3e7f65736c2e9518288e8ac4fff53",
+  "size": 158944,
+  "subdir": "osx-arm64",
+  "timestamp": 1655324333657,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/certifi-2022.6.15-py310hbe9552e_0.tar.bz2",
+  "version": "2022.6.15"
+}

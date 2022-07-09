@@ -1,0 +1,35 @@
+{
+    "arch": "arm64",
+    "build": "2_cp39",
+    "build_number": 2,
+    "channel": "conda-forge/osx-arm64",
+    "constrains": [
+        "pypy <0a0"
+    ],
+    "depends": [
+        "python 3.9.*"
+    ],
+    "extracted_package_dir": "/Users/sugaikazuaki/miniforge3/pkgs/python_abi-3.9-2_cp39",
+    "files": [],
+    "fn": "python_abi-3.9-2_cp39.tar.bz2",
+    "license": "BSD-3-Clause",
+    "license_family": "BSD",
+    "link": {
+        "source": "/Users/sugaikazuaki/miniforge3/pkgs/python_abi-3.9-2_cp39",
+        "type": 1
+    },
+    "md5": "ba3082b5441b482d5cfe328d4e7ba0bf",
+    "name": "python_abi",
+    "package_tarball_full_path": "/Users/sugaikazuaki/miniforge3/pkgs/python_abi-3.9-2_cp39.tar.bz2",
+    "paths_data": {
+        "paths": [],
+        "paths_version": 1
+    },
+    "platform": "osx",
+    "requested_spec": "python_abi==3.9=2_cp39",
+    "size": 4062,
+    "subdir": "osx-arm64",
+    "timestamp": 1624472067008,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/python_abi-3.9-2_cp39.tar.bz2",
+    "version": "3.9"
+}

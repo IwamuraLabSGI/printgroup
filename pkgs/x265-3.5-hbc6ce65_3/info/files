@@ -1,0 +1,6 @@
+bin/x265
+include/x265.h
+include/x265_config.h
+lib/libx265.199.dylib
+lib/libx265.dylib
+lib/pkgconfig/x265.pc

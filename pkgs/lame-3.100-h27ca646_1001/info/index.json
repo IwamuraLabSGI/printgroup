@@ -1,0 +1,12 @@
+{
+  "arch": "arm64",
+  "build": "h27ca646_1001",
+  "build_number": 1001,
+  "depends": [],
+  "license": "LGPL",
+  "name": "lame",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1609339977709,
+  "version": "3.100"
+}

@@ -1,0 +1,90 @@
+# This file created by conda-build 3.21.9
+# ------------------------------------------------
+
+package:
+  name: py-opencv
+  version: 4.5.5
+source:
+  - fn: opencv-4.5.5.tar.gz
+    patches:
+      - install_pip_metadata.patch
+    sha256: a1cfdcf6619387ca9e232687504da996aaa9f7b5689986b8331ec02cb61d28ad
+    url: https://codeload.github.com/opencv/opencv/tar.gz/4.5.5
+  - fn: opencv_contrib-4.5.5.tar.gz
+    folder: opencv_contrib
+    patches:
+      - cmake_hdf5_xpile.patch
+    sha256: a97c2eaecf7a23c6dbd119a609c6d7fae903e5f9ff5f1fe678933e01c67a6c11
+    url: https://codeload.github.com/opencv/opencv_contrib/tar.gz/4.5.5
+  - fn: test.avi
+    sha256: 78884f64b564a3b06dc6ee731ed33b60c6d8cd864cea07f21d94ba0f90c7b310
+    url: https://github.com/opencv/opencv_extra/raw/master/testdata/highgui/video/VID00003-20100701-2204.avi
+build:
+  number: 11
+  run_exports:
+    - py-opencv >=4.5.5,<5.0a0
+  string: py38hab544c7_11
+requirements:
+  host:
+    - bzip2 1.0.8 h3422bc3_4
+    - ca-certificates 2022.5.18.1 h4653dfc_0
+    - libblas 3.9.0 14_osxarm64_openblas
+    - libcblas 3.9.0 14_osxarm64_openblas
+    - libffi 3.4.2 h3422bc3_5
+    - libgfortran 5.0.0.dev0 11_0_1_hf114ba7_23
+    - libgfortran5 11.0.1.dev0 hf114ba7_23
+    - liblapack 3.9.0 14_osxarm64_openblas
+    - libopenblas 0.3.20 openmp_h2209c59_0
+    - libzlib 1.2.12 h90dfc92_0
+    - llvm-openmp 14.0.4 hd125106_0
+    - ncurses 6.3 h07bb92c_1
+    - numpy 1.19.5 py38he594345_3
+    - openssl 3.0.3 ha287fd2_0
+    - python 3.8.13 hd3575e6_0_cpython
+    - python_abi 3.8 2_cp38
+    - readline 8.1 hedafd6a_0
+    - sqlite 3.38.5 h40dfcc0_0
+    - tk 8.6.12 he1e0b03_0
+    - xz 5.2.5 h642e427_1
+    - zlib 1.2.12 h90dfc92_0
+  run:
+    - libopencv 4.5.5 py38he52a0c8_11
+    - numpy >=1.19.5,<2.0a0
+    - python >=3.8,<3.9.0a0
+    - python_abi 3.8.* *_cp38
+test:
+  commands:
+    - python run_py_test.py
+    - if [[ $($PYTHON -c 'import cv2; print(cv2.__version__)') != $PKG_VERSION ]];
+      then exit 1; fi
+    - python -c "import cv2, re; assert re.search('Lapack:\s+YES', cv2.getBuildInformation())"
+    - pip list
+    - test $(pip list | grep opencv-python | wc -l) -eq 1
+  files:
+    - color_palette_alpha.png
+    - run_py_test.py
+    - test_1_c1.jpg
+  imports:
+    - cv2
+    - cv2.xfeatures2d
+  requires:
+    - pip
+  source_files:
+    - test.avi
+about:
+  home: http://opencv.org/
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: Computer vision and machine learning software library.
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - hajapy
+    - hmaarrfk
+    - jakirkham
+    - msarahan
+    - ocefpaf
+    - patricksnape
+    - zym1010

@@ -1,0 +1,14 @@
+prefix=/Users/sugaikazuaki/miniforge3/envs/NRIpy
+exec_prefix=${prefix}
+libdir=/Users/sugaikazuaki/miniforge3/envs/NRIpy/lib
+includedir=/Users/sugaikazuaki/miniforge3/envs/NRIpy/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 56.70.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil 
+Libs.private: -pthread -lm -framework VideoToolbox -framework CoreFoundation -framework CoreMedia -framework CoreVideo -framework CoreServices
+Cflags: -I${includedir}

@@ -1,0 +1,25 @@
+{
+  "arch": "arm64",
+  "build": "h7a5bd25_2",
+  "build_number": 2,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "openssl >=3.0.0,<4.0a0",
+    "zlib >=1.2.11,<1.3.0a0"
+  ],
+  "features": "",
+  "fn": "libssh2-1.10.0-h7a5bd25_2.tar.bz2",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "md5": "b83c0d6ed1be6b4717143e6c74992e35",
+  "name": "libssh2",
+  "platform": "darwin",
+  "sha256": "c4bda910b1eb0d11a383c606db169fb051d4db5010e91d858621cfd3bb2b1ccb",
+  "size": 223984,
+  "subdir": "osx-arm64",
+  "timestamp": 1632680788434,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libssh2-1.10.0-h7a5bd25_2.tar.bz2",
+  "version": "1.10.0"
+}

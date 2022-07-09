@@ -1,0 +1,43 @@
+{
+  "paths": [
+    {
+      "_path": "bin/libdeflate-gunzip",
+      "path_type": "hardlink",
+      "sha256": "dc22f02801baf1f9c2feb60e460342ee81b99e2b2f502ad96b8f3fc854ed10b1",
+      "size_in_bytes": 106080
+    },
+    {
+      "_path": "bin/libdeflate-gzip",
+      "path_type": "hardlink",
+      "sha256": "5f0f100e84125ea987c24d2a10437faa0dcf93cb48c1da8e2914c7c0c1dd2bdd",
+      "size_in_bytes": 106064
+    },
+    {
+      "_path": "include/libdeflate.h",
+      "path_type": "hardlink",
+      "sha256": "208e5d498e49351fea9d733ae2d74c7224cdb30309541755ea25fa61e06ab502",
+      "size_in_bytes": 15181
+    },
+    {
+      "_path": "lib/libdeflate.0.dylib",
+      "path_type": "hardlink",
+      "sha256": "9352e6f09df016bbe1274f835589e44ee8d0cb71d649a18c18d560347b9eb4b1",
+      "size_in_bytes": 87456
+    },
+    {
+      "_path": "lib/libdeflate.dylib",
+      "path_type": "softlink",
+      "sha256": "9352e6f09df016bbe1274f835589e44ee8d0cb71d649a18c18d560347b9eb4b1",
+      "size_in_bytes": 87456
+    },
+    {
+      "_path": "lib/pkgconfig/libdeflate.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/libdeflate_1655084712379/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol",
+      "sha256": "21ef40e45574b938010d7dbcc26bdf5a8536aa9a9d83851cde78934882adf387",
+      "size_in_bytes": 971
+    }
+  ],
+  "paths_version": 1
+}

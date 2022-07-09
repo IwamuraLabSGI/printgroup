@@ -1,0 +1,42 @@
+# This file created by conda-build 3.21.4
+# ------------------------------------------------
+
+package:
+  name: libgfortran5
+  version: 11.0.1.dev0
+source:
+  patches: null
+  sha256: 6b20738e5fac3933456829b67eb3e89bde7f42ef7d649ee67ba8240420372632
+  url: https://github.com/iains/gcc-darwin-arm64/archive/bd796f1b0d4f8ff170ce51831916e9038dd8b1b9.tar.gz
+build:
+  number: 23
+  run_exports:
+    - libgfortran5 >=11.0.1.dev0
+  string: hf114ba7_23
+requirements:
+  build: []
+  run:
+    - llvm-openmp >=8.0.0
+  run_constrained:
+    - libgfortran 5.0.0.dev0 *_23
+test:
+  commands:
+    - test -f "${PREFIX}/lib/libgfortran.dylib"
+    - test -f "${PREFIX}/lib/libgfortran.5.dylib"
+    - test -f "${PREFIX}/lib/libgomp.dylib"
+    - test -f "${PREFIX}/lib/libgomp.1.dylib"
+    - test -f "${PREFIX}/lib/libquadmath.dylib"
+    - test -f "${PREFIX}/lib/libquadmath.0.dylib"
+    - test -f "${PREFIX}/lib/libgcc_s.2.dylib"
+about:
+  home: http://gcc.gnu.org/
+  license: GPL-3.0-only WITH GCC-exception-3.1
+  license_family: GPL
+  license_file: COPYING3
+  summary: Fortran compiler and libraries from the GNU Compiler Collection
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - beckermr
+    - isuruf

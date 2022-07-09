@@ -1,0 +1,21 @@
+{
+  "arch": "arm64",
+  "build": "h3422bc3_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [],
+  "features": "",
+  "fn": "libunistring-0.9.10-h3422bc3_0.tar.bz2",
+  "license": "GPL-3.0-only OR LGPL-3.0-only",
+  "md5": "d88e77a4861e20bd96bde6628ee7a5ae",
+  "name": "libunistring",
+  "platform": "darwin",
+  "sha256": "a1afe12ab199f82f339eae83405d293d197f2485d45346a709703bc7e8299949",
+  "size": 1577561,
+  "subdir": "osx-arm64",
+  "timestamp": 1626955172521,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libunistring-0.9.10-h3422bc3_0.tar.bz2",
+  "version": "0.9.10"
+}
