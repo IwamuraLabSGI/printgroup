@@ -112,6 +112,7 @@ class DescriptorExtractor:
                     triangle_perimeter_rate = \
                         DescriptorExtractor.triangle_perimeter(keypoint, target[0], target[1]) \
                         / DescriptorExtractor.triangle_perimeter(keypoint, target[1], target[2])
+                    # TODO: 離散化
                     perimeter_rate_attributes.append(triangle_perimeter_rate)
                 keypoint_attributes.append(perimeter_rate_attributes)
                 # TODO: 必要なら面積比の特徴量も
