@@ -1,4 +1,0 @@
-{
-  "python": "3.9.* *_cpython",
-  "channel_targets": "conda-forge main"
-}

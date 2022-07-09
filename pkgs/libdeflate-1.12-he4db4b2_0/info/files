@@ -1,6 +1,0 @@
-bin/libdeflate-gunzip
-bin/libdeflate-gzip
-include/libdeflate.h
-lib/libdeflate.0.dylib
-lib/libdeflate.dylib
-lib/pkgconfig/libdeflate.pc
