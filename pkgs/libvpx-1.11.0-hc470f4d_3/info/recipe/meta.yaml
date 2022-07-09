@@ -1,0 +1,73 @@
+# This file created by conda-build 3.21.4
+# meta.yaml template originally from:
+# /Users/runner/work/1/s/recipe, last modified Sat Oct 23 16:01:22 2021
+# ------------------------------------------------
+
+package:
+  name: libvpx
+  version: 1.11.0
+source:
+  sha256: 965e51c91ad9851e2337aebcc0f517440c637c506f3a03948062e3d5ea129a83
+  url: https://download.videolan.org/contrib/vpx/libvpx-1.11.0.tar.gz
+build:
+  number: '3'
+  run_exports:
+    - libvpx >=1.11.0,<1.12.0a0
+  string: hc470f4d_3
+requirements:
+  build:
+    - cctools_osx-64 949.0.1 h6407bdd_23
+    - cctools_osx-arm64 949.0.1 h55de48a_23
+    - clang 11.1.0 h694c41f_1
+    - clang-11 11.1.0 default_he082bbe_1
+    - clang_osx-arm64 11.1.0 h40be2b1_3
+    - clangxx 11.1.0 default_he082bbe_1
+    - clangxx_osx-arm64 11.1.0 hc50fe25_3
+    - compiler-rt 11.1.0 h654b07c_0
+    - compiler-rt_osx-64 11.1.0 h8c5fa43_0
+    - ld64_osx-64 530 he8994da_21
+    - ld64_osx-arm64 530 h3681fde_21
+    - ldid 2.1.2 h6a69015_3
+    - libclang-cpp11.1 11.1.0 default_he082bbe_1
+    - libcxx 12.0.1 habf9029_0
+    - libllvm11 11.1.0 hd011deb_2
+    - libllvm12 12.0.1 hd011deb_2
+    - libzlib 1.2.11 h9173be1_1013
+    - llvm-tools 11.1.0 hd011deb_2
+    - make 4.3 h22f3db7_1
+    - tapi 1100.0.11 h9ce4665_0
+    - yasm 1.3.0 h01d97ff_1001
+    - zlib 1.2.11 h9173be1_1013
+  host:
+    - libcxx 12.0.1 h168391b_0
+  run:
+    - libcxx >=11.1.0
+test:
+  commands:
+    - test -f ${PREFIX}/lib/libvpx${SHLIB_EXT}
+about:
+  description: 'libvpx is a free software video codec library from
+
+    Google and the Alliance for Open Media (AOMedia).
+
+    It serves as the reference software implementation for
+
+    the video coding formats VP8 and VP9, and for AV1 a
+
+    special fork named libaom that was stripped of
+
+    backwards compatibility.
+
+    '
+  dev_url: https://chromium.googlesource.com/webm/libvpx
+  doc_url: http://www.webmproject.org/vp9/
+  home: https://www.webmproject.org/
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: A high-quality, open video format for the web
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - matthiasdiener

@@ -1,0 +1,20 @@
+{
+    "arch": "arm64",
+    "build": "ha287fd2_0",
+    "build_number": 0,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [
+        "ca-certificates"
+    ],
+    "fn": "openssl-1.1.1o-ha287fd2_0.tar.bz2",
+    "license": "OpenSSL",
+    "license_family": "Apache",
+    "md5": "aeee209e889bbe66d755cf004472a69a",
+    "name": "openssl",
+    "platform": "osx",
+    "size": 1841731,
+    "subdir": "osx-arm64",
+    "timestamp": 1651666558642,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/openssl-1.1.1o-ha287fd2_0.tar.bz2",
+    "version": "1.1.1o"
+}

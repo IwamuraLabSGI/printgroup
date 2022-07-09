@@ -1,0 +1,14 @@
+{
+  "arch": "arm64",
+  "build": "h6b3803e_0",
+  "build_number": 0,
+  "depends": [
+    "libcxx >=12.0.1"
+  ],
+  "license": "MIT",
+  "name": "icu",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1648050828805,
+  "version": "70.1"
+}

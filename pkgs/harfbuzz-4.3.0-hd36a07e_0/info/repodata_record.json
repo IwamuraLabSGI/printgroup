@@ -1,0 +1,29 @@
+{
+  "arch": "arm64",
+  "build": "hd36a07e_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "cairo >=1.16.0,<1.17.0a0",
+    "freetype >=2.10.4,<3.0a0",
+    "graphite2",
+    "icu >=70.1,<71.0a0",
+    "libcxx >=13.0.1",
+    "libglib >=2.70.2,<3.0a0"
+  ],
+  "features": "",
+  "fn": "harfbuzz-4.3.0-hd36a07e_0.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "cfee8825b546bc598def7495856f8fa1",
+  "name": "harfbuzz",
+  "platform": "darwin",
+  "sha256": "a5529123257afaea36032e407a4d3e52735f7b23c39a95543c372c3cea087a56",
+  "size": 1890394,
+  "subdir": "osx-arm64",
+  "timestamp": 1653091169343,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/harfbuzz-4.3.0-hd36a07e_0.tar.bz2",
+  "version": "4.3.0"
+}

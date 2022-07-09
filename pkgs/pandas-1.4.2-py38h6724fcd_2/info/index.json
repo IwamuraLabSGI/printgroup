@@ -1,0 +1,20 @@
+{
+  "arch": "arm64",
+  "build": "py38h6724fcd_2",
+  "build_number": 2,
+  "depends": [
+    "libcxx >=13.0.1",
+    "numpy >=1.19.5,<2.0a0",
+    "python >=3.8,<3.9.0a0",
+    "python >=3.8,<3.9.0a0 *_cpython",
+    "python-dateutil >=2.8.1",
+    "python_abi 3.8.* *_cp38",
+    "pytz >=2020.1"
+  ],
+  "license": "BSD-3-Clause",
+  "name": "pandas",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1653498028476,
+  "version": "1.4.2"
+}

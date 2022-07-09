@@ -1,0 +1,50 @@
+{% set version = "0.24.1" %}
+
+
+package:
+  name: p11-kit
+  version: {{ version }}
+
+source:
+  url: https://github.com/p11-glue/p11-kit/releases/download/{{ version }}/p11-kit-{{ version }}.tar.xz
+  sha256: d8be783efd5cd4ae534cee4132338e3f40f182c3205d23b200094ec85faaaef8
+
+build:
+  number: 0
+  # Windows: libtasn1 not available
+  skip: true  # [win]
+  run_exports:
+    - {{ pin_subpackage('p11-kit', max_pin='x.x') }}
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - make
+    - pkg-config
+    - gnuconfig  # [unix]
+    - autoconf   # [build_platform != target_platform]
+    - automake   # [build_platform != target_platform]
+    - libtool    # [build_platform != target_platform]
+  host:
+    - libffi
+    - libtasn1
+    - ca-certificates
+  run:
+    - libffi
+    - libtasn1
+
+test:
+  commands:
+    - p11-kit -h
+
+about:
+  home: https://github.com/p11-glue/p11-kit
+  license: MIT
+  license_file: COPYING
+  summary: Provides a way to load and enumerate PKCS#11 modules
+
+extra:
+  recipe-maintainers:
+    - chapmanb
+    - marcelotrevisani
+    - leofang

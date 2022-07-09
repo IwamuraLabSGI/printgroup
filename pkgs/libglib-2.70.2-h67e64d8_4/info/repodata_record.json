@@ -1,0 +1,30 @@
+{
+  "arch": "arm64",
+  "build": "h67e64d8_4",
+  "build_number": 4,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [
+    "glib 2.70.2 *_4"
+  ],
+  "depends": [
+    "gettext >=0.19.8.1,<1.0a0",
+    "libcxx >=11.1.0",
+    "libffi >=3.4.2,<3.5.0a0",
+    "libiconv >=1.16,<1.17.0a0",
+    "libzlib >=1.2.11,<1.3.0a0",
+    "pcre >=8.45,<9.0a0"
+  ],
+  "features": "",
+  "fn": "libglib-2.70.2-h67e64d8_4.tar.bz2",
+  "license": "LGPL-2.1-or-later",
+  "md5": "398938dd942644f0a44a4eee1f0530ed",
+  "name": "libglib",
+  "platform": "darwin",
+  "sha256": "a1778ce6d2f6c3bc6046ea518f0ad31891e7bbd3c5aed24cc003c7ac981eb6e8",
+  "size": 2944422,
+  "subdir": "osx-arm64",
+  "timestamp": 1644787269923,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libglib-2.70.2-h67e64d8_4.tar.bz2",
+  "version": "2.70.2"
+}

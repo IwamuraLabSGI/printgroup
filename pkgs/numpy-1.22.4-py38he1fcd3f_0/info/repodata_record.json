@@ -1,0 +1,32 @@
+{
+  "arch": "arm64",
+  "build": "py38he1fcd3f_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [
+    "numpy-base <0a0"
+  ],
+  "depends": [
+    "libblas >=3.9.0,<4.0a0",
+    "libcblas >=3.9.0,<4.0a0",
+    "libcxx >=13.0.1",
+    "liblapack >=3.9.0,<4.0a0",
+    "python >=3.8,<3.9.0a0",
+    "python >=3.8,<3.9.0a0 *_cpython",
+    "python_abi 3.8.* *_cp38"
+  ],
+  "features": "",
+  "fn": "numpy-1.22.4-py38he1fcd3f_0.tar.bz2",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "md5": "c6538560a5405502c39661a41f774130",
+  "name": "numpy",
+  "platform": "darwin",
+  "sha256": "9892ef022e792a4d62a6cf228629bff6a7bc4ed692a18f7a2e28bf75eff96333",
+  "size": 6032784,
+  "subdir": "osx-arm64",
+  "timestamp": 1653326616833,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/numpy-1.22.4-py38he1fcd3f_0.tar.bz2",
+  "version": "1.22.4"
+}

@@ -1,0 +1,17 @@
+{
+  "arch": "arm64",
+  "build": "py39h2804cbe_5",
+  "build_number": 5,
+  "depends": [
+    "python >=3.9,<3.10.0a0",
+    "python >=3.9,<3.10.0a0 *_cpython",
+    "python_abi 3.9.* *_cp39"
+  ],
+  "license": "BSD 3-Clause",
+  "license_family": "BSD",
+  "name": "pysocks",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1648857564060,
+  "version": "1.7.1"
+}

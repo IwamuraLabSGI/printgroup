@@ -1,0 +1,1 @@
+["pytest-xdist", "setuptools <60.0.0", "pytest-timeout", "pytest", "hypothesis"]

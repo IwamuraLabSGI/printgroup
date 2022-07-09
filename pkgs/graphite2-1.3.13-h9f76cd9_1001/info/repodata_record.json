@@ -1,0 +1,23 @@
+{
+  "arch": "arm64",
+  "build": "h9f76cd9_1001",
+  "build_number": 1001,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libcxx >=11.0.0"
+  ],
+  "features": "",
+  "fn": "graphite2-1.3.13-h9f76cd9_1001.tar.bz2",
+  "license": "LGPLv2",
+  "md5": "288b591645cb9cb9c0af7309ac1114f5",
+  "name": "graphite2",
+  "platform": "darwin",
+  "sha256": "57db1e563cdfe469cd453a2988039118e96ce4b77c9219e2f1022be0e1c2b03f",
+  "size": 83198,
+  "subdir": "osx-arm64",
+  "timestamp": 1604365687923,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/graphite2-1.3.13-h9f76cd9_1001.tar.bz2",
+  "version": "1.3.13"
+}

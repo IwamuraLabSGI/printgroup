@@ -1,0 +1,24 @@
+commit c40fb4c192e728d897ca4cf6cc3d6828bbac7597
+Author: Tom Schoonjans <Tom.Schoonjans@rfi.ac.uk>
+Date:   Mon Mar 22 13:38:53 2021 +0000
+
+    Revert "[meson] fix generating introspection"
+    
+    This reverts commit 188ff10aa15af54c4ef10e59bc4e13cea55f7ab4.
+
+diff --git a/src/meson.build b/src/meson.build
+index dddafe9c2..604befe05 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -630,9 +630,8 @@ if have_gobject
+ 
+   if build_gir
+     conf.set('HAVE_INTROSPECTION', 1)
+-    hb_gen_files_gir = gnome.generate_gir(libharfbuzz_gobject,
++    hb_gen_files_gir = gnome.generate_gir(libharfbuzz, libharfbuzz_gobject,
+       sources: [hb_headers, hb_sources, hb_gobject_headers, hb_gobject_sources, enum_h],
+-      dependencies: libharfbuzz_dep,
+       namespace: 'HarfBuzz',
+       nsversion: '0.0',
+       identifier_prefix: 'hb_',
+

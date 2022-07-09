@@ -1,0 +1,21 @@
+{
+  "arch": "arm64",
+  "build": "h642e427_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [],
+  "features": "",
+  "fn": "libiconv-1.16-h642e427_0.tar.bz2",
+  "license": "GPL and LGPL",
+  "md5": "981f3119b0c5d73282401ee66c14ea04",
+  "name": "libiconv",
+  "platform": "darwin",
+  "sha256": "e3b64d9f61fc0a1b5fced4d3815a95795a618571c73484acc5548528001d7388",
+  "size": 1376715,
+  "subdir": "osx-arm64",
+  "timestamp": 1597561173087,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libiconv-1.16-h642e427_0.tar.bz2",
+  "version": "1.16"
+}

@@ -1,0 +1,17 @@
+{
+  "arch": null,
+  "build": "pyhd8ed1ab_0",
+  "build_number": 0,
+  "depends": [
+    "colorama",
+    "python >=2.7"
+  ],
+  "license": "MPL-2.0 or MIT",
+  "license_family": "MOZILLA",
+  "name": "tqdm",
+  "noarch": "python",
+  "platform": null,
+  "subdir": "noarch",
+  "timestamp": 1649051690908,
+  "version": "4.64.0"
+}

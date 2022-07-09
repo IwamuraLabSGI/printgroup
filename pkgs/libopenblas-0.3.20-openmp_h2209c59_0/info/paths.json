@@ -1,0 +1,23 @@
+{
+  "paths": [
+    {
+      "_path": "lib/libopenblas.0.dylib",
+      "path_type": "softlink",
+      "sha256": "619a0bb23a7b543cca6e42c266f70c93d2f7b4cb3ae4e105c453e226ce32eeb4",
+      "size_in_bytes": 10466640
+    },
+    {
+      "_path": "lib/libopenblas_vortexp-r0.3.20.dylib",
+      "path_type": "hardlink",
+      "sha256": "619a0bb23a7b543cca6e42c266f70c93d2f7b4cb3ae4e105c453e226ce32eeb4",
+      "size_in_bytes": 10466640
+    },
+    {
+      "_path": "lib/libopenblasp-r0.3.20.dylib",
+      "path_type": "softlink",
+      "sha256": "619a0bb23a7b543cca6e42c266f70c93d2f7b4cb3ae4e105c453e226ce32eeb4",
+      "size_in_bytes": 10466640
+    }
+  ],
+  "paths_version": 1
+}

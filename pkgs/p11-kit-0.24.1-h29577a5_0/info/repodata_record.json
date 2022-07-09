@@ -1,0 +1,25 @@
+{
+  "arch": "arm64",
+  "build": "h29577a5_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libffi >=3.4.2,<3.5.0a0",
+    "libtasn1 >=4.18.0,<5.0a0"
+  ],
+  "features": "",
+  "fn": "p11-kit-0.24.1-h29577a5_0.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "8f111d56c8c7c1895bde91a942c43d93",
+  "name": "p11-kit",
+  "platform": "darwin",
+  "sha256": "3e124859307956f9f390f39c74b9700be4843eaaf56891c4b09da75b1bd5b57f",
+  "size": 890711,
+  "subdir": "osx-arm64",
+  "timestamp": 1654869118646,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/p11-kit-0.24.1-h29577a5_0.tar.bz2",
+  "version": "0.24.1"
+}

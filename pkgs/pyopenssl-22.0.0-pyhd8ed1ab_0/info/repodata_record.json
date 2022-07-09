@@ -1,0 +1,22 @@
+{
+    "arch": null,
+    "build": "pyhd8ed1ab_0",
+    "build_number": 0,
+    "channel": "conda-forge/noarch",
+    "depends": [
+        "cryptography >=35.0",
+        "python >=3.6"
+    ],
+    "fn": "pyopenssl-22.0.0-pyhd8ed1ab_0.tar.bz2",
+    "license": "Apache-2.0",
+    "license_family": "Apache",
+    "md5": "1d7e241dfaf5475e893d4b824bb71b44",
+    "name": "pyopenssl",
+    "noarch": "python",
+    "platform": null,
+    "size": 50244,
+    "subdir": "noarch",
+    "timestamp": 1643496929391,
+    "url": "https://conda.anaconda.org/conda-forge/noarch/pyopenssl-22.0.0-pyhd8ed1ab_0.tar.bz2",
+    "version": "22.0.0"
+}

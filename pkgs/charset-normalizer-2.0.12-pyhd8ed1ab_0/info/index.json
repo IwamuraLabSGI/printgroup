@@ -1,0 +1,15 @@
+{
+  "arch": null,
+  "build": "pyhd8ed1ab_0",
+  "build_number": 0,
+  "depends": [
+    "python >=3.6"
+  ],
+  "license": "MIT",
+  "name": "charset-normalizer",
+  "noarch": "python",
+  "platform": null,
+  "subdir": "noarch",
+  "timestamp": 1644853543337,
+  "version": "2.0.12"
+}

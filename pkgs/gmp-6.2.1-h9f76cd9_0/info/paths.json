@@ -1,0 +1,89 @@
+{
+  "paths": [
+    {
+      "_path": "include/gmp.h",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/gmp_1605751206750/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_place",
+      "sha256": "9e1678733d751221ebc5756ce4b9efac994e7f56e51181190f54ccba19c495cf",
+      "size_in_bytes": 84678
+    },
+    {
+      "_path": "include/gmpxx.h",
+      "path_type": "hardlink",
+      "sha256": "0011ae411a0bc1030e07d968b32fdc1343f5ac2a17b7d28f493e7976dde2ac82",
+      "size_in_bytes": 129113
+    },
+    {
+      "_path": "lib/libgmp.10.dylib",
+      "path_type": "hardlink",
+      "sha256": "cdbd9237218249260cb80417fab256ec4d787fe8be978ab5662de28d3abebcb7",
+      "size_in_bytes": 469264
+    },
+    {
+      "_path": "lib/libgmp.a",
+      "path_type": "hardlink",
+      "sha256": "d7d1591f979ef2c74151191a2ceb58dccef26b6e94f158108447c5cde18526a7",
+      "size_in_bytes": 843864
+    },
+    {
+      "_path": "lib/libgmp.dylib",
+      "path_type": "softlink",
+      "sha256": "cdbd9237218249260cb80417fab256ec4d787fe8be978ab5662de28d3abebcb7",
+      "size_in_bytes": 469264
+    },
+    {
+      "_path": "lib/libgmpxx.4.dylib",
+      "path_type": "hardlink",
+      "sha256": "49389eff13cf8a4502a04c132155a790749821fa24a5b021b9f009caadf3c2a2",
+      "size_in_bytes": 80256
+    },
+    {
+      "_path": "lib/libgmpxx.a",
+      "path_type": "hardlink",
+      "sha256": "041cfb87203ab6fa5638950cdd1e5ae0ab09223e406c33da9ed90cf2f0e56ab2",
+      "size_in_bytes": 34024
+    },
+    {
+      "_path": "lib/libgmpxx.dylib",
+      "path_type": "softlink",
+      "sha256": "49389eff13cf8a4502a04c132155a790749821fa24a5b021b9f009caadf3c2a2",
+      "size_in_bytes": 80256
+    },
+    {
+      "_path": "lib/pkgconfig/gmp.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/gmp_1605751206750/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_place",
+      "sha256": "5a4e1c735d0dd1608c921bab3d02f8c5cf958efaa4f8aba0ad4572a68d690633",
+      "size_in_bytes": 496
+    },
+    {
+      "_path": "lib/pkgconfig/gmpxx.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/gmp_1605751206750/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_place",
+      "sha256": "91f8db5b74e2a094449764442f73b0ad91be97d17bb393b6edb469b02e0ae62a",
+      "size_in_bytes": 531
+    },
+    {
+      "_path": "share/info/gmp.info",
+      "path_type": "hardlink",
+      "sha256": "b5e40cce79506dd1478d0cffd4a7d541df492783094c8d1c01893e6315ea22fb",
+      "size_in_bytes": 5931
+    },
+    {
+      "_path": "share/info/gmp.info-1",
+      "path_type": "hardlink",
+      "sha256": "efa500fb0ae8b4ae2632a238a4d7def02777ae1963646a716b7dda427cfd85a1",
+      "size_in_bytes": 302874
+    },
+    {
+      "_path": "share/info/gmp.info-2",
+      "path_type": "hardlink",
+      "sha256": "5e7c2f97937488b57b47e896feb2a60a2f9d6654257f5856f4d2ce83700b7f7f",
+      "size_in_bytes": 216314
+    }
+  ],
+  "paths_version": 1
+}

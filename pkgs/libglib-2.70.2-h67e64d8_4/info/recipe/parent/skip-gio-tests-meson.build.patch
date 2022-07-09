@@ -1,0 +1,71 @@
+diff --git a/gio/tests/meson.build b/gio/tests/meson.build
+index 5dbfb8e..35ce233 100644
+--- a/gio/tests/meson.build
++++ b/gio/tests/meson.build
+@@ -54,7 +54,6 @@ gio_tests = {
+   'credentials' : {},
+   'data-input-stream' : {},
+   'data-output-stream' : {},
+-  'defaultvalue' : {'extra_sources' : [giotypefuncs_inc]},
+   'fileattributematcher' : {},
+   'filter-streams' : {},
+   'giomodule' : {},
+@@ -95,7 +94,6 @@ gio_tests = {
+   'tls-interaction' : {'extra_sources' : ['gtesttlsbackend.c']},
+   'tls-database' : {'extra_sources' : ['gtesttlsbackend.c']},
+   'tls-bindings' : {'extra_sources' : ['gtesttlsbackend.c']},
+-  'gdbus-address-get-session' : {},
+   'win32-appinfo' : {},
+ }
+ 
+@@ -152,10 +150,6 @@ endif
+ if host_machine.system() != 'windows'
+   gio_tests += {
+     'file' : {},
+-    'gdbus-peer' : {
+-      'dependencies' : [libgdbus_example_objectmanager_dep],
+-      'install_rpath' : installed_tests_execdir
+-    },
+     'gdbus-peer-object-manager' : {},
+     'live-g-file' : {},
+     'socket-address' : {},
+@@ -191,19 +185,6 @@ if host_machine.system() != 'windows'
+     }
+   endif
+ 
+-  # Uninstalled because of the check-for-executable logic in DesktopAppInfo
+-  # unable to find the installed executable
+-  if not glib_have_cocoa
+-    gio_tests += {
+-      'appinfo' : {
+-        'install' : false,
+-      },
+-      'desktop-app-info' : {
+-        'install' : false,
+-      },
+-    }
+-  endif
+-
+   test_extra_programs += {
+     'basic-application' : {},
+     'dbus-launch' : {},
+@@ -387,19 +368,6 @@ if host_machine.system() != 'windows'
+     },
+   }
+ 
+-  # Generate test.mo from de.po using msgfmt
+-  msgfmt = find_program('msgfmt', required : false)
+-  if msgfmt.found()
+-    subdir('de/LC_MESSAGES')
+-    gio_tests += {
+-      'gsettings' : {
+-        'extra_sources' : [test_mo],
+-        'c_args' : ['-DSRCDIR="@0@"'.format(meson.current_source_dir()),
+-                    '-DTEST_LOCALE_PATH="@0@"'.format(test_mo_dir)],
+-        'install' : false,
+-      },
+-    }
+-  endif
+ endif # unix
+ 
+ #  Test programs buildable on Windows only

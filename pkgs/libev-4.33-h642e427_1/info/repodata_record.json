@@ -1,0 +1,22 @@
+{
+  "arch": "arm64",
+  "build": "h642e427_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [],
+  "features": "",
+  "fn": "libev-4.33-h642e427_1.tar.bz2",
+  "license": "BSD-2-Clause",
+  "license_family": "BSD",
+  "md5": "566dbf70fe79eacdb3c3d3d195a27f55",
+  "name": "libev",
+  "platform": "darwin",
+  "sha256": "eb7325eb2e6bd4c291cb9682781b35b8c0f68cb72651c35a5b9dd22707ebd25c",
+  "size": 100668,
+  "subdir": "osx-arm64",
+  "timestamp": 1598868103393,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libev-4.33-h642e427_1.tar.bz2",
+  "version": "4.33"
+}

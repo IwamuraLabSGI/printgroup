@@ -1,0 +1,11 @@
+prefix=/Users/runner/miniforge3/conda-bld/harfbuzz_1653090456647/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: harfbuzz
+Description: HarfBuzz text shaping library
+Version: 4.3.0
+Requires.private: freetype2, graphite2, glib-2.0
+Libs: -L${libdir} -lharfbuzz
+Libs.private: -lm -framework ApplicationServices
+Cflags: -I${includedir}/harfbuzz

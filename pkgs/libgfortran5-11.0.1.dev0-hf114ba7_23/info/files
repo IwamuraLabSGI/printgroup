@@ -1,0 +1,5 @@
+lib/libgcc_s.2.dylib
+lib/libgfortran.5.dylib
+lib/libgfortran.dylib
+lib/libgomp.1.dylib
+lib/libgomp.dylib

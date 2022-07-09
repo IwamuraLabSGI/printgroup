@@ -1,0 +1,14 @@
+prefix=/Users/runner/miniforge3/conda-bld/ffmpeg_1654969404288/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl
+exec_prefix=${prefix}
+libdir=/Users/runner/miniforge3/conda-bld/ffmpeg_1654969404288/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl/lib
+includedir=/Users/runner/miniforge3/conda-bld/ffmpeg_1654969404288/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pl/include
+
+Name: libswscale
+Description: FFmpeg image rescaling library
+Version: 5.9.100
+Requires: 
+Requires.private: libavutil >= 56.70.100
+Conflicts:
+Libs: -L${libdir}  -lswscale 
+Libs.private: -lm
+Cflags: -I${includedir}

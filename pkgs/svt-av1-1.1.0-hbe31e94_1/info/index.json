@@ -1,0 +1,15 @@
+{
+  "arch": "arm64",
+  "build": "hbe31e94_1",
+  "build_number": 1,
+  "depends": [
+    "libcxx >=13.0.1"
+  ],
+  "license": "BSD-2-Clause",
+  "license_family": "BSD",
+  "name": "svt-av1",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1653002174631,
+  "version": "1.1.0"
+}

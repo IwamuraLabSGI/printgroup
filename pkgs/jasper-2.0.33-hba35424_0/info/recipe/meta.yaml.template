@@ -1,0 +1,61 @@
+{% set version = "2.0.33" %}
+
+package:
+  name: jasper
+  version: {{ version }}
+
+source:
+  url: https://github.com/jasper-software/jasper/releases/download/version-{{ version }}/jasper-{{ version }}.tar.gz
+  sha256: 28d28290cc2eaf70c8756d391ed8bcc8ab809a895b9a67ea6e89da23a611801a
+
+build:
+  number: 0
+  run_exports:
+    # no info.  Leaving at default behavior.
+    - {{ pin_subpackage('jasper') }}
+  missing_dso_whitelist:                                         # [osx]
+    - /System/Library/Frameworks/GLUT.framework/Versions/A/GLUT  # [osx]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ cdt('mesa-libgl-devel') }}     # [linux]
+    - {{ cdt('mesa-dri-drivers') }}     # [linux]
+    - {{ cdt('libxdamage') }}           # [linux]
+    - {{ cdt('libselinux') }}           # [linux]
+    - {{ cdt('libxext') }}              # [linux]
+    - {{ cdt('libxfixes') }}            # [linux]
+    - {{ cdt('libxcb') }}               # [linux]
+    - {{ cdt('libxau') }}               # [linux]
+    - {{ cdt('libxi') }}                # [linux]
+    - {{ cdt('libxxf86vm') }}           # [linux]
+    - {{ cdt('expat-devel') }}          # [linux]
+    - cmake
+    - make
+  host:
+    - jpeg
+    - libglu                            # [linux]
+    - freeglut                          # [linux or win]
+  run:
+    - jpeg
+    - {{ pin_compatible('libglu') }}    # [linux]
+    - {{ pin_compatible('freeglut') }}  # [linux or win]
+
+test:
+  commands:
+    - if not exist %LIBRARY_BIN%\\jasper.dll exit 1  # [win]
+    - jasper --version
+
+about:
+  home: http://www.ece.uvic.ca/~frodo/jasper/
+  license: JasPer 2.0
+  license_file: LICENSE
+  summary: 'A reference implementation of the codec specified in the JPEG-2000 Part-1 standard.'
+
+extra:
+  recipe-maintainers:
+    - akrherz
+    - jakirkham
+    - jhamman
+    - ocefpaf
+    - seanyen

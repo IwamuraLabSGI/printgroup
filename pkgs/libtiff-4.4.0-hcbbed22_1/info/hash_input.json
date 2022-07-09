@@ -1,0 +1,15 @@
+{
+  "cxx_compiler": "clangxx",
+  "jpeg": "9",
+  "cxx_compiler_version": "13",
+  "libdeflate": "1.12",
+  "xz": "5.2",
+  "zlib": "1.2",
+  "zstd": "1.5",
+  "target_platform": "osx-arm64",
+  "libwebp_base": "1",
+  "c_compiler_version": "13",
+  "channel_targets": "conda-forge main",
+  "CONDA_BUILD_SYSROOT": "/Applications/Xcode_12.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk",
+  "c_compiler": "clang"
+}

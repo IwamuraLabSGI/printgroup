@@ -1,0 +1,26 @@
+{
+  "arch": "arm64",
+  "build": "py38h10201cd_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "python >=3.8,<3.9.0a0",
+    "python >=3.8,<3.9.0a0 *_cpython",
+    "python_abi 3.8.* *_cp38"
+  ],
+  "features": "",
+  "fn": "setuptools-62.6.0-py38h10201cd_0.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "5b1c4a3e03f34c439784932eb4f61763",
+  "name": "setuptools",
+  "platform": "darwin",
+  "sha256": "37b13383406d1efc3333ca2e5e9ad0719f76a2e0d913a62c618ff9b737c9c8b1",
+  "size": 1476888,
+  "subdir": "osx-arm64",
+  "timestamp": 1655717384909,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/setuptools-62.6.0-py38h10201cd_0.tar.bz2",
+  "version": "62.6.0"
+}

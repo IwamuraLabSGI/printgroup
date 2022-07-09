@@ -1,0 +1,20 @@
+{
+    "arch": "arm64",
+    "build": "he1e0b03_0",
+    "build_number": 0,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [
+        "libzlib >=1.2.11,<1.3.0a0"
+    ],
+    "fn": "tk-8.6.12-he1e0b03_0.tar.bz2",
+    "license": "TCL",
+    "license_family": "BSD",
+    "md5": "2cb3d18eac154109107f093860bd545f",
+    "name": "tk",
+    "platform": "osx",
+    "size": 3382710,
+    "subdir": "osx-arm64",
+    "timestamp": 1645032642101,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/tk-8.6.12-he1e0b03_0.tar.bz2",
+    "version": "8.6.12"
+}

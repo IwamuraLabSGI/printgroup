@@ -1,0 +1,21 @@
+{
+    "arch": "arm64",
+    "build": "h90dfc92_0",
+    "build_number": 0,
+    "channel": "conda-forge/osx-arm64",
+    "constrains": [
+        "zlib 1.2.12 *_0"
+    ],
+    "depends": [],
+    "fn": "libzlib-1.2.12-h90dfc92_0.tar.bz2",
+    "license": "Zlib",
+    "license_family": "Other",
+    "md5": "5dbf4041322c28914aeaa5b577611072",
+    "name": "libzlib",
+    "platform": "osx",
+    "size": 48246,
+    "subdir": "osx-arm64",
+    "timestamp": 1653673755603,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libzlib-1.2.12-h90dfc92_0.tar.bz2",
+    "version": "1.2.12"
+}

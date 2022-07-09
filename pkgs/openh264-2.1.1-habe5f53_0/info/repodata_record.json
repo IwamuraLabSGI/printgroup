@@ -1,0 +1,25 @@
+{
+  "arch": "arm64",
+  "build": "habe5f53_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libcxx >=11.0.0",
+    "zlib >=1.2.11,<1.3.0a0"
+  ],
+  "features": "",
+  "fn": "openh264-2.1.1-habe5f53_0.tar.bz2",
+  "license": "BSD-2-Clause",
+  "license_family": "BSD",
+  "md5": "099cf631fb608139091842ec630d6ade",
+  "name": "openh264",
+  "platform": "darwin",
+  "sha256": "890392e8ebaddda30dce23affb0d1a713be0a98cba28c3107cf1b65fd56b716c",
+  "size": 1327523,
+  "subdir": "osx-arm64",
+  "timestamp": 1609583121350,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/openh264-2.1.1-habe5f53_0.tar.bz2",
+  "version": "2.1.1"
+}

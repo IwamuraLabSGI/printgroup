@@ -1,0 +1,25 @@
+{
+  "arch": "arm64",
+  "build": "hfb34624_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "expat >=2.4.8,<3.0a0",
+    "freetype >=2.10.4,<3.0a0"
+  ],
+  "features": "",
+  "fn": "fontconfig-2.14.0-hfb34624_0.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "f504d010023f397461fa2896ae49e0e7",
+  "name": "fontconfig",
+  "platform": "darwin",
+  "sha256": "15fc5415eb827b15261930bc451080a0a1b6bfbb3b76c0f73a9024d783559495",
+  "size": 286332,
+  "subdir": "osx-arm64",
+  "timestamp": 1649160530225,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/fontconfig-2.14.0-hfb34624_0.tar.bz2",
+  "version": "2.14.0"
+}

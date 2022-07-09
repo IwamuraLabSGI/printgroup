@@ -1,0 +1,24 @@
+{
+  "arch": "arm64",
+  "build": "h6b3803e_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libcxx >=12.0.1"
+  ],
+  "features": "",
+  "fn": "icu-70.1-h6b3803e_0.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "5fbe318a6be2e8d0f9b0b0c730a62748",
+  "name": "icu",
+  "platform": "darwin",
+  "sha256": "303b558da70167473e4fa5f9a12c547217061c930c13ca3f982d55922437606e",
+  "size": 13900799,
+  "subdir": "osx-arm64",
+  "timestamp": 1648050828805,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/icu-70.1-h6b3803e_0.tar.bz2",
+  "version": "70.1"
+}

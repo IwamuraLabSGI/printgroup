@@ -1,0 +1,20 @@
+{
+    "arch": null,
+    "build": "pyhd8ed1ab_0",
+    "build_number": 0,
+    "channel": "conda-forge/noarch",
+    "depends": [
+        "python >=3.6"
+    ],
+    "fn": "idna-3.3-pyhd8ed1ab_0.tar.bz2",
+    "license": "BSD-3-Clause",
+    "md5": "40b50b8b030f5f2f22085c062ed013dd",
+    "name": "idna",
+    "noarch": "python",
+    "platform": null,
+    "size": 56134,
+    "subdir": "noarch",
+    "timestamp": 1642433628137,
+    "url": "https://conda.anaconda.org/conda-forge/noarch/idna-3.3-pyhd8ed1ab_0.tar.bz2",
+    "version": "3.3"
+}

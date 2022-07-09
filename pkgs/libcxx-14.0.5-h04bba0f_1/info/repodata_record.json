@@ -1,0 +1,22 @@
+{
+  "arch": "arm64",
+  "build": "h04bba0f_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [],
+  "features": "",
+  "fn": "libcxx-14.0.5-h04bba0f_1.tar.bz2",
+  "license": "Apache-2.0 WITH LLVM-exception",
+  "license_family": "Apache",
+  "md5": "db787eb7ce85e0ed38be7953c0590f41",
+  "name": "libcxx",
+  "platform": "darwin",
+  "sha256": "2aca3af4a85f1d62656b6511c5059fcd7dc00559917c77d4301475c1b705fc5a",
+  "size": 1381829,
+  "subdir": "osx-arm64",
+  "timestamp": 1655080481791,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libcxx-14.0.5-h04bba0f_1.tar.bz2",
+  "version": "14.0.5"
+}

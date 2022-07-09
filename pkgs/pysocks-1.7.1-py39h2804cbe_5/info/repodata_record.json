@@ -1,0 +1,22 @@
+{
+    "arch": "arm64",
+    "build": "py39h2804cbe_5",
+    "build_number": 5,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [
+        "python >=3.9,<3.10.0a0",
+        "python >=3.9,<3.10.0a0 *_cpython",
+        "python_abi 3.9.* *_cp39"
+    ],
+    "fn": "pysocks-1.7.1-py39h2804cbe_5.tar.bz2",
+    "license": "BSD 3-Clause",
+    "license_family": "BSD",
+    "md5": "831038e9e2af74015b03d82209ac5f87",
+    "name": "pysocks",
+    "platform": "osx",
+    "size": 28921,
+    "subdir": "osx-arm64",
+    "timestamp": 1648857564060,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/pysocks-1.7.1-py39h2804cbe_5.tar.bz2",
+    "version": "1.7.1"
+}

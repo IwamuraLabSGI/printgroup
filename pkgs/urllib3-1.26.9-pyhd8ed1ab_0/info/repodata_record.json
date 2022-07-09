@@ -1,0 +1,27 @@
+{
+    "arch": null,
+    "build": "pyhd8ed1ab_0",
+    "build_number": 0,
+    "channel": "conda-forge/noarch",
+    "depends": [
+        "brotlipy >=0.6.0",
+        "certifi",
+        "cryptography >=1.3.4",
+        "idna >=2.0.0",
+        "pyopenssl >=0.14",
+        "pysocks >=1.5.6,<2.0,!=1.5.7",
+        "python <4.0"
+    ],
+    "fn": "urllib3-1.26.9-pyhd8ed1ab_0.tar.bz2",
+    "license": "MIT",
+    "license_family": "MIT",
+    "md5": "0ea179ee251aa7100807c35bc0252693",
+    "name": "urllib3",
+    "noarch": "python",
+    "platform": null,
+    "size": 102638,
+    "subdir": "noarch",
+    "timestamp": 1647489171297,
+    "url": "https://conda.anaconda.org/conda-forge/noarch/urllib3-1.26.9-pyhd8ed1ab_0.tar.bz2",
+    "version": "1.26.9"
+}

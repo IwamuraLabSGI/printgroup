@@ -1,0 +1,37 @@
+{
+  "paths": [
+    {
+      "_path": "include/yaml.h",
+      "path_type": "hardlink",
+      "sha256": "de39c9fc2b2c8584775e6d0dc0f13c8e778ceba47d419cff9d85465ca35d6954",
+      "size_in_bytes": 54439
+    },
+    {
+      "_path": "lib/libyaml-0.2.dylib",
+      "path_type": "hardlink",
+      "sha256": "feb179e4e255b4cd512382dbe67c39ae1e2e8f337e670e0bf4b2d940646c2f0f",
+      "size_in_bytes": 156864
+    },
+    {
+      "_path": "lib/libyaml.a",
+      "path_type": "hardlink",
+      "sha256": "f8c36a81a610516461744f2db2ccdcae6a87f7e8c7b1ae2798690c1b6716cbae",
+      "size_in_bytes": 142712
+    },
+    {
+      "_path": "lib/libyaml.dylib",
+      "path_type": "softlink",
+      "sha256": "feb179e4e255b4cd512382dbe67c39ae1e2e8f337e670e0bf4b2d940646c2f0f",
+      "size_in_bytes": 156864
+    },
+    {
+      "_path": "lib/pkgconfig/yaml-0.1.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/yaml_1641346924701/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+      "sha256": "4c142f0612008c4fd20ab43b037de95d5984ce68a966d7dc5e1a0672b03b3c05",
+      "size_in_bytes": 463
+    }
+  ],
+  "paths_version": 1
+}

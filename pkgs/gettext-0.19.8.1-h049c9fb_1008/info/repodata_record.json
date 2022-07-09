@@ -1,0 +1,24 @@
+{
+  "arch": "arm64",
+  "build": "h049c9fb_1008",
+  "build_number": 1008,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libffi >=3.4.2,<3.5.0a0",
+    "libiconv >=1.16,<1.17.0a0"
+  ],
+  "features": "",
+  "fn": "gettext-0.19.8.1-h049c9fb_1008.tar.bz2",
+  "license": "LGPL-2.1-or-later AND GPL-3.0-or-later",
+  "md5": "ce140e40b0c991bf6e111a131418c3c5",
+  "name": "gettext",
+  "platform": "darwin",
+  "sha256": "a0f4f9c48b98e4c33c39571ce542f09ab8ee912d97c52bfd3a58d643402d4005",
+  "size": 3458484,
+  "subdir": "osx-arm64",
+  "timestamp": 1632490112303,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/gettext-0.19.8.1-h049c9fb_1008.tar.bz2",
+  "version": "0.19.8.1"
+}

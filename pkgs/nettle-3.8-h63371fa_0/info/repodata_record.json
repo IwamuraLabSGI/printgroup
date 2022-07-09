@@ -1,0 +1,22 @@
+{
+  "arch": "arm64",
+  "build": "h63371fa_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [],
+  "features": "",
+  "fn": "nettle-3.8-h63371fa_0.tar.bz2",
+  "license": "GPL 2 and LGPL3",
+  "license_family": "GPL",
+  "md5": "4dffc58ef5d98d842208580b1a1021e9",
+  "name": "nettle",
+  "platform": "darwin",
+  "sha256": "9d02cdb39545e0127e5bc5440c6398e46d6386bb2df8c644f461eac8f9707c09",
+  "size": 537161,
+  "subdir": "osx-arm64",
+  "timestamp": 1654323697400,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/nettle-3.8-h63371fa_0.tar.bz2",
+  "version": "3.8"
+}

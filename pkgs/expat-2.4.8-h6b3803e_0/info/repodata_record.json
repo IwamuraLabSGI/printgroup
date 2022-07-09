@@ -1,0 +1,24 @@
+{
+  "arch": "arm64",
+  "build": "h6b3803e_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libcxx >=12.0.1"
+  ],
+  "features": "",
+  "fn": "expat-2.4.8-h6b3803e_0.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "97b2a07781d447f792d7a37afc6d6180",
+  "name": "expat",
+  "platform": "darwin",
+  "sha256": "1835d9aae3417d1fc03ff835ee6ada5fb54cf4c12d7d9ef131a1ed56e58386ea",
+  "size": 153047,
+  "subdir": "osx-arm64",
+  "timestamp": 1648618878986,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/expat-2.4.8-h6b3803e_0.tar.bz2",
+  "version": "2.4.8"
+}

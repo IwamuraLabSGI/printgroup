@@ -1,0 +1,24 @@
+{
+  "arch": "arm64",
+  "build": "h17b34a0_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libpng >=1.6.37,<1.7.0a0",
+    "zlib >=1.2.11,<1.3.0a0"
+  ],
+  "features": "",
+  "fn": "freetype-2.10.4-h17b34a0_1.tar.bz2",
+  "license": "GPL-2.0-only and LicenseRef-FreeType",
+  "md5": "c34e8d42b8dcb72cad14b45a4132e9c7",
+  "name": "freetype",
+  "platform": "darwin",
+  "sha256": "f9ee860902c852140e2bbdff060c2f5d3a800482a51fc3d6014b60238a63c17d",
+  "size": 894838,
+  "subdir": "osx-arm64",
+  "timestamp": 1610647009193,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/freetype-2.10.4-h17b34a0_1.tar.bz2",
+  "version": "2.10.4"
+}

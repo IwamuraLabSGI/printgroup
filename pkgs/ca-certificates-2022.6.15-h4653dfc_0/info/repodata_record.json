@@ -1,0 +1,21 @@
+{
+  "arch": "arm64",
+  "build": "h4653dfc_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [],
+  "features": "",
+  "fn": "ca-certificates-2022.6.15-h4653dfc_0.tar.bz2",
+  "license": "ISC",
+  "md5": "15e00fac9b4331c21d0618844c6e436c",
+  "name": "ca-certificates",
+  "platform": "darwin",
+  "sha256": "014706b1bfc96d8fe697303a9b48868067e773d541cb3b59c9e49fad6ac76fd5",
+  "size": 152637,
+  "subdir": "osx-arm64",
+  "timestamp": 1655341043587,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/ca-certificates-2022.6.15-h4653dfc_0.tar.bz2",
+  "version": "2022.6.15"
+}

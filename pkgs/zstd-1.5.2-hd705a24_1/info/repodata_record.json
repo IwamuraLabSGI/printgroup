@@ -1,0 +1,27 @@
+{
+  "arch": "arm64",
+  "build": "hd705a24_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "libcxx >=13.0.1",
+    "libzlib >=1.2.11,<1.3.0a0",
+    "lz4-c >=1.9.3,<1.10.0a0",
+    "xz >=5.2.5,<5.3.0a0"
+  ],
+  "features": "",
+  "fn": "zstd-1.5.2-hd705a24_1.tar.bz2",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "md5": "451e6da04c240476f02d0017603fe3c0",
+  "name": "zstd",
+  "platform": "darwin",
+  "sha256": "e941a898d2001c9df4763e61fb3bbf206774f3bf5f5c483cb91f0db4ea995e54",
+  "size": 383272,
+  "subdir": "osx-arm64",
+  "timestamp": 1652786979379,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/zstd-1.5.2-hd705a24_1.tar.bz2",
+  "version": "1.5.2"
+}

@@ -1,0 +1,69 @@
+# This file created by conda-build 3.21.9
+# ------------------------------------------------
+
+package:
+  name: opencv
+  version: 4.5.5
+source:
+  - fn: opencv-4.5.5.tar.gz
+    patches:
+      - install_pip_metadata.patch
+    sha256: a1cfdcf6619387ca9e232687504da996aaa9f7b5689986b8331ec02cb61d28ad
+    url: https://codeload.github.com/opencv/opencv/tar.gz/4.5.5
+  - fn: opencv_contrib-4.5.5.tar.gz
+    folder: opencv_contrib
+    patches:
+      - cmake_hdf5_xpile.patch
+    sha256: a97c2eaecf7a23c6dbd119a609c6d7fae903e5f9ff5f1fe678933e01c67a6c11
+    url: https://codeload.github.com/opencv/opencv_contrib/tar.gz/4.5.5
+  - fn: test.avi
+    sha256: 78884f64b564a3b06dc6ee731ed33b60c6d8cd864cea07f21d94ba0f90c7b310
+    url: https://github.com/opencv/opencv_extra/raw/master/testdata/highgui/video/VID00003-20100701-2204.avi
+build:
+  number: 11
+  string: py38h150bfb4_11
+requirements:
+  host:
+    - bzip2 1.0.8 h3422bc3_4
+    - ca-certificates 2022.5.18.1 h4653dfc_0
+    - libffi 3.4.2 h3422bc3_5
+    - libzlib 1.2.12 h90dfc92_0
+    - ncurses 6.3 h07bb92c_1
+    - openssl 3.0.3 ha287fd2_0
+    - python 3.8.13 hd3575e6_0_cpython
+    - readline 8.1 hedafd6a_0
+    - sqlite 3.38.5 h40dfcc0_0
+    - tk 8.6.12 he1e0b03_0
+    - xz 5.2.5 h642e427_1
+    - zlib 1.2.12 h90dfc92_0
+  run:
+    - libopencv 4.5.5 py38he52a0c8_11
+    - py-opencv 4.5.5 py38hab544c7_11
+    - python_abi 3.8.* *_cp38
+test:
+  files:
+    - CMakeLists.txt
+    - test.cpp
+  requires:
+    - clang_osx-arm64 13.*
+    - clangxx_osx-arm64 13.*
+    - cmake
+    - ninja
+    - pkg-config
+about:
+  home: http://opencv.org/
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: Computer vision and machine learning software library.
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - hajapy
+    - hmaarrfk
+    - jakirkham
+    - msarahan
+    - ocefpaf
+    - patricksnape
+    - zym1010

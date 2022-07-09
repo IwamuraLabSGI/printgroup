@@ -1,0 +1,24 @@
+{
+  "arch": "arm64",
+  "build": "hd125106_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [
+    "openmp 14.0.4|14.0.4.*"
+  ],
+  "depends": [],
+  "features": "",
+  "fn": "llvm-openmp-14.0.4-hd125106_0.tar.bz2",
+  "license": "Apache-2.0 WITH LLVM-exception",
+  "license_family": "APACHE",
+  "md5": "e30710831eca6b207a037c465d98777c",
+  "name": "llvm-openmp",
+  "platform": "darwin",
+  "sha256": "00d0eedaa20ad8d83fbebe121a67eaa293dcc6699d06857af675c3f7d9716317",
+  "size": 304020,
+  "subdir": "osx-arm64",
+  "timestamp": 1653557204995,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/llvm-openmp-14.0.4-hd125106_0.tar.bz2",
+  "version": "14.0.4"
+}

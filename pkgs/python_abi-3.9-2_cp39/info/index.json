@@ -1,0 +1,18 @@
+{
+  "arch": "arm64",
+  "build": "2_cp39",
+  "build_number": 2,
+  "constrains": [
+    "pypy <0a0"
+  ],
+  "depends": [
+    "python 3.9.*"
+  ],
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "name": "python_abi",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1624472067008,
+  "version": "3.9"
+}

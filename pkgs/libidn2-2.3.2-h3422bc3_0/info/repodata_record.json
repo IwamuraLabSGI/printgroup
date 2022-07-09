@@ -1,0 +1,24 @@
+{
+  "arch": "arm64",
+  "build": "h3422bc3_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [],
+  "depends": [
+    "gettext >=0.19.8.1,<1.0a0",
+    "libunistring >=0,<1.0a0"
+  ],
+  "features": "",
+  "fn": "libidn2-2.3.2-h3422bc3_0.tar.bz2",
+  "license": "LGPLv2",
+  "md5": "6f2170342e205b9e42d5cd41397d92b4",
+  "name": "libidn2",
+  "platform": "darwin",
+  "sha256": "893be9ddcc98db2911dfbddc5275f293d5ab81571fdb92c9bc13974154d0b38a",
+  "size": 105709,
+  "subdir": "osx-arm64",
+  "timestamp": 1627042445029,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libidn2-2.3.2-h3422bc3_0.tar.bz2",
+  "version": "2.3.2"
+}

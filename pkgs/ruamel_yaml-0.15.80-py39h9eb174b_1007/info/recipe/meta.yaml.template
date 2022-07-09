@@ -1,0 +1,57 @@
+{% set version = "0.15.80" %}
+
+package:
+  name: ruamel_yaml
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/r/ruamel.yaml/ruamel.yaml-{{ version }}.tar.gz
+  sha256: 4f203351575dba0829c7b1e5d376d08cf5f58e4a2b844e8ce552b3e41cd414e6
+
+build:
+  number: 1007
+  no_link: .*\.(pyd|dll)   # [win]
+
+requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - {{ compiler("c") }}
+    - posix                # [win]
+
+  host:
+    - python
+    - pip
+    - cython
+    - yaml
+
+  run:
+    - python
+    - yaml
+
+test:
+  requires:
+    - pip
+  imports:
+    - ruamel_yaml
+    - ruamel_yaml.ext._ruamel_yaml
+  commands:
+    # check that ruamel_yaml doesn't claim to be ruamel.yaml
+    - if pip show ruamel.yaml; then exit 1; fi  # [unix]
+    - $PYTHON -m pip install ruamel.yaml  # [unix]
+    - $PYTHON -c "import ruamel.yaml"  # [unix]
+    - pip check
+
+about:
+  home: https://sourceforge.net/p/ruamel-yaml/code/ci/default/tree
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A patched copy of ruamel.yaml.
+
+extra:
+  recipe-maintainers:
+    - jakirkham
+    - mbargull
+    - isuruf

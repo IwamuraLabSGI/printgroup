@@ -1,0 +1,15 @@
+{
+  "arch": "arm64",
+  "build": "hd125106_0",
+  "build_number": 0,
+  "constrains": [
+    "openmp 14.0.4|14.0.4.*"
+  ],
+  "depends": [],
+  "license": "Apache-2.0 WITH LLVM-exception",
+  "name": "llvm-openmp",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1653557204995,
+  "version": "14.0.4"
+}

@@ -1,0 +1,16 @@
+{
+  "arch": "arm64",
+  "build": "h90dfc92_0",
+  "build_number": 0,
+  "constrains": [
+    "zlib 1.2.12 *_0"
+  ],
+  "depends": [],
+  "license": "Zlib",
+  "license_family": "Other",
+  "name": "libzlib",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1653673755603,
+  "version": "1.2.12"
+}

@@ -1,0 +1,12 @@
+{
+  "arch": "arm64",
+  "build": "he4db4b2_1",
+  "build_number": 1,
+  "depends": [],
+  "license": "GPL-3.0-or-later",
+  "name": "libtasn1",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1654060528690,
+  "version": "4.18.0"
+}

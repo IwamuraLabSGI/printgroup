@@ -1,0 +1,24 @@
+{
+  "build": "pyhd8ed1ab_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "constrains": [],
+  "depends": [
+    "python >=3"
+  ],
+  "features": "",
+  "fn": "pytz-2022.1-pyhd8ed1ab_0.tar.bz2",
+  "license": "MIT",
+  "license_family": "MIT",
+  "md5": "b87d66d6d3991d988fb31510c95a9267",
+  "name": "pytz",
+  "noarch": "python",
+  "package_type": "noarch_python",
+  "sha256": "082043d171a5055d679bd01ad9f5f39125a7aef894049ce7f035bd7134dffd21",
+  "size": 247900,
+  "subdir": "noarch",
+  "timestamp": 1647961520849,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/pytz-2022.1-pyhd8ed1ab_0.tar.bz2",
+  "version": "2022.1"
+}

@@ -1,0 +1,11 @@
+prefix=/Users/runner/miniforge3/conda-bld/glib-split_1644786901113/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehol
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+gmodule_supported=true
+
+Name: GModule
+Description: Dynamic module loader for GLib
+Version: 2.70.2
+Requires: gmodule-no-export-2.0, glib-2.0
+Cflags: -I${includedir}

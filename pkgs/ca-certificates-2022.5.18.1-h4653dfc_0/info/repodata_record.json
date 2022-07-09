@@ -1,0 +1,17 @@
+{
+    "arch": "arm64",
+    "build": "h4653dfc_0",
+    "build_number": 0,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [],
+    "fn": "ca-certificates-2022.5.18.1-h4653dfc_0.tar.bz2",
+    "license": "ISC",
+    "md5": "00ee870560b45bb8a27809834603eb7c",
+    "name": "ca-certificates",
+    "platform": "osx",
+    "size": 148044,
+    "subdir": "osx-arm64",
+    "timestamp": 1653003579728,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/ca-certificates-2022.5.18.1-h4653dfc_0.tar.bz2",
+    "version": "2022.5.18.1"
+}

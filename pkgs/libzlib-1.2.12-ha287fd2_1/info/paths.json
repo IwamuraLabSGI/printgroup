@@ -1,0 +1,17 @@
+{
+  "paths": [
+    {
+      "_path": "lib/libz.1.2.12.dylib",
+      "path_type": "hardlink",
+      "sha256": "7bd0661b6cc46c3a4df04749edf5384524d7d26604a72b35eec452dd0438f1a0",
+      "size_in_bytes": 124000
+    },
+    {
+      "_path": "lib/libz.1.dylib",
+      "path_type": "softlink",
+      "sha256": "7bd0661b6cc46c3a4df04749edf5384524d7d26604a72b35eec452dd0438f1a0",
+      "size_in_bytes": 124000
+    }
+  ],
+  "paths_version": 1
+}

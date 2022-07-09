@@ -1,0 +1,23 @@
+{
+    "arch": "arm64",
+    "build": "py39h9eb174b_1007",
+    "build_number": 1007,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [
+        "python >=3.9,<3.10.0a0",
+        "python >=3.9,<3.10.0a0 *_cpython",
+        "python_abi 3.9.* *_cp39",
+        "yaml >=0.2.5,<0.3.0a0"
+    ],
+    "fn": "ruamel_yaml-0.15.80-py39h9eb174b_1007.tar.bz2",
+    "license": "MIT",
+    "license_family": "MIT",
+    "md5": "0b79116f43f4c497eab278b887fd0c88",
+    "name": "ruamel_yaml",
+    "platform": "osx",
+    "size": 241353,
+    "subdir": "osx-arm64",
+    "timestamp": 1653464769546,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/ruamel_yaml-0.15.80-py39h9eb174b_1007.tar.bz2",
+    "version": "0.15.80"
+}

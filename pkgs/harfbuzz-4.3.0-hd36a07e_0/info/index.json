@@ -1,0 +1,19 @@
+{
+  "arch": "arm64",
+  "build": "hd36a07e_0",
+  "build_number": 0,
+  "depends": [
+    "cairo >=1.16.0,<1.17.0a0",
+    "freetype >=2.10.4,<3.0a0",
+    "graphite2",
+    "icu >=70.1,<71.0a0",
+    "libcxx >=13.0.1",
+    "libglib >=2.70.2,<3.0a0"
+  ],
+  "license": "MIT",
+  "name": "harfbuzz",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1653091169343,
+  "version": "4.3.0"
+}

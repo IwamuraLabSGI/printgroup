@@ -1,0 +1,17 @@
+{
+  "arch": "arm64",
+  "build": "py38h150bfb4_11",
+  "build_number": 11,
+  "depends": [
+    "libopencv 4.5.5 py38he52a0c8_11",
+    "py-opencv 4.5.5 py38hab544c7_11",
+    "python_abi 3.8.* *_cp38"
+  ],
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "name": "opencv",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1654296813875,
+  "version": "4.5.5"
+}

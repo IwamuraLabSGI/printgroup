@@ -1,0 +1,62 @@
+{
+  "build": "openmp_h2209c59_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/osx-arm64",
+  "constrains": [
+    "openblas >=0.3.20,<0.3.21.0a0"
+  ],
+  "depends": [
+    "libgfortran 5.*",
+    "libgfortran5 >=11.0.1.dev0",
+    "llvm-openmp >=12.0.1"
+  ],
+  "extracted_package_dir": "/Users/sugaikazuaki/miniforge3/pkgs/libopenblas-0.3.20-openmp_h2209c59_0",
+  "features": "",
+  "files": [
+    "lib/libopenblas.0.dylib",
+    "lib/libopenblas_vortexp-r0.3.20.dylib",
+    "lib/libopenblasp-r0.3.20.dylib"
+  ],
+  "fn": "libopenblas-0.3.20-openmp_h2209c59_0.tar.bz2",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "link": {
+    "source": "/Users/sugaikazuaki/miniforge3/pkgs/libopenblas-0.3.20-openmp_h2209c59_0",
+    "type": 1
+  },
+  "md5": "5c316594c85e2adb3617890fc405d031",
+  "name": "libopenblas",
+  "package_tarball_full_path": "/Users/sugaikazuaki/miniforge3/pkgs/libopenblas-0.3.20-openmp_h2209c59_0.tar.bz2",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/libopenblas.0.dylib",
+        "path_type": "softlink",
+        "sha256": "619a0bb23a7b543cca6e42c266f70c93d2f7b4cb3ae4e105c453e226ce32eeb4",
+        "size_in_bytes": 10466640
+      },
+      {
+        "_path": "lib/libopenblas_vortexp-r0.3.20.dylib",
+        "path_type": "hardlink",
+        "sha256": "619a0bb23a7b543cca6e42c266f70c93d2f7b4cb3ae4e105c453e226ce32eeb4",
+        "sha256_in_prefix": "619a0bb23a7b543cca6e42c266f70c93d2f7b4cb3ae4e105c453e226ce32eeb4",
+        "size_in_bytes": 10466640
+      },
+      {
+        "_path": "lib/libopenblasp-r0.3.20.dylib",
+        "path_type": "softlink",
+        "sha256": "619a0bb23a7b543cca6e42c266f70c93d2f7b4cb3ae4e105c453e226ce32eeb4",
+        "size_in_bytes": 10466640
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "a3fb4664d1770476d0455db018e6aed01c24d28880556c843d8998302067d788",
+  "size": 3985926,
+  "subdir": "osx-arm64",
+  "timestamp": 1649198694960,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/libopenblas-0.3.20-openmp_h2209c59_0.tar.bz2",
+  "version": "0.3.20"
+}

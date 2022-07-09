@@ -1,0 +1,49 @@
+{
+  "paths": [
+    {
+      "_path": "bin/x264",
+      "path_type": "hardlink",
+      "sha256": "6e9d38f5130ce7d09bb925ae099cb08b8d29ca7c97003d62b6f5ca48785b593e",
+      "size_in_bytes": 1572576
+    },
+    {
+      "_path": "include/x264.h",
+      "path_type": "hardlink",
+      "sha256": "d889fcbb332e6daa35bb6952163a1599df53f5fe71e8d88c9faa23cc4eb285c9",
+      "size_in_bytes": 47960
+    },
+    {
+      "_path": "include/x264_config.h",
+      "path_type": "hardlink",
+      "sha256": "4b426d124cd2f8aa88fb1e04bb3af8d45fb13c4fafcc7d5c15be6b6391476882",
+      "size_in_bytes": 245
+    },
+    {
+      "_path": "lib/libx264.161.dylib",
+      "path_type": "hardlink",
+      "sha256": "a1ecc9b2f27737466686930a6ddba3bc54d8d7fd412849403cfc938a918a969b",
+      "size_in_bytes": 1497296
+    },
+    {
+      "_path": "lib/libx264.a",
+      "path_type": "hardlink",
+      "sha256": "4c23c000b55fe9fff310bfba134cdd5664719a814ca78812412ed447012d013c",
+      "size_in_bytes": 1864440
+    },
+    {
+      "_path": "lib/libx264.dylib",
+      "path_type": "softlink",
+      "sha256": "a1ecc9b2f27737466686930a6ddba3bc54d8d7fd412849403cfc938a918a969b",
+      "size_in_bytes": 1497296
+    },
+    {
+      "_path": "lib/pkgconfig/x264.pc",
+      "file_mode": "text",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/Users/runner/miniforge3/conda-bld/x264_1623827418567/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+      "sha256": "7441719421911f4f0b61ddb96d7be3202ca424ee3a078f589a60f9fd8404ffb8",
+      "size_in_bytes": 535
+    }
+  ],
+  "paths_version": 1
+}

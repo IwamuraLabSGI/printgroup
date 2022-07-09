@@ -1,0 +1,79 @@
+# This file created by conda-build 3.21.4
+# meta.yaml template originally from:
+# /Users/runner/work/1/s/recipe, last modified Tue Jun 15 20:23:50 2021
+# ------------------------------------------------
+
+package:
+  name: pcre
+  version: '8.45'
+source:
+  patches:
+    - 0001-Define-snprintf-for-old-VS.patch
+  sha256: 4e6ce03e0336e8b4a3d6c2b70b1c5e18590a5673a98186da90d4f33c23defc09
+  url: https://ftp.pcre.org/pub/pcre/pcre-8.45.tar.gz
+build:
+  number: '0'
+  run_exports:
+    - pcre >=8.45,<9.0a0
+  string: hbdafb3b_0
+requirements:
+  build:
+    - cctools_osx-64 949.0.1 h6407bdd_22
+    - cctools_osx-arm64 949.0.1 h55de48a_22
+    - clang 11.1.0 h694c41f_1
+    - clang-11 11.1.0 default_he082bbe_1
+    - clang_osx-arm64 11.1.0 h40be2b1_2
+    - clangxx 11.1.0 default_he082bbe_1
+    - clangxx_osx-arm64 11.1.0 hc50fe25_2
+    - compiler-rt 11.1.0 h654b07c_0
+    - compiler-rt_osx-64 11.1.0 h8c5fa43_0
+    - ld64_osx-64 530 he8994da_21
+    - ld64_osx-arm64 530 h3681fde_21
+    - ldid 2.1.2 h7660a38_2
+    - libclang-cpp11.1 11.1.0 default_he082bbe_1
+    - libcxx 11.1.0 habf9029_0
+    - libiconv 1.16 haf1e3a3_0
+    - libllvm11 11.1.0 hd011deb_2
+    - libllvm12 12.0.0 hd011deb_1
+    - libtool 2.4.6 h2e338ed_1007
+    - llvm-tools 11.1.0 hd011deb_2
+    - make 4.3 h22f3db7_1
+    - pkg-config 0.29.2 h31203cd_1008
+    - tapi 1100.0.11 h9ce4665_0
+    - zlib 1.2.11 h7795811_1010
+  host:
+    - libcxx 11.1.0 h168391b_0
+  run:
+    - libcxx >=11.1.0
+test:
+  commands:
+    - pcre-config --version
+    - pcregrep --help
+    - pcretest --help
+    - test -f "${PREFIX}/include/pcre.h"
+    - test -f "${PREFIX}/include/pcre_scanner.h"
+    - test -f "${PREFIX}/include/pcre_stringpiece.h"
+    - test -f "${PREFIX}/include/pcrecpp.h"
+    - test -f "${PREFIX}/include/pcrecpparg.h"
+    - test -f "${PREFIX}/include/pcreposix.h"
+    - test -f "${PREFIX}/lib/libpcre.a"
+    - test -f "${PREFIX}/lib/libpcre${SHLIB_EXT}"
+    - test -f "${PREFIX}/lib/libpcrecpp.a"
+    - test -f "${PREFIX}/lib/libpcrecpp${SHLIB_EXT}"
+    - test -f "${PREFIX}/lib/libpcreposix.a"
+    - test -f "${PREFIX}/lib/libpcreposix${SHLIB_EXT}"
+about:
+  home: http://www.pcre.org/
+  license: BSD-3-Clause
+  license_file: LICENCE
+  summary: Regular expression pattern matching using the same syntax and semantics
+    as Perl 5.
+extra:
+  copy_test_source_files: true
+  final: true
+  recipe-maintainers:
+    - jakirkham
+    - ocefpaf
+    - saraedum
+    - scopatz
+    - sebastian-luna-valero

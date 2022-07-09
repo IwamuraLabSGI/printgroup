@@ -1,0 +1,17 @@
+{
+    "arch": "arm64",
+    "build": "h07bb92c_1",
+    "build_number": 1,
+    "channel": "conda-forge/osx-arm64",
+    "depends": [],
+    "fn": "ncurses-6.3-h07bb92c_1.tar.bz2",
+    "license": "X11 AND BSD-3-Clause",
+    "md5": "db86e5a978380a13f5559f97afdfe99d",
+    "name": "ncurses",
+    "platform": "osx",
+    "size": 947632,
+    "subdir": "osx-arm64",
+    "timestamp": 1649339008380,
+    "url": "https://conda.anaconda.org/conda-forge/osx-arm64/ncurses-6.3-h07bb92c_1.tar.bz2",
+    "version": "6.3"
+}

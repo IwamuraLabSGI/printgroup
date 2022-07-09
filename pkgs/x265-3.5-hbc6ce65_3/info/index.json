@@ -1,0 +1,14 @@
+{
+  "arch": "arm64",
+  "build": "hbc6ce65_3",
+  "build_number": 3,
+  "depends": [
+    "libcxx >=12.0.1"
+  ],
+  "license": "GPL-2.0-or-later",
+  "name": "x265",
+  "platform": "osx",
+  "subdir": "osx-arm64",
+  "timestamp": 1646609481185,
+  "version": "3.5"
+}
