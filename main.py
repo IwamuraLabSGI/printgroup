@@ -19,8 +19,9 @@ qrCodeRepo = QRCodeRepo(mysql)
 qrCodeSvc = QRCodeSvc(qrCodeRepo)
 qrCodeSvc.list()
 
-descriptor_extractor = DescriptorExtractor(5, 2)
+descriptor_extractor = DescriptorExtractor(6, 2)
 keypoints = list(map(lambda _: Keypoint(np.random.rand(), np.random.rand(), np.random.rand()), range(1000)))
-descriptor_extractor.extract(keypoints)
+descriptors = descriptor_extractor.extract(keypoints)
+print(descriptors)
 
 

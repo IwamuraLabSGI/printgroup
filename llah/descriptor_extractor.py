@@ -16,12 +16,12 @@ class DescriptorExtractor:
     # 特徴量の候補を増やすために追加で使用する近傍てんの数
     # edit: c++では候補として使用する特徴点の総数を_nとしていたが、
     # わかりにくいので、候補の数を設定することにしました
-    # _n = _neighbor_total + _neighbor_candidate_total
-    _neighbor_candidate_total: int
+    # _n = _neighbor_total + _additional_neighbor_total
+    _additional_neighbor_total: int
 
-    def __init__(self, neighbor_total: int, neighbor_candidate_total: int):
+    def __init__(self, neighbor_total: int, additional_neighbor_total: int):
         self._neighbor_total = neighbor_total
-        self._neighbor_candidate_total = neighbor_candidate_total
+        self._additional_neighbor_total = additional_neighbor_total
 
     @classmethod
     def triangle_perimeter(cls, p1: Keypoint, p2: Keypoint, p3: Keypoint):
@@ -39,6 +39,7 @@ class DescriptorExtractor:
 
         kdTree = Keypoint.get_kd_tree(keypoints)
         for i, keypoint in enumerate(keypoints):
+            # TODO: 距離の昇順で返ってきているか確認
             _, indexes = kdTree.query([keypoint.x, keypoint.y], self._neighbor_total + 1)
             isMinimumKeypoint = all(map(lambda index: keypoint.size < keypoints[index].size, indexes[1:]))
             if isMinimumKeypoint:
@@ -77,27 +78,42 @@ class DescriptorExtractor:
         return sampledKeypoints
 
     def extract(self, keypoints: list[Keypoint]):
-        if len(keypoints) < self._neighbor_total + self._neighbor_candidate_total:
+        if len(keypoints) < self._neighbor_total + self._additional_neighbor_total:
             raise ValueError('特徴点の数が足りません。')
 
         # TODO: sampling処理追加
         kdTree = Keypoint.get_kd_tree(keypoints)
         descriptors: list[list[float]] = []
         for i, keypoint in enumerate(keypoints):
-            limit = self._neighbor_total + self._neighbor_candidate_total + 1
+            limit = self._neighbor_total + self._additional_neighbor_total + 1
             _, indexes = kdTree.query([keypoint.x, keypoint.y], limit)
             # 近傍点から特徴量を全パターン計算
             neighborIndexes = indexes[1:]
+
+            keypoint_attributes: list[list[float]] = []
             for combination in itertools.combinations(neighborIndexes, self._neighbor_total):
+                # TODO: get_neighbors切り出し
                 neighbors = list(map(lambda index: keypoints[index], combination))
                 # 時計回りに近傍点を3点ずつって特徴量を計算
                 neighbors.sort(key=lambda item: np.arctan2(item.x - keypoint.x, item.y - keypoint.y))
                 target_total = math.floor(len(neighbors) / 2)
-                for target_num in range(target_total-1):
-                    target = neighbors[target_num*3:target_num*3+3]
+
+                perimeter_rate_attributes: list[float] = []
+                for target_num in range(target_total):
+                    target: list[Keypoint] = []
+                    start_index = target_num * 2
+                    end_index = start_index + 3
+                    if end_index > len(neighbors):
+                        target.extend(neighbors[start_index:])
+                        target.extend(neighbors[0:1])
+                    else:
+                        target.extend(neighbors[start_index:end_index])
                     # add: c++ではrateが1以下になるように逆数をとっていたが特に意味もなさそうなので削除
                     triangle_perimeter_rate = \
                         DescriptorExtractor.triangle_perimeter(keypoint, target[0], target[1]) \
                         / DescriptorExtractor.triangle_perimeter(keypoint, target[1], target[2])
-                    # TODO:
-                    print(triangle_perimeter_rate)
+                    perimeter_rate_attributes.append(triangle_perimeter_rate)
+                keypoint_attributes.append(perimeter_rate_attributes)
+                # TODO: 必要なら面積比の特徴量も
+            descriptors.extend(keypoint_attributes)
+        return descriptors
