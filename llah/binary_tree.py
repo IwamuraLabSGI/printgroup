@@ -1,4 +1,4 @@
-from key_point import KeyPoint
+from keypoint import KeyPoint
 from node import Node
 
 class BinaryTree:
