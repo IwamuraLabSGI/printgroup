@@ -1,1 +1,1 @@
-from .qr_code import QRCode
+from .qr_code import QRCode, QRCodeFeature

@@ -30,7 +30,6 @@ mysql = MySQL(mysqlConfig)
 mysql.connect()
 qrCodeRepo = QRCodeRepo(mysql)
 qrCodeSvc = QRCodeSvc(qrCodeRepo)
-qrCodeSvc.list()
 
 args = sys.argv
 with Image.open(args[1]) as img:
@@ -61,7 +60,9 @@ with Image.open(args[1]) as img:
     keypoints = KeypointExtractor.extract(c_img_data)
     descriptor_extractor = DescriptorExtractor(5, 2)
     descriptors = descriptor_extractor.extract(keypoints)
-    print(descriptors)
+    features = list(map(lambda item: sum(item), descriptors))
+    qrCodeSvc.add(features)
+
 
 
 

@@ -1,5 +1,6 @@
 from repository.mysql.qr_code import QRCode as QRCodeRepo
 
+Features = list[float]
 
 class QRCode:
     _repo: QRCodeRepo
@@ -9,3 +10,11 @@ class QRCode:
 
     def list(self):
         self._repo.list()
+
+    def add(self, features: Features):
+        # # TODO: s3upload
+        s3_uri = ''
+        qr_code = self._repo.add(s3_uri, features)
+        return qr_code
+
+
