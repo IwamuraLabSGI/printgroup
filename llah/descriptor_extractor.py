@@ -2,7 +2,6 @@ import itertools
 import math
 
 from llah.keypoint import Keypoint
-from scipy.spatial import KDTree
 import copy
 import numpy as np
 
@@ -88,9 +87,14 @@ class DescriptorExtractor:
             limit = self._neighbor_total + self._additional_neighbor_total + 1
             _, indexes = kdTree.query([keypoint.x, keypoint.y], limit)
             # 近傍点から特徴量を全パターン計算
+            # self._neighbor_total + self._additional_neighbor_total個
+            # ex: [4, 10, 32, 53, 75] ⇦ 近傍点のindex配列
+            # keypoints[4]
             neighborIndexes = indexes[1:]
 
             keypoint_attributes: list[list[float]] = []
+            # ex: [4, 10, 32, 53, 75] C 3
+            # [4, 10, 32], [], []
             for combination in itertools.combinations(neighborIndexes, self._neighbor_total):
                 # TODO: get_neighbors切り出し
                 neighbors = list(map(lambda index: keypoints[index], combination))
@@ -109,9 +113,12 @@ class DescriptorExtractor:
                     else:
                         target.extend(neighbors[start_index:end_index])
                     # add: c++ではrateが1以下になるように逆数をとっていたが特に意味もなさそうなので削除
-                    triangle_perimeter_rate = \
-                        DescriptorExtractor.triangle_perimeter(keypoint, target[0], target[1]) \
-                        / DescriptorExtractor.triangle_perimeter(keypoint, target[1], target[2])
+                    perimeter = DescriptorExtractor.triangle_perimeter(keypoint, target[0], target[1])
+                    next_perimeter = DescriptorExtractor.triangle_perimeter(keypoint, target[1], target[2])
+                    # TODO: 分母が0になるような場合を確認
+                    triangle_perimeter_rate: float = 0
+                    if next_perimeter != 0:
+                        triangle_perimeter_rate = perimeter / next_perimeter
                     # TODO: 離散化
                     perimeter_rate_attributes.append(triangle_perimeter_rate)
                 keypoint_attributes.append(perimeter_rate_attributes)
