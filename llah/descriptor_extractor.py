@@ -87,14 +87,9 @@ class DescriptorExtractor:
             limit = self._neighbor_total + self._additional_neighbor_total + 1
             _, indexes = kdTree.query([keypoint.x, keypoint.y], limit)
             # 近傍点から特徴量を全パターン計算
-            # self._neighbor_total + self._additional_neighbor_total個
-            # ex: [4, 10, 32, 53, 75] ⇦ 近傍点のindex配列
-            # keypoints[4]
             neighborIndexes = indexes[1:]
 
             keypoint_attributes: list[list[float]] = []
-            # ex: [4, 10, 32, 53, 75] C 3
-            # [4, 10, 32], [], []
             for combination in itertools.combinations(neighborIndexes, self._neighbor_total):
                 # TODO: get_neighbors切り出し
                 neighbors = list(map(lambda index: keypoints[index], combination))
