@@ -60,6 +60,7 @@ with Image.open(args[1]) as img:
     keypoints = KeypointExtractor.extract(c_img_data)
     descriptor_extractor = DescriptorExtractor(5, 2)
     descriptors = descriptor_extractor.extract(keypoints)
+    # TODO: ハッシュ計算考える
     features = list(map(lambda item: sum(item), descriptors))
     qrCodeSvc.add(features)
 
