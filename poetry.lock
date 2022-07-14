@@ -1,4 +1,34 @@
 [[package]]
+name = "cycler"
+version = "0.11.0"
+description = "Composable style cycles"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
+name = "fonttools"
+version = "4.34.4"
+description = "Tools to manipulate font files"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+all = ["fs (>=2.2.0,<3)", "lxml (>=4.0,<5)", "zopfli (>=0.1.4)", "lz4 (>=1.7.4.2)", "matplotlib", "sympy", "skia-pathops (>=0.5.0)", "uharfbuzz (>=0.23.0)", "brotlicffi (>=0.8.0)", "scipy", "brotli (>=1.0.1)", "munkres", "unicodedata2 (>=14.0.0)", "xattr"]
+graphite = ["lz4 (>=1.7.4.2)"]
+interpolatable = ["scipy", "munkres"]
+lxml = ["lxml (>=4.0,<5)"]
+pathops = ["skia-pathops (>=0.5.0)"]
+plot = ["matplotlib"]
+repacker = ["uharfbuzz (>=0.23.0)"]
+symfont = ["sympy"]
+type1 = ["xattr"]
+ufo = ["fs (>=2.2.0,<3)"]
+unicode = ["unicodedata2 (>=14.0.0)"]
+woff = ["zopfli (>=0.1.4)", "brotlicffi (>=0.8.0)", "brotli (>=1.0.1)"]
+
+[[package]]
 name = "greenlet"
 version = "1.1.2"
 description = "Lightweight in-process concurrent programming"
@@ -8,6 +38,33 @@ python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
 
 [package.extras]
 docs = ["sphinx"]
+
+[[package]]
+name = "kiwisolver"
+version = "1.4.3"
+description = "A fast implementation of the Cassowary constraint solver"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "matplotlib"
+version = "3.5.2"
+description = "Python plotting package"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+cycler = ">=0.10"
+fonttools = ">=4.22.0"
+kiwisolver = ">=1.0.1"
+numpy = ">=1.17"
+packaging = ">=20.0"
+pillow = ">=6.2.0"
+pyparsing = ">=2.2.1"
+python-dateutil = ">=2.7"
+setuptools_scm = ">=4"
 
 [[package]]
 name = "numpy"
@@ -34,6 +91,29 @@ numpy = [
 ]
 
 [[package]]
+name = "packaging"
+version = "21.3"
+description = "Core utilities for Python packages"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
+
+[[package]]
+name = "pillow"
+version = "9.2.0"
+description = "Python Imaging Library (Fork)"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-issues (>=3.0.1)", "sphinx-removed-in", "sphinxext-opengraph"]
+tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
+
+[[package]]
 name = "pymysql"
 version = "1.0.2"
 description = "Pure Python MySQL Driver"
@@ -46,6 +126,28 @@ ed25519 = ["PyNaCl (>=1.4.0)"]
 rsa = ["cryptography"]
 
 [[package]]
+name = "pyparsing"
+version = "3.0.9"
+description = "pyparsing module - Classes and methods to define and execute parsing grammars"
+category = "main"
+optional = false
+python-versions = ">=3.6.8"
+
+[package.extras]
+diagrams = ["railroad-diagrams", "jinja2"]
+
+[[package]]
+name = "python-dateutil"
+version = "2.8.2"
+description = "Extensions to the standard Python datetime module"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
 name = "scipy"
 version = "1.8.1"
 description = "SciPy: Scientific Library for Python"
@@ -55,6 +157,31 @@ python-versions = ">=3.8,<3.11"
 
 [package.dependencies]
 numpy = ">=1.17.3,<1.25.0"
+
+[[package]]
+name = "setuptools-scm"
+version = "7.0.5"
+description = "the blessed package to manage your versions by scm tags"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+packaging = ">=20.0"
+tomli = ">=1.0.0"
+typing-extensions = "*"
+
+[package.extras]
+test = ["pytest (>=6.2)", "virtualenv (>20)"]
+toml = ["setuptools (>=42)"]
+
+[[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "sqlalchemy"
@@ -88,12 +215,30 @@ postgresql_psycopg2cffi = ["psycopg2cffi"]
 pymysql = ["pymysql (<1)", "pymysql"]
 sqlcipher = ["sqlcipher3-binary"]
 
+[[package]]
+name = "tomli"
+version = "2.0.1"
+description = "A lil' TOML parser"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
+name = "typing-extensions"
+version = "4.3.0"
+description = "Backported and Experimental Type Hints for Python 3.7+"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10,<3.11"
-content-hash = "073d18a73849aef2c39b52b619c3c623a34151cb0869c86f0ee3b68712695140"
+content-hash = "89ba08a1b3157e02dbbb569f64fdadf04bb2fd0ebc2b5d5701201cfe2cac9443"
 
 [metadata.files]
+cycler = []
+fonttools = []
 greenlet = [
     {file = "greenlet-1.1.2-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:58df5c2a0e293bf665a51f8a100d3e9956febfbf1d9aaf8c0677cf70218910c6"},
     {file = "greenlet-1.1.2-cp27-cp27m-manylinux1_x86_64.whl", hash = "sha256:aec52725173bd3a7b56fe91bc56eccb26fbdff1386ef123abb63c84c5b43b63a"},
@@ -151,6 +296,8 @@ greenlet = [
     {file = "greenlet-1.1.2-cp39-cp39-win_amd64.whl", hash = "sha256:013d61294b6cd8fe3242932c1c5e36e5d1db2c8afb58606c5a67efce62c1f5fd"},
     {file = "greenlet-1.1.2.tar.gz", hash = "sha256:e30f5ea4ae2346e62cedde8794a56858a67b878dd79f7df76a0767e356b1744a"},
 ]
+kiwisolver = []
+matplotlib = []
 numpy = [
     {file = "numpy-1.23.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:58bfd40eb478f54ff7a5710dd61c8097e169bc36cc68333d00a9bcd8def53b38"},
     {file = "numpy-1.23.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:196cd074c3f97c4121601790955f915187736f9cf458d3ee1f1b46aff2b1ade0"},
@@ -184,10 +331,14 @@ opencv-python = [
     {file = "opencv_python-4.6.0.66-cp36-abi3-win_amd64.whl", hash = "sha256:0dc82a3d8630c099d2f3ac1b1aabee164e8188db54a786abb7a4e27eba309440"},
     {file = "opencv_python-4.6.0.66-cp37-abi3-macosx_11_0_arm64.whl", hash = "sha256:6e32af22e3202748bd233ed8f538741876191863882eba44e332d1a34993165b"},
 ]
+packaging = []
+pillow = []
 pymysql = [
     {file = "PyMySQL-1.0.2-py3-none-any.whl", hash = "sha256:41fc3a0c5013d5f039639442321185532e3e2c8924687abe6537de157d403641"},
     {file = "PyMySQL-1.0.2.tar.gz", hash = "sha256:816927a350f38d56072aeca5dfb10221fe1dc653745853d30a216637f5d7ad36"},
 ]
+pyparsing = []
+python-dateutil = []
 scipy = [
     {file = "scipy-1.8.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:65b77f20202599c51eb2771d11a6b899b97989159b7975e9b5259594f1d35ef4"},
     {file = "scipy-1.8.1-cp310-cp310-macosx_12_0_arm64.whl", hash = "sha256:e013aed00ed776d790be4cb32826adb72799c61e318676172495383ba4570aa4"},
@@ -213,6 +364,8 @@ scipy = [
     {file = "scipy-1.8.1-cp39-cp39-win_amd64.whl", hash = "sha256:9dd4012ac599a1e7eb63c114d1eee1bcfc6dc75a29b589ff0ad0bb3d9412034f"},
     {file = "scipy-1.8.1.tar.gz", hash = "sha256:9e3fb1b0e896f14a85aa9a28d5f755daaeeb54c897b746df7a55ccb02b340f33"},
 ]
+setuptools-scm = []
+six = []
 sqlalchemy = [
     {file = "SQLAlchemy-1.4.39-cp27-cp27m-macosx_10_14_x86_64.whl", hash = "sha256:4770eb3ba69ec5fa41c681a75e53e0e342ac24c1f9220d883458b5596888e43a"},
     {file = "SQLAlchemy-1.4.39-cp27-cp27m-manylinux_2_5_x86_64.manylinux1_x86_64.whl", hash = "sha256:752ef2e8dbaa3c5d419f322e3632f00ba6b1c3230f65bc97c2ff5c5c6c08f441"},
@@ -251,3 +404,5 @@ sqlalchemy = [
     {file = "SQLAlchemy-1.4.39-cp39-cp39-win_amd64.whl", hash = "sha256:8b773c9974c272aae0fa7e95b576d98d17ee65f69d8644f9b6ffc90ee96b4d19"},
     {file = "SQLAlchemy-1.4.39.tar.gz", hash = "sha256:8194896038753b46b08a0b0ae89a5d80c897fb601dd51e243ed5720f1f155d27"},
 ]
+tomli = []
+typing-extensions = []

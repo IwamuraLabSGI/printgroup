@@ -2,7 +2,6 @@ import itertools
 import math
 
 from llah.keypoint import Keypoint
-from scipy.spatial import KDTree
 import copy
 import numpy as np
 
@@ -109,9 +108,12 @@ class DescriptorExtractor:
                     else:
                         target.extend(neighbors[start_index:end_index])
                     # add: c++ではrateが1以下になるように逆数をとっていたが特に意味もなさそうなので削除
-                    triangle_perimeter_rate = \
-                        DescriptorExtractor.triangle_perimeter(keypoint, target[0], target[1]) \
-                        / DescriptorExtractor.triangle_perimeter(keypoint, target[1], target[2])
+                    perimeter = DescriptorExtractor.triangle_perimeter(keypoint, target[0], target[1])
+                    next_perimeter = DescriptorExtractor.triangle_perimeter(keypoint, target[1], target[2])
+                    # TODO: 分母が0になるような場合を確認
+                    triangle_perimeter_rate: float = 0
+                    if next_perimeter != 0:
+                        triangle_perimeter_rate = perimeter / next_perimeter
                     # TODO: 離散化
                     perimeter_rate_attributes.append(triangle_perimeter_rate)
                 keypoint_attributes.append(perimeter_rate_attributes)
