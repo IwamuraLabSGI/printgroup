@@ -3,7 +3,7 @@ import sys
 import numpy as np
 args = sys.argv
 
-def colorInk(src,ch1Lower, ch1Upper,ch2Lower, ch2Upper,ch3Lower, ch3Upper):
+def colorInk(src, ch1Lower, ch1Upper, ch2Lower, ch2Upper, ch3Lower, ch3Upper):
     src = cv2.cvtColor(src,cv2.COLOR_BGR2HSV)
     lower = [0,0,0]
     upper = [0,0,0]

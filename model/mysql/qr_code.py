@@ -8,8 +8,8 @@ Base = declarative_base()
 
 class QRCode(Base):
     __tablename__ = "qr_codes"
-    id = Column(Integer, primary_key=True)
-    s3_uri = Column(String(255))
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    s3_uri = Column(String(255), nullable=False)
 
 
 @dataclass

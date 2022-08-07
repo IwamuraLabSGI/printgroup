@@ -21,8 +21,9 @@ CREATE TABLE `qr_code_features` (
   `feature` double NOT NULL COMMENT '特徴量',
   PRIMARY KEY (`id`),
   KEY `fk_to_qr_code` (`qr_code_id`),
+  KEY `index_feature` (`feature`),
   CONSTRAINT `fk_to_qr_code` FOREIGN KEY (`qr_code_id`) REFERENCES `qr_codes` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='qrコードの特徴量を管理するテーブル';
+) ENGINE=InnoDB AUTO_INCREMENT=19531 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='qrコードの特徴量を管理するテーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +36,7 @@ CREATE TABLE `qr_codes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `s3_uri` varchar(255) COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT 'QRコード画像があるs3のuri',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='qrコードを管理するテーブル';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='qrコードを管理するテーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,5 +73,6 @@ CREATE TABLE `schema_migrations` (
 LOCK TABLES `schema_migrations` WRITE;
 INSERT INTO `schema_migrations` (version) VALUES
   ('20220624083846'),
-  ('20220713075203');
+  ('20220713075203'),
+  ('20220807053605');
 UNLOCK TABLES;

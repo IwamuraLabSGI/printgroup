@@ -7,6 +7,7 @@ import sys
 from llah.keypoint_extractor import KeypointExtractor
 from llah.descriptor_extractor import DescriptorExtractor
 from PIL import Image
+import matplotlib.pyplot as plt
 
 
 def adjust_luminance(img: np.ndarray):
@@ -36,6 +37,9 @@ with Image.open(args[1]) as img:
     # グレーの領域を白に
     hsv_img = img.convert("HSV")
     hsv_img_data = np.asarray(hsv_img, np.uint8)
+    # h_unique, h_counts = np.unique(hsv_img_data[:, :, 0], return_counts=True)
+    # plt.bar(h_unique, h_counts, width=1.0)
+    # plt.show()
     v_img_data = hsv_img_data[:, :, 2]
     v_img_data = adjust_luminance(v_img_data)
     img_data = np.asarray(img, np.uint8)
@@ -60,10 +64,10 @@ with Image.open(args[1]) as img:
     keypoints = KeypointExtractor.extract(c_img_data)
     descriptor_extractor = DescriptorExtractor(5, 2)
     descriptors = descriptor_extractor.extract(keypoints)
+    # TODO: ハッシュ計算考える
     features = list(map(lambda item: sum(item), descriptors))
 
-    # # dbへの登録
-    # # TODO: ハッシュ計算考える
+    # dbへの登録
     # qrCodeSvc.add(features)
 
     # dbとの照合
