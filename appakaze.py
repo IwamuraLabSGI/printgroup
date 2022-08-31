@@ -8,7 +8,7 @@ import sys
 args = sys.argv
 
 
-def AKAZEmain(ID, query, img):
+def AKAZEmain(query, img):
     print("AKAZE中", query)
     img1 = img
     img2 = cv2.imread("./templates/RegistIMG/" + str(query) + ".jpg")
