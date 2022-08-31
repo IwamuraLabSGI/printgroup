@@ -56,7 +56,7 @@ def registFeatures(ID, color, image):
     return keypoints
 
 
-def detectFeatures(ID, color, image):
+def detectFeatures(color, image):
     image = cv2.imread(image)
     if image.shape[2] == 3:
         grayimage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)

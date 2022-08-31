@@ -69,7 +69,7 @@ def RegisterFeature(color, ID, descriptors):
     connection.close()
 
 
-def retrieveFeature(color, ID, descriptors):
+def retrieveFeature(color, descriptors):
     # データベースへの接続とカーソルの生成
     connection = MySQLdb.connect(
         host='localhost',
