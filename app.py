@@ -4,14 +4,11 @@ from datetime import datetime
 import numpy as np
 import cv2
 import os
-import sys
 import appink
 import appakaze
 import appretrieve
 import DBDB
 import appregist
-
-args = sys.argv
 
 app = Flask(__name__, static_url_path="", static_folder="./templates/IMG")
 
@@ -46,13 +43,12 @@ def index():
         if len(img_array) != 0:
             img = cv2.imdecode(img_array, 1)
             # グレースケール変換
-            time = "画像入力待ち　⇨ 真贋判定開始"
             appink.main(ID, img)
-            LLAH = appretrieve.retrieveall(ID)
+            LLAH = appretrieve.retrieve_all(ID)
             for i in range(3):
                 for j in range(3):
-                    if (LLAH[i][j][0] != 0):
-                        AKAZE[n] = appakaze.AKAZEmain(ID, LLAH[i][j][0], img)
+                    if LLAH[i][j][0] != 0:
+                        AKAZE[n] = appakaze.AKAZEmain(LLAH[i][j][0], img)
                     n = n + 1
             Hantei = max(AKAZE)
             end_time = datetime.now()
