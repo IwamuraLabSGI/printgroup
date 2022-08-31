@@ -27,6 +27,7 @@ def index():
     start_time = datetime.now()
     all_time = 0
     print("開始時間： ", start_time)
+    # TODO: 同時アクセスがあったときに不具合が発生する
     appink.imageclear()
     time = '画像入力待ち'
     img_name = ""
@@ -42,7 +43,7 @@ def index():
         # 画像データ用配列にデータがあれば
         if len(img_array) != 0:
             img = cv2.imdecode(img_array, 1)
-            # グレースケール変換
+            # TODO: IDからstaticフォルダないの画像を特定して渡すのではなくメモリの画像情報を共有する
             appink.main(ID, img)
             LLAH = appretrieve.retrieve_all(ID)
             for i in range(3):

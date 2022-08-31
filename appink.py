@@ -121,6 +121,8 @@ def register(ID, img):
     cv2.imwrite("./templates/RegistIMG/" + str(ID) + ".jpg", img)
 
 
+# TODO: 引数でIDからpathを作って最適化した画像を保存するのではなく、画像情報を返す。
+# TODO: 使用していない処理、変数を消す。
 def main(ID, img):
     x = int(img.shape[0] * (1280 / img.shape[1]))
     img = cv2.resize(img, dsize=(1280, x))
