@@ -1,10 +1,7 @@
 import numpy as np
 import cv2
-import sys
 import DBDB
 from llah.keypoint import Keypoint
-
-args = sys.argv
 
 
 def registFeatures(ID, color, image):
