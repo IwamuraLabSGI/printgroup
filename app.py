@@ -47,7 +47,7 @@ def index():
             LLAH = appretrieve.retrieve_all(ID)
             for i in range(3):
                 for j in range(3):
-                    if (LLAH[i][j][0] != 0):
+                    if LLAH[i][j][0] != 0:
                         AKAZE[n] = appakaze.AKAZEmain(LLAH[i][j][0], img)
                     n = n + 1
             Hantei = max(AKAZE)
