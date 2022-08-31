@@ -26,5 +26,9 @@ class KeypointExtractor:
                 center_y,
                 cv2.contourArea(counter)
             )
-            keypoints.append(keypoint)
+            # 同じ重心を持った特徴点を排除
+            # TODO: sizeが大きい方で置換の方が良いかも？今はサイズ使ってないのでよき。
+            duplicated = list(filter(lambda item: item.distance_from(keypoint) == 0, keypoints))
+            if len(duplicated) == 0:
+                keypoints.append(keypoint)
         return keypoints

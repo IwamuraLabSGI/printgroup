@@ -4,7 +4,6 @@ from sqlalchemy.engine.base import Engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 
-
 @dataclass
 class MySQLConfig:
     host: str = ''
@@ -30,5 +29,5 @@ class MySQL:
         SessionClass = sessionmaker(self._engine)
         self._session = SessionClass()
 
-    def get_db(self):
+    def get_session(self):
         return self._session
