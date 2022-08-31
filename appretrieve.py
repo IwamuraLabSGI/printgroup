@@ -14,9 +14,6 @@ def retrieveall(ID):
     Magendadescriptors = descriptor_extractor.OLDextract(Magendakey)
     Yellowdescriptors = descriptor_extractor.OLDextract(Yellowkey)
     print("LLAHでの検索中 (上からシアン・マゼンダ・イエロー)")
-    cyan = [[0, 0], [0, 0], [0, 0]]
-    magenda = [[0, 0], [0, 0], [0, 0]]
-    yellow = [[0, 0], [0, 0], [0, 0]]
     cyan = DBDB.retrieveFeature(1, ID, Cyandescriptors)
     magenda = DBDB.retrieveFeature(2, ID, Magendadescriptors)
     yellow = DBDB.retrieveFeature(3, ID, Yellowdescriptors)
