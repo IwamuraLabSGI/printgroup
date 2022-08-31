@@ -5,9 +5,9 @@ from llah.descriptor_extractor import DescriptorExtractor
 
 def retrieve_all(ID):
     print("特徴点抽出中 (上からシアン・マゼンダ・イエロー)")
-    Cyankey = appproc.detectFeatures(1, "./templates/CyanIMG/" + str(ID) + ".jpg")
-    Magendakey = appproc.detectFeatures(2, "./templates/MagendaIMG/" + str(ID) + ".jpg")
-    Yellowkey = appproc.detectFeatures(3, "./templates/YellowIMG/" + str(ID) + ".jpg")
+    Cyankey = appproc.detect_features(1, "./templates/CyanIMG/" + str(ID) + ".jpg")
+    Magendakey = appproc.detect_features(2, "./templates/MagendaIMG/" + str(ID) + ".jpg")
+    Yellowkey = appproc.detect_features(3, "./templates/YellowIMG/" + str(ID) + ".jpg")
     print("特徴量算出中 (上からシアン・マゼンダ・イエロー)")
     descriptor_extractor = DescriptorExtractor(6, 1)
     Cyandescriptors = descriptor_extractor.OLDextract(Cyankey)
