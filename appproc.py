@@ -64,7 +64,6 @@ def detect_features(color, image):
         grayimage = image
     retC, invImage = cv2.threshold(grayimage, 127, 255, cv2.THRESH_BINARY)
     contours, hierarchy = cv2.findContours(invImage, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    pointID = 0
     j = 0
     cx = [0] * len(contours)
     cy = [0] * len(contours)
