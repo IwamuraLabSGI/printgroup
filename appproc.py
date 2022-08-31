@@ -4,7 +4,7 @@ import DBDB
 from llah.keypoint import Keypoint
 
 
-def registFeatures(ID, color, image):
+def register_features(ID, color, image):
     image = cv2.imread(image)
     if image.shape[2] == 3:
         grayimage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -67,7 +67,6 @@ def detect_features(color, image):
     if color == 1:
         image_1 = cv2.drawContours(image, contours, -1, (255, 255, 0), 2, cv2.LINE_AA)
         cv2.imwrite('./templates/IMG/procCyan.jpg', image_1)
-
     elif color == 2:
         image_1 = cv2.drawContours(image, contours, -1, (0, 0, 255), 2, cv2.LINE_AA)
         cv2.imwrite('./templates/IMG/procMagenda.jpg', image_1)

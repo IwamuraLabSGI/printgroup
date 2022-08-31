@@ -18,9 +18,9 @@ args = sys.argv
 
 def registall(ID):
     print("特徴点抽出中 (上からシアン・マゼンダ・イエロー)")
-    Cyankey = appproc.registFeatures(ID,1,"./templates/CyanIMG/" + str(ID) + ".jpg" )
-    Magendakey = appproc.registFeatures(ID,2,"./templates/MagendaIMG/" + str(ID) + ".jpg" )
-    Yellowkey = appproc.registFeatures(ID,3,"./templates/YellowIMG/" + str(ID) + ".jpg")
+    Cyankey = appproc.register_features(ID, 1, "./templates/CyanIMG/" + str(ID) + ".jpg")
+    Magendakey = appproc.register_features(ID, 2, "./templates/MagendaIMG/" + str(ID) + ".jpg")
+    Yellowkey = appproc.register_features(ID, 3, "./templates/YellowIMG/" + str(ID) + ".jpg")
     print("特徴量算出中 (上からシアン・マゼンダ・イエロー)")
     descriptor_extractor = DescriptorExtractor(6, 1)
     Cyandescriptors = descriptor_extractor.OLDextract(Cyankey)
