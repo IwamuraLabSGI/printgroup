@@ -10,6 +10,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `qr_code_feature_hash_caches`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `qr_code_feature_hash_caches` (
+  `hash` double unsigned NOT NULL COMMENT 'featureから計算されるhash',
+  `qr_code_ids` json NOT NULL COMMENT 'hashを持つqr_code.idのリスト',
+  UNIQUE KEY `hash` (`hash`),
+  KEY `index_hash` (`hash`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='qrコードの特徴量から生成されるhashとその値を持つqr_code.idの集計テーブル';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `qr_code_features`
 --
 
@@ -23,7 +37,7 @@ CREATE TABLE `qr_code_features` (
   KEY `fk_to_qr_code` (`qr_code_id`),
   KEY `index_feature` (`feature`),
   CONSTRAINT `fk_to_qr_code` FOREIGN KEY (`qr_code_id`) REFERENCES `qr_codes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19531 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='qrコードの特徴量を管理するテーブル';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='qrコードの特徴量を管理するテーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,8 +49,12 @@ CREATE TABLE `qr_code_features` (
 CREATE TABLE `qr_codes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `s3_uri` varchar(255) COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT 'QRコード画像があるs3のuri',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='qrコードを管理するテーブル';
+  `feature_hash_cache_created` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'feature_hash_cacheが作成されたか',
+  `file_name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'QRコード画像の名前',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_s3_uri` (`s3_uri`),
+  KEY `index_feature_hash_cache_created` (`feature_hash_cache_created`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='qrコードを管理するテーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,5 +92,7 @@ LOCK TABLES `schema_migrations` WRITE;
 INSERT INTO `schema_migrations` (version) VALUES
   ('20220624083846'),
   ('20220713075203'),
-  ('20220807053605');
+  ('20220807053605'),
+  ('20220807073623'),
+  ('20220811101855');
 UNLOCK TABLES;
