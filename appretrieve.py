@@ -3,7 +3,7 @@ import appproc
 from llah.descriptor_extractor import DescriptorExtractor
 
 
-def retrieveall(ID):
+def retrieve_all(ID):
     print("特徴点抽出中 (上からシアン・マゼンダ・イエロー)")
     Cyankey = appproc.detectFeatures(1, "./templates/CyanIMG/" + str(ID) + ".jpg")
     Magendakey = appproc.detectFeatures(2, "./templates/MagendaIMG/" + str(ID) + ".jpg")

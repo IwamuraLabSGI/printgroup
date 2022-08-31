@@ -44,7 +44,7 @@ def index():
             img = cv2.imdecode(img_array, 1)
             # グレースケール変換
             appink.main(ID, img)
-            LLAH = appretrieve.retrieveall(ID)
+            LLAH = appretrieve.retrieve_all(ID)
             for i in range(3):
                 for j in range(3):
                     if (LLAH[i][j][0] != 0):
