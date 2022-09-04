@@ -15,8 +15,8 @@ def register_all(ID):
     Magendadescriptors = descriptor_extractor.OLDextract(Magendakey)
     Yellowdescriptors = descriptor_extractor.OLDextract(Yellowkey)
 
-    DBDB.RegisterFeature(1, ID, Cyandescriptors)
-    DBDB.RegisterFeature(2, ID, Magendadescriptors)
-    DBDB.RegisterFeature(3, ID, Yellowdescriptors)
+    DBDB.register_feature(1, ID, Cyandescriptors)
+    DBDB.register_feature(2, ID, Magendadescriptors)
+    DBDB.register_feature(3, ID, Yellowdescriptors)
 
     return None

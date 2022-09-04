@@ -3,13 +3,17 @@ import MySQLdb
 import collections
 
 
-def Register(color, ID, cx, cy):
-    # データベースへの接続とカーソルの生成
-    connection = MySQLdb.connect(
+def get_connection():
+    return MySQLdb.connect(
         host='localhost',
         user='root',
         passwd='dragonash',
         db='mydb')
+
+
+def Register(color, ID, cx, cy):
+    # データベースへの接続とカーソルの生成
+    connection = get_connection()
     cursor = connection.cursor()
     dot = ","
     n = 1
@@ -27,55 +31,42 @@ def Register(color, ID, cx, cy):
             n = n + 1
             cursor.execute(sql)
             connection.commit()
-            cursor.close
+            cursor.close()
             # 保存を実行
 
     # 接続を閉じる
     connection.close()
 
 
-def RegisterFeature(color, ID, descriptors):
+def register_feature(color, ID, descriptors):
     # データベースへの接続とカーソルの生成
-    connection = MySQLdb.connect(
-        host='localhost',
-        user='root',
-        passwd='dragonash',
-        db='mydb')
+    connection = get_connection()
     cursor = connection.cursor()
     dot = ","
     n = 1
-    Q = 0
-    index = 0
     # ここに実行したいコードを入力します
     for i in range(len(descriptors)):
-        if (color == 1):
+        if color == 1:
             Usedb = "FeatureLLAHCyanDB"
-        elif (color == 2):
+        elif color == 2:
             Usedb = "FeatureLLAHMagendaDB"
         else:
             Usedb = "FeatureLLAHYellowDB"
-        if (descriptors[i] != 0):
-            Q = int(descriptors[i] / (1086))
-            index = descriptors[i] % (1086)
+        if descriptors[i] != 0:
+            Q = int(descriptors[i] / 1086)
+            index = descriptors[i] % 1086
             sql = "INSERT INTO " + Usedb + "(Indexnumber,ID,Featurenumber,Q) VALUES(" + str(index) + dot + str(
                 ID) + dot + str(n) + dot + str(Q) + ");"
             n = n + 1
             cursor.execute(sql)
             connection.commit()
-            cursor.close
-            # 保存を実行
-
-    # 接続を閉じる
+            cursor.close()
     connection.close()
 
 
 def retrieveFeature(color, descriptors):
     # データベースへの接続とカーソルの生成
-    connection = MySQLdb.connect(
-        host='localhost',
-        user='root',
-        passwd='dragonash',
-        db='mydb')
+    connection = get_connection()
     cursor = connection.cursor()
     dot = ","
     n = 1
@@ -103,7 +94,7 @@ def retrieveFeature(color, descriptors):
             kk = 0
             for i in rows:
                 answer.append(i[1])
-            cursor.close
+            cursor.close()
             # 保存を実行
     c = collections.Counter(answer)
     for i in range(len(c)):
@@ -116,11 +107,7 @@ def retrieveFeature(color, descriptors):
 
 def NewID():
     # データベースへの接続とカーソルの生成
-    connection = MySQLdb.connect(
-        host='localhost',
-        user='root',
-        passwd='dragonash',
-        db='mydb')
+    connection = get_connection()
     cursor = connection.cursor()
     # ここに実行したいコードを入力します
     sql = "select max(id) from Cyandb;"
