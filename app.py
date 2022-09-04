@@ -27,6 +27,7 @@ def index():
     start_time = datetime.now()
     all_time = 0
     print("開始時間： ", start_time)
+    # TODO: 同時アクセスがあったときに不具合が発生する
     appink.imageclear()
     time = '画像入力待ち'
     img_name = ""
@@ -42,8 +43,8 @@ def index():
         # 画像データ用配列にデータがあれば
         if len(img_array) != 0:
             img = cv2.imdecode(img_array, 1)
-            # グレースケール変換
-            appink.main(ID, img)
+            # TODO: IDからstaticフォルダないの画像を特定して渡すのではなくメモリの画像情報を共有する
+            cmy = appink.binarize_as_cmy(ID, img)
             LLAH = appretrieve.retrieve_all(ID)
             for i in range(3):
                 for j in range(3):
@@ -75,13 +76,11 @@ def form():
         # 画像データ用配列にデータがあれば
         if len(img_array) != 0:
             img = cv2.imdecode(img_array, 1)
-            # グレースケール変換
             ID = DBDB.NewID()
-            appink.main(ID, img)
+            cmy = appink.binarize_as_cmy(ID, img)
             appink.register(ID, img)
-            appregist.registall(ID)
+            appregist.register_all(ID)
             time = "登録画像待ち ⇨ 登録が完了しました(左から順に入力画像、CMY画像)"
-    # 画像の保存
 
     return render_template('form.html', img_name=img_name, time=time, ID=ID)
 

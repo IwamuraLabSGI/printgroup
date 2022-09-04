@@ -15,6 +15,7 @@ scipy = "^1.8.1"
 Pillow = "^9.2.0"
 matplotlib = "^3.5.2"
 Flask = "^2.2.2"
+mysqlclient = "^2.1.1"
 
 [tool.poetry.dev-dependencies]
 

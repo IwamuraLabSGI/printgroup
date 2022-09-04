@@ -121,7 +121,22 @@ def register(ID, img):
     cv2.imwrite("./templates/RegistIMG/" + str(ID) + ".jpg", img)
 
 
-def main(ID, img):
+def binarize_img(img: np.ndarray) -> np.ndarray:
+    print("グレースケール")
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    print("適応2値化")
+    img = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 101, 0)
+
+    print("2値化")
+    _, img = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+
+    return img
+
+
+# TODO: 引数でIDからpathを作って最適化した画像を保存するのではなく、画像情報を返す。
+# TODO: 使用していない処理、変数を消す。
+def binarize_as_cmy(ID, img):
     x = int(img.shape[0] * (1280 / img.shape[1]))
     img = cv2.resize(img, dsize=(1280, x))
     "1.原画像の入力"
@@ -173,32 +188,18 @@ def main(ID, img):
     img_Yellow = np.zeros([size[0], size[1], size[2]])
     img_Yellow = colorInk(src, img_Yellow, 15, 65, 60, 255, 180, 255)
 
-    "7.グレースケール変換"
-    print("グレースケール")
-    img_Cyan = cv2.cvtColor(img_Cyan, cv2.COLOR_BGR2GRAY)
-    img_Magenda = cv2.cvtColor(img_Magenda, cv2.COLOR_BGR2GRAY)
-    img_Yellow = cv2.cvtColor(img_Yellow, cv2.COLOR_BGR2GRAY)
-
-    "8.適応2値化"
-    print("適応")
-    img_Cyan = cv2.adaptiveThreshold(img_Cyan, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 101, 0)
-    img_Magenda = cv2.adaptiveThreshold(img_Magenda, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 101, 0)
-    img_Yellow = cv2.adaptiveThreshold(img_Yellow, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 101, 0)
-
-    "9.2値化"
-    print("通常")
-    retC, img_Cyan = cv2.threshold(img_Cyan, 127, 255, cv2.THRESH_BINARY)
-    retM, img_Magenda = cv2.threshold(img_Magenda, 127, 255, cv2.THRESH_BINARY)
-    retY, img_Yellow = cv2.threshold(img_Yellow, 127, 255, cv2.THRESH_BINARY)
+    img_Cyan = binarize_img(img_Cyan)
+    img_Magenda = binarize_img(img_Magenda)
+    img_Yellow = binarize_img(img_Yellow)
 
     "10.出力画像の保存"
     print("保存")
-    out = [0, 0, 0, 0]
-    out[0] = "./templates/CyanIMG/" + str(ID) + ".jpg"
-    out[1] = "./templates/MagendaIMG/" + str(ID) + ".jpg"
-    out[2] = "./templates/YellowIMG/" + str(ID) + ".jpg"
-    cv2.imwrite(out[0], img_Cyan)
-    cv2.imwrite(out[1], img_Magenda)
-    cv2.imwrite(out[2], img_Yellow)
+    cv2.imwrite("./templates/CyanIMG/" + str(ID) + ".jpg", img_Cyan)
+    cv2.imwrite("./templates/MagendaIMG/" + str(ID) + ".jpg", img_Magenda)
+    cv2.imwrite("./templates/YellowIMG/" + str(ID) + ".jpg", img_Yellow)
 
-    return None
+    return {
+        "cyan": img_Cyan,
+        "magenta": img_Magenda,
+        "yellow": img_Yellow
+    }

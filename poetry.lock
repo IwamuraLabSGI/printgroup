@@ -134,6 +134,14 @@ python-dateutil = ">=2.7"
 setuptools_scm = ">=4"
 
 [[package]]
+name = "mysqlclient"
+version = "2.1.1"
+description = "Python interface to MySQL"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
 name = "numpy"
 version = "1.23.0"
 description = "NumPy is the fundamental package for array computing with Python."
@@ -315,7 +323,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10,<3.11"
-content-hash = "b4fe77d5887dca3d3022b8ad7b3a74a8e61854230b69a066826ad12274d07885"
+content-hash = "462c4ef206cdb9d4c45b646a7cef7ff5cf085a3167c1ed46b293bf1e0c45f304"
 
 [metadata.files]
 click = []
@@ -385,6 +393,7 @@ jinja2 = []
 kiwisolver = []
 markupsafe = []
 matplotlib = []
+mysqlclient = []
 numpy = [
     {file = "numpy-1.23.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:58bfd40eb478f54ff7a5710dd61c8097e169bc36cc68333d00a9bcd8def53b38"},
     {file = "numpy-1.23.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:196cd074c3f97c4121601790955f915187736f9cf458d3ee1f1b46aff2b1ade0"},
