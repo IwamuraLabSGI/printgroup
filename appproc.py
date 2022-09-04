@@ -26,15 +26,15 @@ def register_features(ID, color, image):
     if color == 1:
         image_1 = cv2.drawContours(image, contours, -1, (255, 255, 0), 2, cv2.LINE_AA)
         cv2.imwrite('./templates/IMG/procCyan.jpg', image_1)
-        DBDB.Register(1, ID, cx, cy)
+        DBDB.register(1, ID, cx, cy)
     elif color == 2:
         image_1 = cv2.drawContours(image, contours, -1, (0, 0, 255), 2, cv2.LINE_AA)
         cv2.imwrite('./templates/IMG/procMagenda.jpg', image_1)
-        DBDB.Register(2, ID, cx, cy)
+        DBDB.register(2, ID, cx, cy)
     else:
         image_1 = cv2.drawContours(image, contours, -1, (0, 255, 255), 2, cv2.LINE_AA)
         cv2.imwrite('./templates/IMG/procYellow.jpg', image_1)
-        DBDB.Register(3, ID, cx, cy)
+        DBDB.register(3, ID, cx, cy)
     print("カラー：", color, "　総特徴点数：", j)
     points = np.zeros((j, 3))
     for i in range(j):

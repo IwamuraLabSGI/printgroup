@@ -11,7 +11,7 @@ def get_connection():
         db='mydb')
 
 
-def Register(color, ID, cx, cy):
+def register(color, ID, cx, cy):
     # データベースへの接続とカーソルの生成
     connection = get_connection()
     cursor = connection.cursor()
