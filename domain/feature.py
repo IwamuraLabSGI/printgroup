@@ -42,6 +42,8 @@ def get_features_from_img(img) -> list[float]:
     c_img_filter = c_img_data > 120
     c_img_data = c_img_data * c_img_filter
 
+    # TODO: magenta, yellow
+
     keypoints = KeypointExtractor.extract(c_img_data)
     descriptor_extractor = DescriptorExtractor(5, 2)
     descriptors = descriptor_extractor.extract(keypoints)
