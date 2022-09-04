@@ -80,7 +80,7 @@ def form():
             ID = DBDB.NewID()
             appink.main(ID, img)
             appink.register(ID, img)
-            appregist.registall(ID)
+            appregist.register_all(ID)
             time = "登録画像待ち ⇨ 登録が完了しました(左から順に入力画像、CMY画像)"
     # 画像の保存
 
