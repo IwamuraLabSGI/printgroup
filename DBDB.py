@@ -64,7 +64,7 @@ def register_feature(color, ID, descriptors):
     connection.close()
 
 
-def retrieveFeature(color, descriptors):
+def retrieve_feature(color, descriptors):
     # データベースへの接続とカーソルの生成
     connection = get_connection()
     cursor = connection.cursor()
