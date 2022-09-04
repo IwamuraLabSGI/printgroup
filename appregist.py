@@ -1,10 +1,6 @@
-import sys
 import DBDB
 import appproc
 from llah.descriptor_extractor import DescriptorExtractor
-
-args = sys.argv
-
 
 def registall(ID):
     print("特徴点抽出中 (上からシアン・マゼンダ・イエロー)")
