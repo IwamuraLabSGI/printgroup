@@ -36,7 +36,7 @@ CREATE TABLE `qr_code_features` (
   `color` enum('cyan','magenta','yellow') COLLATE utf8mb4_bin NOT NULL COMMENT '特徴量抽出に使用した色',
   PRIMARY KEY (`id`),
   KEY `fk_to_qr_code` (`qr_code_id`),
-  KEY `index_feature` (`feature`),
+  KEY `index_feature_and_color` (`feature`,`color`),
   CONSTRAINT `fk_to_qr_code` FOREIGN KEY (`qr_code_id`) REFERENCES `qr_codes` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='qrコードの特徴量を管理するテーブル';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -96,5 +96,6 @@ INSERT INTO `schema_migrations` (version) VALUES
   ('20220807053605'),
   ('20220807073623'),
   ('20220811101855'),
-  ('20220904082712');
+  ('20220904082712'),
+  ('20220906090303');
 UNLOCK TABLES;

@@ -115,7 +115,6 @@ class DescriptorExtractor:
                     triangle_perimeter_rate: float = 0
                     if next_perimeter != 0:
                         triangle_perimeter_rate = perimeter / next_perimeter
-                    # TODO: 離散化
                     perimeter_rate_attributes.append(triangle_perimeter_rate)
                 keypoint_attributes.append(perimeter_rate_attributes)
                 # TODO: 必要なら面積比の特徴量も
