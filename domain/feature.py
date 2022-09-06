@@ -1,8 +1,34 @@
+import math
+
 import numpy as np
 from PIL import Image
+from matplotlib import pyplot as plt
 
 from llah.keypoint_extractor import KeypointExtractor
 from llah.descriptor_extractor import DescriptorExtractor
+
+
+class Feature:
+    EFFECTIVE_DECIMAL_DIGIT = 3
+
+    @classmethod
+    def __discretize(cls, val: float):
+        if val > 1:
+            val = 1 / val
+        result = math.floor(val * (10 ** cls.EFFECTIVE_DECIMAL_DIGIT))
+        return result
+
+    @classmethod
+    def get_from_descriptor(cls, descriptor: list[float]):
+        discretized_elements: list[float] = []
+        for elem in descriptor:
+            discretized_elements.append(Feature.__discretize(elem))
+
+        feature = 0
+        discretized_elements.sort()
+        for i, elem in enumerate(discretized_elements):
+            feature += elem * ((10 ** cls.EFFECTIVE_DECIMAL_DIGIT) ** i)
+        return feature
 
 
 def adjust_luminance(img: np.ndarray):
@@ -14,7 +40,44 @@ def adjust_luminance(img: np.ndarray):
     return (img - min_lum) * (255 / (max_lum - min_lum))
 
 
-def get_features_from_img(img) -> list[float]:
+def adjust_cyan(img):
+    if img.ndim != 2:
+        raise ValueError('引数の画像がgray-scaleではありません')
+    # TODO: 平滑化などの前処理
+    img = adjust_luminance(img)
+    img_filter = img > 120
+    return img * img_filter
+
+
+def adjust_magenta(img):
+    if img.ndim != 2:
+        raise ValueError('引数の画像がgray-scaleではありません')
+    # TODO: 平滑化などの前処理
+    img = adjust_luminance(img)
+    img_filter = img > 120
+    return img * img_filter
+
+
+def adjust_yellow(img):
+    if img.ndim != 2:
+        raise ValueError('引数の画像がgray-scaleではありません')
+    # TODO: 平滑化などの前処理
+    img = adjust_luminance(img)
+    img_filter = img > 120
+    return img * img_filter
+
+
+def get_features(img: np.ndarray):
+    keypoints = KeypointExtractor.extract(img)
+    descriptor_extractor = DescriptorExtractor(6, 2)
+    descriptors = descriptor_extractor.extract(keypoints)
+    features: list[float] = []
+    for descriptor in descriptors:
+        features.append(Feature.get_from_descriptor(descriptor))
+    return features
+
+
+def get_cmy_features_from_img(img):
     # グレーの領域を白に
     hsv_img = img.convert("HSV")
     hsv_img_data = np.asarray(hsv_img, np.uint8)
@@ -35,16 +98,15 @@ def get_features_from_img(img) -> list[float]:
     cmyk_img = img.convert('CMYK')
     cmyk_img_data = np.asarray(cmyk_img, np.uint8)
 
-    # cyan抽出
-    c_img_data = cmyk_img_data[:, :, 0]
-    c_img_data = adjust_luminance(c_img_data)
-    # TODO: 平滑化などの前処理
-    c_img_filter = c_img_data > 120
-    c_img_data = c_img_data * c_img_filter
+    cyan_img = adjust_cyan(cmyk_img_data[:, :, 0])
+    cyan_features = get_features(cyan_img)
+    magenta_img = adjust_magenta(cmyk_img_data[:, :, 1])
+    magenta_features = get_features(magenta_img)
+    yellow_img = adjust_yellow(cmyk_img_data[:, :, 2])
+    yellow_features = get_features(yellow_img)
 
-    keypoints = KeypointExtractor.extract(c_img_data)
-    descriptor_extractor = DescriptorExtractor(5, 2)
-    descriptors = descriptor_extractor.extract(keypoints)
-    # TODO: ハッシュ計算考える
-    features = list(map(lambda item: sum(item), descriptors))
-    return features
+    return {
+        'cyan': cyan_features,
+        'magenta': magenta_features,
+        'yellow': yellow_features,
+    }

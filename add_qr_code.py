@@ -5,7 +5,8 @@ import sys
 from schema.mysql import MySQL, MySQLConfig
 from repository.mysql.qr_code import QRCode as QRCodeRepo
 from service.qr_code import QRCode as QRCodeSvc
-from domain.feature import get_features_from_img
+from domain.feature import get_cmy_features_from_img
+import model.mysql as model
 
 mysqlConfig = MySQLConfig(
     host='localhost',
@@ -35,7 +36,23 @@ for file_path in target_file_paths:
     print(f'add qr code: {file_path}')
     try:
         with Image.open(file_path) as img:
-            features = get_features_from_img(img)
+            cmy_features = get_cmy_features_from_img(img)
+            features: model.QRCodeFeatures = []
+            for cmy_feature in cmy_features.get('cyan'):
+                features.append(model.QRCodeFeature(
+                    feature=cmy_feature,
+                    color=model.QRCodeFeatureColor.cyan
+                ))
+            for cmy_feature in cmy_features.get('magenta'):
+                features.append(model.QRCodeFeature(
+                    feature=cmy_feature,
+                    color=model.QRCodeFeatureColor.magenta
+                ))
+            for cmy_feature in cmy_features.get('yellow'):
+                features.append(model.QRCodeFeature(
+                    feature=cmy_feature,
+                    color=model.QRCodeFeatureColor.yellow
+                ))
             qrCodeSvc.add(
                 file_name=os.path.basename(file_path),
                 features=features

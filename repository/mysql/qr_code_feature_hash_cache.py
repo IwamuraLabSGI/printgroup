@@ -1,9 +1,9 @@
 from schema.mysql import MySQL
 import model.mysql as model
-from sqlalchemy.dialects.mysql import insert
 
 QRCodeFeatureHashCaches = list[model.QRCodeFeatureHashCache]
 Hashes = list[float]
+
 
 class QRCodeFeatureHashCache:
     _mysql: MySQL

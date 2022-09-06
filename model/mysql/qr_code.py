@@ -13,7 +13,11 @@ class QRCode(Base):
     file_name = Column(String(255))
     feature_hash_cache_created = Column(Boolean, nullable=False, default=False)
 
+
 @dataclass
 class QRCodeCount:
     id: int
     count: int
+
+
+QRCodes = list[QRCode]
