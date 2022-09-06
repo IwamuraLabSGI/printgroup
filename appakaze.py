@@ -8,10 +8,7 @@ import sys
 args = sys.argv
 
 
-def AKAZEmain(query, img):
-    print("AKAZE中", query)
-    img1 = img
-    img2 = cv2.imread("./templates/RegistIMG/" + str(query) + ".jpg")
+def AKAZEmain(img1: np.ndarray, img2: np.ndarray):
     x1 = int(img1.shape[0] * (1280 / img1.shape[1]))
     x2 = int(img2.shape[0] * (1280 / img2.shape[1]))
     img1 = cv2.resize(img1, dsize=(1280, x1))

@@ -49,7 +49,10 @@ def index():
             for i in range(3):
                 for j in range(3):
                     if LLAH[i][j][0] != 0:
-                        AKAZE[n] = appakaze.AKAZEmain(LLAH[i][j][0], img)
+                        print("AKAZE中", LLAH[i][j][0])
+                        img1 = img
+                        img2 = cv2.imread("./templates/RegistIMG/" + str(LLAH[i][j][0]) + ".jpg")
+                        AKAZE[n] = appakaze.AKAZEmain(img1, img2)
                     n = n + 1
             Hantei = max(AKAZE)
             end_time = datetime.now()
