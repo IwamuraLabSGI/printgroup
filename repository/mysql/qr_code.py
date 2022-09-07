@@ -1,8 +1,6 @@
 import model.mysql as model
 from schema.mysql import MySQL
-from sqlalchemy import func
 
-Ids = list[int]
 QRCodeCounts = list[model.QRCodeCount]
 
 
@@ -33,7 +31,7 @@ class QRCode:
         qr_codes = self._mysql.get_session().query(model.QRCode).all()
         return qr_codes
 
-    def list_qr_code_ids_by_feature(self, feature: model.QRCodeFeature) -> Ids:
+    def list_qr_code_ids_by_feature(self, feature: model.QRCodeFeature) -> model.Ids:
         session = self._mysql.get_session()
         res = session.\
             query(model.QRCodeFeature.qr_code_id).\
@@ -43,7 +41,11 @@ class QRCode:
         qr_code_ids = list(map(lambda item: item[0], res))
         return qr_code_ids
 
-    def get_qr_code_ids_by_color_features(self, color: model.QRCodeFeatureColor, features: model.QRCodeFeatures) -> Ids:
+    def get_qr_code_ids_by_color_features(
+        self,
+        color: model.QRCodeFeatureColor,
+        features: model.QRCodeFeatures
+    ) -> model.Ids:
         features = list(map(lambda feature: feature.feature, features))
         session = self._mysql.get_session()
         res = session.\
@@ -56,8 +58,6 @@ class QRCode:
 
     def add(self, s3_uri: str, file_name: str, features: model.QRCodeFeatures) -> model.QRCode:
         session = self._mysql.get_session()
-
-        # TODO: transaction
         qr_code = model.QRCode(
             s3_uri=s3_uri,
             file_name=file_name
@@ -68,7 +68,6 @@ class QRCode:
             feature.qr_code_id = qr_code.id
         session.bulk_save_objects(features)
         session.commit()
-
         return qr_code
 
     def delete(self, qr_code_id):

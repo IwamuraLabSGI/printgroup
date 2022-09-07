@@ -2,7 +2,6 @@ import math
 
 import numpy as np
 from PIL import Image
-from matplotlib import pyplot as plt
 
 from llah.keypoint_extractor import KeypointExtractor
 from llah.descriptor_extractor import DescriptorExtractor
