@@ -1,7 +1,11 @@
 import os.path
 
+import cv2
+import numpy as np
 from PIL import Image
 import sys
+
+from appink import binarize_as_cmy
 from schema.mysql import MySQL, MySQLConfig
 from repository.mysql.qr_code import QRCode as QRCodeRepo
 from service.qr_code import QRCode as QRCodeSvc
@@ -12,7 +16,7 @@ mysqlConfig = MySQLConfig(
     host='localhost',
     port=3306,
     user='root',
-    password='',
+    password='password',
     database='qr_auth'
 )
 
@@ -37,6 +41,7 @@ for file_path in target_file_paths:
     try:
         with Image.open(file_path) as img:
             cmy_features = get_cmy_features_from_img(img)
+            # binarize_as_cmy(0, cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR))
             features: model.QRCodeFeatures = []
             for cmy_feature in cmy_features.get('cyan'):
                 features.append(model.QRCodeFeature(
