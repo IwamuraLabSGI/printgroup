@@ -80,6 +80,9 @@ class QRCode:
         )
         yellow_mode_id = QRCode.get_mode_id(yellow_qr_code_ids)
 
+        print(cyan_qr_code_ids)
+        print(magenta_qr_code_ids)
+        print(yellow_qr_code_ids)
         if cyan_mode_id == magenta_mode_id == yellow_mode_id:
             return self._repo.get(cyan_mode_id)
         else:
