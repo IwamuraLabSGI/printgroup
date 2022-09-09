@@ -29,24 +29,27 @@ class Feature:
 
     @classmethod
     def get_cmy_features_from_img(cls, img):
+        img.show()
+
         imgCMYGetter = ImgCMYGetter(img)
+        Image.fromarray(imgCMYGetter.hsv_img, 'HSV').show()
 
         cyan_img = imgCMYGetter.get_cyan()
-        # cyan_img = Image.fromarray(cyan_img, "HSV")
-        # cyan_img.show()
+        cyan_img = Image.fromarray(cyan_img, "HSV")
+        cyan_img.show()
 
         magenta_img = imgCMYGetter.get_magenta()
-        # magenta_img = Image.fromarray(magenta_img, "HSV")
-        # magenta_img.show()
+        magenta_img = Image.fromarray(magenta_img, "HSV")
+        magenta_img.show()
 
         yellow_img = imgCMYGetter.get_yellow()
-        # yellow_img = Image.fromarray(yellow_img, "HSV")
-        # yellow_img.show()
+        yellow_img = Image.fromarray(yellow_img, "HSV")
+        yellow_img.show()
 
         return {
-            'cyan': Feature.get_features(cyan_img),
-            'magenta': Feature.get_features(magenta_img),
-            'yellow': Feature.get_features(yellow_img),
+            'cyan': Feature.get_features(cyan_img[:, :, 2]),
+            'magenta': Feature.get_features(magenta_img[:, :, 2]),
+            'yellow': Feature.get_features(yellow_img[:, :, 2]),
         }
 
     @classmethod
@@ -81,7 +84,7 @@ class ImgCMYGetter:
         cyan_img[:, :, 0] = cyan_img[:, :, 0] * cyan_filter
         cyan_img[:, :, 1] = cyan_img[:, :, 1] * cyan_filter
         cyan_img[:, :, 2] = cyan_img[:, :, 2] * cyan_filter
-        return cyan_img[:, :, 2]
+        return cyan_img
 
     def get_magenta(self):
         magenta_filter = ImgCMYGetter.get_magenta_filter_from_hue(self.hsv_img[:, :, 0])
@@ -89,7 +92,7 @@ class ImgCMYGetter:
         magenta_img[:, :, 0] = magenta_img[:, :, 0] * magenta_filter
         magenta_img[:, :, 1] = magenta_img[:, :, 1] * magenta_filter
         magenta_img[:, :, 2] = magenta_img[:, :, 2] * magenta_filter
-        return magenta_img[:, :, 2]
+        return magenta_img
 
     def get_yellow(self):
         yellow_filter = ImgCMYGetter.get_yellow_filter_from_hue(self.hsv_img[:, :, 0])
@@ -97,7 +100,7 @@ class ImgCMYGetter:
         yellow_img[:, :, 0] = yellow_img[:, :, 0] * yellow_filter
         yellow_img[:, :, 1] = yellow_img[:, :, 1] * yellow_filter
         yellow_img[:, :, 2] = yellow_img[:, :, 2] * yellow_filter
-        return yellow_img[:, :, 2]
+        return yellow_img
 
     @classmethod
     def get_cyan_filter_from_hue(cls, hue: np.ndarray):
