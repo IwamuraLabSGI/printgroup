@@ -23,3 +23,6 @@ class Keypoint:
 
     def distance_from(self, keypoint: Keypoint):
         return math.sqrt((self.x - keypoint.x) ** 2 + (self.y - keypoint.y) ** 2)
+
+
+Keypoints = list[Keypoint]

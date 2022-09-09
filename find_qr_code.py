@@ -2,18 +2,18 @@ from datetime import datetime
 
 from PIL import Image
 import sys
-from domain.feature import get_cmy_features_from_img
+from domain import Feature
 from schema.mysql import MySQL, MySQLConfig
 from repository.mysql.qr_code import QRCode as QRCodeRepo
 from service.qr_code import QRCode as QRCodeSvc
 import model.mysql as model
-
+from utils.env import env
 
 mysqlConfig = MySQLConfig(
-    host='localhost',
-    port=3306,
-    user='root',
-    password='password',
+    host=env('RDB_HOST'),
+    port=env('RDB_PORT'),
+    user=env('RDB_USER'),
+    password=env('RDB_PASS'),
     database='qr_auth'
 )
 
@@ -26,7 +26,7 @@ args = sys.argv
 with Image.open(args[1]) as img:
     start_time = datetime.now()
 
-    cmy_features = get_cmy_features_from_img(img)
+    cmy_features = Feature.get_cmy_features_from_img(img)
 
     cyan_features = list(map(lambda item: model.QRCodeFeature(
         feature=item,
