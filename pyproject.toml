@@ -16,6 +16,7 @@ Pillow = "^9.2.0"
 matplotlib = "^3.5.2"
 Flask = "^2.2.2"
 mysqlclient = "^2.1.1"
+python-dotenv = "^0.21.0"
 
 [tool.poetry.dev-dependencies]
 
