@@ -49,7 +49,9 @@ class QRCode:
         return self._repo.get(max_item[0])
 
     @classmethod
-    def get_mode_id(cls, ids: model.Ids) -> int:
+    def get_mode_id(cls, ids: model.Ids) -> int | None:
+        if len(ids) == 0:
+            return None
         return max(set(ids), key=ids.count)
 
     def get_best_candidate_v2(

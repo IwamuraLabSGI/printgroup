@@ -1,27 +1,13 @@
 import os.path
-
-import cv2
-import numpy as np
 from PIL import Image
 import sys
-
-from appink import binarize_as_cmy
-from schema.mysql import MySQL, MySQLConfig
 from repository.mysql.qr_code import QRCode as QRCodeRepo
+from schema.mysql import load_mysql
 from service.qr_code import QRCode as QRCodeSvc
 from domain import Feature
 import model.mysql as model
-from utils.env import env
 
-mysqlConfig = MySQLConfig(
-    host=env('RDB_HOST'),
-    port=env('RDB_PORT'),
-    user=env('RDB_USER'),
-    password=env('RDB_PASS'),
-    database='qr_auth'
-)
-
-mysql = MySQL(mysqlConfig)
+mysql = load_mysql()
 mysql.connect()
 qrCodeRepo = QRCodeRepo(mysql)
 qrCodeSvc = QRCodeSvc(qrCodeRepo)

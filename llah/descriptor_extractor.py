@@ -5,6 +5,27 @@ from llah.keypoint import Keypoint
 from scipy.spatial import KDTree
 import copy
 import numpy as np
+from dataclasses import dataclass
+
+
+
+@dataclass
+class TriangleRateAttribute:
+    start_index: int
+    perimeter_rate: float
+    area_rate: float
+
+
+TriangleRateAttributes = list[TriangleRateAttribute]
+
+
+@dataclass
+class Descriptor:
+    keypoint: Keypoint
+    multi_pattern_attributes: list[TriangleRateAttributes]
+
+
+Descriptors = list[Descriptor]
 
 
 class DescriptorExtractor:
@@ -26,6 +47,10 @@ class DescriptorExtractor:
     @classmethod
     def triangle_perimeter(cls, p1: Keypoint, p2: Keypoint, p3: Keypoint):
         return p1.distance_from(p2) + p2.distance_from(p3) + p3.distance_from(p1)
+
+    @classmethod
+    def triangle_area(cls, p1: Keypoint, p2: Keypoint, p3: Keypoint):
+        return abs((p1.x - p3.x) * (p2.y - p1.y) - (p1.x - p2.x) * (p3.y - p1.y)) / 2
 
     # QRコードは英文書と異なり、特徴点領域の面積はほぼ均等で、特徴点の分散は色の濃度によるのでサンプリング手法は変えた方が良さそう
     def __sample_keypoint(self, keypoints: list[Keypoint], num: int):
@@ -82,23 +107,23 @@ class DescriptorExtractor:
             raise ValueError('特徴点の数が足りません。')
 
         # TODO: sampling処理追加
-        kdTree = Keypoint.get_kd_tree(keypoints)
-        descriptors: list[list[float]] = []
+        kd_tree = Keypoint.get_kd_tree(keypoints)
+        descriptors: Descriptors = []
         for i, keypoint in enumerate(keypoints):
             limit = self._neighbor_total + self._additional_neighbor_total + 1
-            _, indexes = kdTree.query([keypoint.x, keypoint.y], limit)
+            _, indexes = kd_tree.query([keypoint.x, keypoint.y], limit)
             # 近傍点から特徴量を全パターン計算
-            neighborIndexes = indexes[1:]
+            neighbor_indexes = indexes[1:]
 
-            keypoint_attributes: list[list[float]] = []
-            for combination in itertools.combinations(neighborIndexes, self._neighbor_total):
+            descriptor = Descriptor(keypoint, [])
+            for combination in itertools.combinations(neighbor_indexes, self._neighbor_total):
                 # TODO: get_neighbors切り出し
                 neighbors = list(map(lambda index: keypoints[index], combination))
                 # 時計回りに近傍点を3点ずつって特徴量を計算
                 neighbors.sort(key=lambda item: np.arctan2(item.x - keypoint.x, item.y - keypoint.y))
                 target_total = math.floor(len(neighbors) / 2)
 
-                perimeter_rate_attributes: list[float] = []
+                attributes: TriangleRateAttributes = []
                 for target_num in range(target_total):
                     target: list[Keypoint] = []
                     start_index = target_num * 2
@@ -108,17 +133,29 @@ class DescriptorExtractor:
                         target.extend(neighbors[0:1])
                     else:
                         target.extend(neighbors[start_index:end_index])
+
+                    perimeter_rate: float = 0
                     # add: c++ではrateが1以下になるように逆数をとっていたが特に意味もなさそうなので削除
                     perimeter = DescriptorExtractor.triangle_perimeter(keypoint, target[0], target[1])
                     next_perimeter = DescriptorExtractor.triangle_perimeter(keypoint, target[1], target[2])
                     # TODO: 分母が0になるような場合を確認
-                    triangle_perimeter_rate: float = 0
                     if next_perimeter != 0:
-                        triangle_perimeter_rate = perimeter / next_perimeter
-                    perimeter_rate_attributes.append(triangle_perimeter_rate)
-                keypoint_attributes.append(perimeter_rate_attributes)
+                        perimeter_rate = perimeter / next_perimeter
+
+                    area_rate: float = 0
+                    area = DescriptorExtractor.triangle_area(keypoint, target[0], target[1])
+                    next_area = DescriptorExtractor.triangle_area(keypoint, target[1], target[2])
+                    if next_area != 0:
+                        area_rate = area / next_area
+
+                    attributes.append(TriangleRateAttribute(
+                        start_index=start_index,
+                        perimeter_rate=perimeter_rate,
+                        area_rate=area_rate
+                    ))
+                descriptor.multi_pattern_attributes.append(attributes)
                 # TODO: 必要なら面積比の特徴量も
-            descriptors.extend(keypoint_attributes)
+            descriptors.append(descriptor)
         return descriptors
 
     def OLDextract(self, keypoints: list[Keypoint]):

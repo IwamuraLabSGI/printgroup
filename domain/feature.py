@@ -2,11 +2,12 @@ import math
 import numpy as np
 from PIL import Image
 import llah
+from .img_painter import ImgPainter, Point
 
 
 # TODO: imgはnp.ndarrayで受け取るようにする
 class Feature:
-    EFFECTIVE_DECIMAL_DIGIT = 3
+    EFFECTIVE_DECIMAL_DIGIT = 2
 
     @classmethod
     def __discretize(cls, val: float):
@@ -16,35 +17,36 @@ class Feature:
         return result
 
     @classmethod
-    def get_from_descriptor(cls, descriptor: list[float]):
-        discretized_elements: list[float] = []
-        for elem in descriptor:
-            discretized_elements.append(Feature.__discretize(elem))
+    def list_from_descriptor(cls, descriptor: llah.Descriptor):
+        features: list[int] = []
+        for attrs in descriptor.multi_pattern_attributes:
+            feature_elements: list[int] = []
+            for attr in attrs:
+                feature_elements.append(cls.__discretize(attr.perimeter_rate))
+                feature_elements.append(cls.__discretize(attr.area_rate))
 
-        feature = 0
-        discretized_elements.sort()
-        for i, elem in enumerate(discretized_elements):
-            feature += elem * ((10 ** cls.EFFECTIVE_DECIMAL_DIGIT) ** i)
-        return feature
+            feature = 0
+            for i, elem in enumerate(feature_elements):
+                feature += elem * ((10 ** cls.EFFECTIVE_DECIMAL_DIGIT) ** i)
+            features.append(feature)
+
+        return features
 
     @classmethod
     def get_cmy_features_from_img(cls, img):
-        img.show()
+        # img.show()
 
         imgCMYGetter = ImgCMYGetter(img)
-        Image.fromarray(imgCMYGetter.hsv_img, 'HSV').show()
+        # Image.fromarray(imgCMYGetter.hsv_img, 'HSV').show()
 
         cyan_img = imgCMYGetter.get_cyan()
-        cyan_img = Image.fromarray(cyan_img, "HSV")
-        cyan_img.show()
+        # Image.fromarray(cyan_img, "HSV").show()
 
         magenta_img = imgCMYGetter.get_magenta()
-        magenta_img = Image.fromarray(magenta_img, "HSV")
-        magenta_img.show()
+        # Image.fromarray(magenta_img, "HSV").show()
 
         yellow_img = imgCMYGetter.get_yellow()
-        yellow_img = Image.fromarray(yellow_img, "HSV")
-        yellow_img.show()
+        # Image.fromarray(yellow_img, "HSV").show()
 
         return {
             'cyan': Feature.get_features(cyan_img[:, :, 2]),
@@ -55,11 +57,14 @@ class Feature:
     @classmethod
     def get_features(cls, img: np.ndarray):
         keypoints = llah.KeypointExtractor.extract(img)
+        # points = list(map(lambda keypoint: Point(math.floor(keypoint.x), math.floor(keypoint.y)), keypoints))
+        # img = ImgPainter.paint_points(img, points, 4, 255)
+        # Image.fromarray(img, 'HSV').show()
         descriptor_extractor = llah.DescriptorExtractor(6, 2)
         descriptors = descriptor_extractor.extract(keypoints)
         features: list[float] = []
         for descriptor in descriptors:
-            features.append(Feature.get_from_descriptor(descriptor))
+            features.extend(Feature.list_from_descriptor(descriptor))
         return features
 
 
