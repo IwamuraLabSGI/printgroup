@@ -1,5 +1,8 @@
+import collections
 import math
 import uuid
+
+import numpy as np
 
 from repository.mysql.qr_code import QRCode as QRCodeRepo
 from model import mysql as model
@@ -26,9 +29,10 @@ class QRCode:
 
     @classmethod
     def __sample_features(cls, features: model.QRCodeFeatures) -> model.QRCodeFeatures:
+        sample_total = 300
         sampled_features: model.QRCodeFeatures = []
-        sample_span = math.floor(len(features) / 100)
-        for i in range(100):
+        sample_span = math.floor(len(features) / sample_total)
+        for i in range(sample_total):
             sampled_features.append(features[i*sample_span])
         return sampled_features
 
@@ -66,26 +70,27 @@ class QRCode:
             color=model.QRCodeFeatureColor.cyan,
             features=cyan_features
         )
-        cyan_mode_id = QRCode.get_mode_id(cyan_qr_code_ids)
 
         magenta_features = QRCode.__sample_features(magenta_features)
         magenta_qr_code_ids = self._repo.get_qr_code_ids_by_color_features(
             color=model.QRCodeFeatureColor.magenta,
             features=magenta_features
         )
-        magenta_mode_id = QRCode.get_mode_id(magenta_qr_code_ids)
 
         yellow_features = QRCode.__sample_features(yellow_features)
         yellow_qr_code_ids = self._repo.get_qr_code_ids_by_color_features(
             color=model.QRCodeFeatureColor.yellow,
             features=yellow_features
         )
-        yellow_mode_id = QRCode.get_mode_id(yellow_qr_code_ids)
 
-        print(cyan_qr_code_ids)
-        print(magenta_qr_code_ids)
-        print(yellow_qr_code_ids)
-        if cyan_mode_id == magenta_mode_id == yellow_mode_id:
-            return self._repo.get(cyan_mode_id)
-        else:
+        candidates = []
+        candidates.extend(cyan_qr_code_ids)
+        candidates.extend(magenta_qr_code_ids)
+        candidates.extend(yellow_qr_code_ids)
+
+        counter = collections.Counter(candidates)
+        print(counter)
+
+        if len(candidates) == 0:
             return None
+        return self._repo.get(QRCode.get_mode_id(candidates))

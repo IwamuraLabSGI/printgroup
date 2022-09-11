@@ -1,7 +1,13 @@
+import os
 from datetime import datetime
+
+import numpy as np
 from PIL import Image
 import sys
-from domain import Feature
+
+import llah
+import utils
+from domain import CmykKeypointExtractor, FeatureCalculator
 from repository.mysql.qr_code import QRCode as QRCodeRepo
 from schema.mysql import load_mysql
 from service.qr_code import QRCode as QRCodeSvc
@@ -13,40 +19,60 @@ qrCodeRepo = QRCodeRepo(mysql)
 qrCodeSvc = QRCodeSvc(qrCodeRepo)
 
 args = sys.argv
-with Image.open(args[1]) as img:
-    start_time = datetime.now()
+target_file_paths: list[str] = []
+if os.path.isfile(args[1]):
+    target_file_paths.append(args[1])
+else:
+    target_file_paths = utils.list_img_paths_in_dir(args[1])
 
-    cmy_features = Feature.get_cmy_features_from_img(img)
+search_result: list[str] = []
+for file_path in target_file_paths:
+    with Image.open(file_path) as img:
+        start_time = datetime.now()
 
-    cyan_features = list(map(lambda item: model.QRCodeFeature(
-        feature=item,
-        color=model.QRCodeFeatureColor.cyan
-    ), cmy_features.get('cyan')))
+        cmy_keypoints = CmykKeypointExtractor.extract(np.array(img, dtype=np.uint8))
 
-    magenta_features = list(map(lambda item: model.QRCodeFeature(
-        feature=item,
-        color=model.QRCodeFeatureColor.magenta
-    ), cmy_features.get('magenta')))
+        descriptor_extractor = llah.DescriptorExtractor(6, 2)
 
-    yellow_features = list(map(lambda item: model.QRCodeFeature(
-        feature=item,
-        color=model.QRCodeFeatureColor.yellow
-    ), cmy_features.get('yellow')))
+        cyan_descriptors = descriptor_extractor.extract(cmy_keypoints.get('cyan'))
+        magenta_descriptors = descriptor_extractor.extract(cmy_keypoints.get('magenta'))
+        yellow_descriptors = descriptor_extractor.extract(cmy_keypoints.get('yellow'))
 
-    qr_code = qrCodeSvc.get_best_candidate_v2(
-        cyan_features=cyan_features,
-        magenta_features=magenta_features,
-        yellow_features=yellow_features
-    )
+        cyan_features = list(map(lambda item: model.QRCodeFeature(
+            feature=item,
+            color=model.QRCodeFeatureColor.cyan
+        ), FeatureCalculator.calc(cyan_descriptors)))
 
-    if qr_code is None:
-        print('Not found')
-    else:
-        print(qr_code.__dict__)
+        magenta_features = list(map(lambda item: model.QRCodeFeature(
+            feature=item,
+            color=model.QRCodeFeatureColor.magenta
+        ), FeatureCalculator.calc(magenta_descriptors)))
 
-    time = datetime.now() - start_time
-    print(f'time: {time}')
+        yellow_features = list(map(lambda item: model.QRCodeFeature(
+            feature=item,
+            color=model.QRCodeFeatureColor.yellow
+        ), FeatureCalculator.calc(yellow_descriptors)))
 
+        qr_code = qrCodeSvc.get_best_candidate_v2(
+            cyan_features=cyan_features,
+            magenta_features=magenta_features,
+            yellow_features=yellow_features
+        )
+
+        time = datetime.now() - start_time
+        print(f'time: {time}')
+
+        if qr_code is None:
+            print('Not found')
+            search_result.append(f'{file_path}: Not found')
+        else:
+            print(f'Found: {qr_code.file_name}, {qr_code.id}')
+            search_result.append(f'{file_path}: {qr_code.file_name} [{time}]')
+
+
+# search_resultをファイルに出力する
+with open('dist/search_result.txt', 'w') as f:
+    f.write('\n'.join(search_result))
 
 
 

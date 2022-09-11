@@ -2,7 +2,6 @@ import itertools
 import math
 
 from llah.keypoint import Keypoint
-from scipy.spatial import KDTree
 import copy
 import numpy as np
 from dataclasses import dataclass
@@ -102,7 +101,7 @@ class DescriptorExtractor:
         sampledKeypoints.extend(additionalSampledKeypoints)
         return sampledKeypoints
 
-    def extract(self, keypoints: list[Keypoint]):
+    def extract(self, keypoints: list[Keypoint]) -> Descriptors:
         if len(keypoints) < self._neighbor_total + self._additional_neighbor_total:
             raise ValueError('特徴点の数が足りません。')
 
