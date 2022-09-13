@@ -24,7 +24,7 @@ def main():
 
     for file_path in target_file_paths:
         print(f'add qr code: {file_path}')
-        threading.Thread(target=add_qr_code, args=(file_path,)).start()
+        add_qr_code(file_path)
 
 
 def add_qr_code(file_path: str):

@@ -105,7 +105,6 @@ class DescriptorExtractor:
         if len(keypoints) < self._neighbor_total + self._additional_neighbor_total:
             raise ValueError('特徴点の数が足りません。')
 
-        # TODO: sampling処理追加
         kd_tree = Keypoint.get_kd_tree(keypoints)
         descriptors: Descriptors = []
         for i, keypoint in enumerate(keypoints):

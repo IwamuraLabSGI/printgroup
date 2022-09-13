@@ -1,3 +1,4 @@
+import math
 import os
 from datetime import datetime
 
@@ -12,6 +13,16 @@ from repository.mysql.qr_code import QRCode as QRCodeRepo
 from schema.mysql import load_mysql
 from service.qr_code import QRCode as QRCodeSvc
 import model.mysql as model
+
+
+def sample_features(features: model.QRCodeFeatures) -> model.QRCodeFeatures:
+    sample_total = 500
+    sampled_features: model.QRCodeFeatures = []
+    sample_span = math.floor(len(features) / sample_total)
+    for i in range(sample_total):
+        sampled_features.append(features[i * sample_span])
+    return sampled_features
+
 
 mysql = load_mysql()
 mysql.connect()
@@ -30,44 +41,22 @@ for file_path in target_file_paths:
     with Image.open(file_path) as img:
         start_time = datetime.now()
 
-        cmy_keypoints = CmykKeypointExtractor.extract(np.array(img, dtype=np.uint8))
+        qr_code = qrCodeSvc.find_qr_code(np.array(img, dtype=np.uint8))
 
-        descriptor_extractor = llah.DescriptorExtractor(6, 2)
-
-        cyan_descriptors = descriptor_extractor.extract(cmy_keypoints.get('cyan'))
-        magenta_descriptors = descriptor_extractor.extract(cmy_keypoints.get('magenta'))
-        yellow_descriptors = descriptor_extractor.extract(cmy_keypoints.get('yellow'))
-
-        cyan_features = list(map(lambda item: model.QRCodeFeature(
-            feature=item,
-            color=model.QRCodeFeatureColor.cyan
-        ), FeatureCalculator.calc(cyan_descriptors)))
-
-        magenta_features = list(map(lambda item: model.QRCodeFeature(
-            feature=item,
-            color=model.QRCodeFeatureColor.magenta
-        ), FeatureCalculator.calc(magenta_descriptors)))
-
-        yellow_features = list(map(lambda item: model.QRCodeFeature(
-            feature=item,
-            color=model.QRCodeFeatureColor.yellow
-        ), FeatureCalculator.calc(yellow_descriptors)))
-
-        qr_code = qrCodeSvc.get_best_candidate_v2(
-            cyan_features=cyan_features,
-            magenta_features=magenta_features,
-            yellow_features=yellow_features
-        )
-
-        time = datetime.now() - start_time
-        print(f'time: {time}')
+        total_time = datetime.now() - start_time
+        print(f'time: {total_time}')
 
         if qr_code is None:
             print('Not found')
             search_result.append(f'{file_path}: Not found')
         else:
-            print(f'Found: {qr_code.file_name}, {qr_code.id}')
-            search_result.append(f'{file_path}: {qr_code.file_name} [{time}]')
+            file_id = int(os.path.splitext(os.path.basename(file_path))[0])
+            detected_file_id = int(os.path.splitext(os.path.basename(qr_code.file_name))[0])
+            if file_id - 5000 != detected_file_id:
+                print(f'Not match: {file_id} != {detected_file_id}')
+                search_result.append(f'{file_path}: Not match: {file_id} != {detected_file_id}')
+            else:
+                print(f'Match: {file_id} == {detected_file_id}')
 
 
 # search_resultをファイルに出力する

@@ -4,6 +4,8 @@ import uuid
 
 import numpy as np
 
+import llah
+from domain import CmykKeypointExtractor, FeatureCalculator
 from repository.mysql.qr_code import QRCode as QRCodeRepo
 from model import mysql as model
 
@@ -29,7 +31,7 @@ class QRCode:
 
     @classmethod
     def __sample_features(cls, features: model.QRCodeFeatures) -> model.QRCodeFeatures:
-        sample_total = 300
+        sample_total = 500
         sampled_features: model.QRCodeFeatures = []
         sample_span = math.floor(len(features) / sample_total)
         for i in range(sample_total):
@@ -58,39 +60,44 @@ class QRCode:
             return None
         return max(set(ids), key=ids.count)
 
-    def get_best_candidate_v2(
-            self,
-            cyan_features: model.QRCodeFeatures,
-            magenta_features: model.QRCodeFeatures,
-            yellow_features: model.QRCodeFeatures
+    def find_qr_code(
+        self,
+        img: np.ndarray,
     ) -> model.QRCode | None:
-        cyan_features = QRCode.__sample_features(cyan_features)
+        cmy_keypoints = CmykKeypointExtractor.extract(img)
 
-        cyan_qr_code_ids = self._repo.get_qr_code_ids_by_color_features(
-            color=model.QRCodeFeatureColor.cyan,
-            features=cyan_features
-        )
+        descriptor_extractor = llah.DescriptorExtractor(6, 2)
 
-        magenta_features = QRCode.__sample_features(magenta_features)
-        magenta_qr_code_ids = self._repo.get_qr_code_ids_by_color_features(
-            color=model.QRCodeFeatureColor.magenta,
-            features=magenta_features
-        )
+        cyan_descriptors = descriptor_extractor.extract(cmy_keypoints.get('cyan'))
+        magenta_descriptors = descriptor_extractor.extract(cmy_keypoints.get('magenta'))
+        yellow_descriptors = descriptor_extractor.extract(cmy_keypoints.get('yellow'))
 
-        yellow_features = QRCode.__sample_features(yellow_features)
-        yellow_qr_code_ids = self._repo.get_qr_code_ids_by_color_features(
-            color=model.QRCodeFeatureColor.yellow,
-            features=yellow_features
-        )
+        cyan_features = list(map(lambda item: model.QRCodeFeature(
+            feature=item,
+            color=model.QRCodeFeatureColor.cyan
+        ), FeatureCalculator.calc(cyan_descriptors)))
 
-        candidates = []
-        candidates.extend(cyan_qr_code_ids)
-        candidates.extend(magenta_qr_code_ids)
-        candidates.extend(yellow_qr_code_ids)
+        magenta_features = list(map(lambda item: model.QRCodeFeature(
+            feature=item,
+            color=model.QRCodeFeatureColor.magenta
+        ), FeatureCalculator.calc(magenta_descriptors)))
 
-        counter = collections.Counter(candidates)
-        print(counter)
+        yellow_features = list(map(lambda item: model.QRCodeFeature(
+            feature=item,
+            color=model.QRCodeFeatureColor.yellow
+        ), FeatureCalculator.calc(yellow_descriptors)))
 
-        if len(candidates) == 0:
+        features: model.QRCodeFeatures = []
+        features.extend(QRCode.__sample_features(cyan_features))
+        features.extend(QRCode.__sample_features(magenta_features))
+        features.extend(QRCode.__sample_features(yellow_features))
+
+        features = self._repo.list_features(features)
+        qr_code_ids = list(map(lambda feature: feature.qr_code_id, features))
+
+        # counter = collections.Counter(qr_code_ids)
+        # print(counter)
+
+        if len(qr_code_ids) == 0:
             return None
-        return self._repo.get(QRCode.get_mode_id(candidates))
+        return self._repo.get(QRCode.get_mode_id(qr_code_ids))
