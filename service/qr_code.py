@@ -1,6 +1,11 @@
+import collections
 import math
 import uuid
 
+import numpy as np
+
+import llah
+from domain import CmykKeypointExtractor, FeatureCalculator
 from repository.mysql.qr_code import QRCode as QRCodeRepo
 from model import mysql as model
 
@@ -26,9 +31,10 @@ class QRCode:
 
     @classmethod
     def __sample_features(cls, features: model.QRCodeFeatures) -> model.QRCodeFeatures:
+        sample_total = 500
         sampled_features: model.QRCodeFeatures = []
-        sample_span = math.floor(len(features) / 100)
-        for i in range(100):
+        sample_span = math.floor(len(features) / sample_total)
+        for i in range(sample_total):
             sampled_features.append(features[i*sample_span])
         return sampled_features
 
@@ -49,41 +55,49 @@ class QRCode:
         return self._repo.get(max_item[0])
 
     @classmethod
-    def get_mode_id(cls, ids: model.Ids) -> int:
+    def get_mode_id(cls, ids: model.Ids) -> int | None:
+        if len(ids) == 0:
+            return None
         return max(set(ids), key=ids.count)
 
-    def get_best_candidate_v2(
-            self,
-            cyan_features: model.QRCodeFeatures,
-            magenta_features: model.QRCodeFeatures,
-            yellow_features: model.QRCodeFeatures
+    def find_qr_code(
+        self,
+        img: np.ndarray,
     ) -> model.QRCode | None:
-        cyan_features = QRCode.__sample_features(cyan_features)
+        cmy_keypoints = CmykKeypointExtractor.extract(img)
 
-        cyan_qr_code_ids = self._repo.get_qr_code_ids_by_color_features(
-            color=model.QRCodeFeatureColor.cyan,
-            features=cyan_features
-        )
-        cyan_mode_id = QRCode.get_mode_id(cyan_qr_code_ids)
+        descriptor_extractor = llah.DescriptorExtractor(6, 2)
 
-        magenta_features = QRCode.__sample_features(magenta_features)
-        magenta_qr_code_ids = self._repo.get_qr_code_ids_by_color_features(
-            color=model.QRCodeFeatureColor.magenta,
-            features=magenta_features
-        )
-        magenta_mode_id = QRCode.get_mode_id(magenta_qr_code_ids)
+        cyan_descriptors = descriptor_extractor.extract(cmy_keypoints.get('cyan'))
+        magenta_descriptors = descriptor_extractor.extract(cmy_keypoints.get('magenta'))
+        yellow_descriptors = descriptor_extractor.extract(cmy_keypoints.get('yellow'))
 
-        yellow_features = QRCode.__sample_features(yellow_features)
-        yellow_qr_code_ids = self._repo.get_qr_code_ids_by_color_features(
-            color=model.QRCodeFeatureColor.yellow,
-            features=yellow_features
-        )
-        yellow_mode_id = QRCode.get_mode_id(yellow_qr_code_ids)
+        cyan_features = list(map(lambda item: model.QRCodeFeature(
+            feature=item,
+            color=model.QRCodeFeatureColor.cyan
+        ), FeatureCalculator.calc(cyan_descriptors)))
 
-        print(cyan_qr_code_ids)
-        print(magenta_qr_code_ids)
-        print(yellow_qr_code_ids)
-        if cyan_mode_id == magenta_mode_id == yellow_mode_id:
-            return self._repo.get(cyan_mode_id)
-        else:
+        magenta_features = list(map(lambda item: model.QRCodeFeature(
+            feature=item,
+            color=model.QRCodeFeatureColor.magenta
+        ), FeatureCalculator.calc(magenta_descriptors)))
+
+        yellow_features = list(map(lambda item: model.QRCodeFeature(
+            feature=item,
+            color=model.QRCodeFeatureColor.yellow
+        ), FeatureCalculator.calc(yellow_descriptors)))
+
+        features: model.QRCodeFeatures = []
+        features.extend(QRCode.__sample_features(cyan_features))
+        features.extend(QRCode.__sample_features(magenta_features))
+        features.extend(QRCode.__sample_features(yellow_features))
+
+        features = self._repo.list_features(features)
+        qr_code_ids = list(map(lambda feature: feature.qr_code_id, features))
+
+        # counter = collections.Counter(qr_code_ids)
+        # print(counter)
+
+        if len(qr_code_ids) == 0:
             return None
+        return self._repo.get(QRCode.get_mode_id(qr_code_ids))

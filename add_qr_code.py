@@ -1,64 +1,73 @@
 import os.path
+import threading
 
-import cv2
 import numpy as np
 from PIL import Image
 import sys
 
-from appink import binarize_as_cmy
-from schema.mysql import MySQL, MySQLConfig
+import llah
+import utils
 from repository.mysql.qr_code import QRCode as QRCodeRepo
+from schema.mysql import load_mysql
 from service.qr_code import QRCode as QRCodeSvc
-from domain import Feature
-import model.mysql as model
-from utils.env import env
+from domain import CmykKeypointExtractor, FeatureCalculator
+import model.mysql as mysql_model
 
-mysqlConfig = MySQLConfig(
-    host=env('RDB_HOST'),
-    port=env('RDB_PORT'),
-    user=env('RDB_USER'),
-    password=env('RDB_PASS'),
-    database='qr_auth'
-)
 
-mysql = MySQL(mysqlConfig)
-mysql.connect()
-qrCodeRepo = QRCodeRepo(mysql)
-qrCodeSvc = QRCodeSvc(qrCodeRepo)
+def main():
+    args = sys.argv
+    target_file_paths: list[str] = []
+    if os.path.isfile(args[1]):
+        target_file_paths.append(args[1])
+    else:
+        target_file_paths = utils.list_img_paths_in_dir(args[1])
 
-args = sys.argv
-target_path = args[1]
+    for file_path in target_file_paths:
+        print(f'add qr code: {file_path}')
+        add_qr_code(file_path)
 
-target_file_paths: list[str] = []
-if os.path.isfile(target_path):
-    target_file_paths.append(target_path)
-else:
-    files_and_dirs = os.listdir(target_path)
-    files = [item for item in files_and_dirs if os.path.isfile(os.path.join(target_path, item))]
-    target_file_paths = list(map(lambda item: os.path.join(target_path, item), files))
 
-for file_path in target_file_paths:
-    print(f'add qr code: {file_path}')
+def add_qr_code(file_path: str):
+    mysql = load_mysql()
+    mysql.connect()
+    qr_code_repo = QRCodeRepo(mysql)
+    qr_code_svc = QRCodeSvc(qr_code_repo)
+
     with Image.open(file_path) as img:
-        cmy_features = Feature.get_cmy_features_from_img(img)
-        # binarize_as_cmy(0, cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR))
-        features: model.QRCodeFeatures = []
-        for cmy_feature in cmy_features.get('cyan'):
-            features.append(model.QRCodeFeature(
+        cmy_keypoints = CmykKeypointExtractor.extract(np.array(img, dtype=np.uint8))
+
+        descriptor_extractor = llah.DescriptorExtractor(6, 2)
+
+        cyan_descriptors = descriptor_extractor.extract(cmy_keypoints.get('cyan'))
+        magenta_descriptors = descriptor_extractor.extract(cmy_keypoints.get('magenta'))
+        yellow_descriptors = descriptor_extractor.extract(cmy_keypoints.get('yellow'))
+
+        cyan_features = FeatureCalculator.calc(cyan_descriptors)
+        magenta_features = FeatureCalculator.calc(magenta_descriptors)
+        yellow_features = FeatureCalculator.calc(yellow_descriptors)
+
+        features: mysql_model.QRCodeFeatures = []
+        for cmy_feature in cyan_features:
+            features.append(mysql_model.QRCodeFeature(
                 feature=cmy_feature,
-                color=model.QRCodeFeatureColor.cyan
+                color=mysql_model.QRCodeFeatureColor.cyan
             ))
-        for cmy_feature in cmy_features.get('magenta'):
-            features.append(model.QRCodeFeature(
+        for cmy_feature in magenta_features:
+            features.append(mysql_model.QRCodeFeature(
                 feature=cmy_feature,
-                color=model.QRCodeFeatureColor.magenta
+                color=mysql_model.QRCodeFeatureColor.magenta
             ))
-        for cmy_feature in cmy_features.get('yellow'):
-            features.append(model.QRCodeFeature(
+        for cmy_feature in yellow_features:
+            features.append(mysql_model.QRCodeFeature(
                 feature=cmy_feature,
-                color=model.QRCodeFeatureColor.yellow
+                color=mysql_model.QRCodeFeatureColor.yellow
             ))
-        qrCodeSvc.add(
+
+        qr_code_svc.add(
             file_name=os.path.basename(file_path),
             features=features
         )
+
+
+if __name__ == '__main__':
+    main()

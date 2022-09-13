@@ -1,3 +1,5 @@
+from sqlalchemy import or_, and_
+
 import model.mysql as model
 from schema.mysql import MySQL
 
@@ -41,20 +43,41 @@ class QRCode:
         qr_code_ids = list(map(lambda item: item[0], res))
         return qr_code_ids
 
-    def get_qr_code_ids_by_color_features(
+    def list_features(
         self,
-        color: model.QRCodeFeatureColor,
         features: model.QRCodeFeatures
-    ) -> model.Ids:
-        features = list(map(lambda feature: feature.feature, features))
+    ) -> model.QRCodeFeatures:
+        cyan_feature_values: list[float] = []
+        magenta_feature_values: list[float] = []
+        yellow_feature_values: list[float] = []
+
+        for feature in features:
+            if feature.color == model.QRCodeFeatureColor.cyan:
+                cyan_feature_values.append(feature.feature)
+            elif feature.color == model.QRCodeFeatureColor.magenta:
+                magenta_feature_values.append(feature.feature)
+            elif feature.color == model.QRCodeFeatureColor.yellow:
+                yellow_feature_values.append(feature.feature)
+
         session = self._mysql.get_session()
-        res = session.\
-            query(model.QRCodeFeature.qr_code_id, model.QRCodeFeature.feature).\
-            filter(model.QRCodeFeature.feature.in_(features)).\
-            where(model.QRCodeFeature.color == color).\
+        qr_code_features = session.\
+            query(model.QRCodeFeature). \
+            filter(or_(
+                and_(
+                    model.QRCodeFeature.color == model.QRCodeFeatureColor.cyan,
+                    model.QRCodeFeature.feature.in_(cyan_feature_values)
+                ),
+                and_(
+                    model.QRCodeFeature.color == model.QRCodeFeatureColor.magenta,
+                    model.QRCodeFeature.feature.in_(magenta_feature_values)
+                ),
+                and_(
+                    model.QRCodeFeature.color == model.QRCodeFeatureColor.yellow,
+                    model.QRCodeFeature.feature.in_(yellow_feature_values)
+                )
+            )).\
             all()
-        qr_code_ids = list(map(lambda item: item[0], res))
-        return qr_code_ids
+        return qr_code_features
 
     def add(self, s3_uri: str, file_name: str, features: model.QRCodeFeatures) -> model.QRCode:
         session = self._mysql.get_session()

@@ -11,6 +11,7 @@ class KeypointExtractor:
         if img.dtype != 'uint8':
             img = img.astype(np.uint8)
         contours, _ = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        contours = list(filter(lambda cnt: cv2.contourArea(cnt) >= 50, contours))
 
         keypoints: list[Keypoint] = []
         for counter in contours:
