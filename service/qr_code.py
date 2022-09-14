@@ -54,13 +54,10 @@ class QRCode:
         max_item = max(qr_code_count_dict.items(), key=lambda item: item[1])
         return self._repo.get(max_item[0])
 
-    @classmethod
-    def get_mode_id(cls, ids: model.Ids) -> int | None:
-        if len(ids) == 0:
-            return None
-        return max(set(ids), key=ids.count)
+    def get_by_id(self, qr_code_id: int) -> model.QRCode | None:
+        return self._repo.get(qr_code_id)
 
-    def find_qr_code(
+    def list_qr_code_ids_from_img(
         self,
         img: np.ndarray,
     ) -> model.QRCode | None:
@@ -95,9 +92,4 @@ class QRCode:
         features = self._repo.list_features(features)
         qr_code_ids = list(map(lambda feature: feature.qr_code_id, features))
 
-        # counter = collections.Counter(qr_code_ids)
-        # print(counter)
-
-        if len(qr_code_ids) == 0:
-            return None
-        return self._repo.get(QRCode.get_mode_id(qr_code_ids))
+        return qr_code_ids

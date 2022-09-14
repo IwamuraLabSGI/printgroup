@@ -13,6 +13,7 @@ class TriangleRateAttribute:
     start_index: int
     perimeter_rate: float
     area_rate: float
+    arg_rate: float
 
 
 TriangleRateAttributes = list[TriangleRateAttribute]
@@ -50,6 +51,10 @@ class DescriptorExtractor:
     @classmethod
     def triangle_area(cls, p1: Keypoint, p2: Keypoint, p3: Keypoint):
         return abs((p1.x - p3.x) * (p2.y - p1.y) - (p1.x - p2.x) * (p3.y - p1.y)) / 2
+
+    @classmethod
+    def triangle_arg(cls, p1: Keypoint, p2: Keypoint, p3: Keypoint):
+        return math.atan2(p2.y - p1.y, p2.x - p1.x) - math.atan2(p3.y - p1.y, p3.x - p1.x)
 
     # QRコードは英文書と異なり、特徴点領域の面積はほぼ均等で、特徴点の分散は色の濃度によるのでサンプリング手法は変えた方が良さそう
     def __sample_keypoint(self, keypoints: list[Keypoint], num: int):
@@ -146,10 +151,17 @@ class DescriptorExtractor:
                     if next_area != 0:
                         area_rate = area / next_area
 
+                    arg_rate: float = 0
+                    arg = DescriptorExtractor.triangle_arg(keypoint, target[0], target[1])
+                    next_arg = DescriptorExtractor.triangle_arg(keypoint, target[1], target[2])
+                    if next_arg != 0:
+                        arg_rate = arg / next_arg
+
                     attributes.append(TriangleRateAttribute(
                         start_index=start_index,
                         perimeter_rate=perimeter_rate,
-                        area_rate=area_rate
+                        area_rate=area_rate,
+                        arg_rate=arg_rate
                     ))
                 descriptor.multi_pattern_attributes.append(attributes)
                 # TODO: 必要なら面積比の特徴量も

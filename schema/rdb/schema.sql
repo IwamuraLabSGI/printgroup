@@ -32,7 +32,7 @@ CREATE TABLE `qr_code_feature_hash_caches` (
 CREATE TABLE `qr_code_features` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `qr_code_id` bigint(20) unsigned NOT NULL COMMENT 'ID',
-  `feature` double NOT NULL COMMENT '特徴量',
+  `feature` bigint(20) NOT NULL COMMENT '特徴量',
   `color` enum('cyan','magenta','yellow') COLLATE utf8mb4_bin NOT NULL COMMENT '特徴量抽出に使用した色',
   PRIMARY KEY (`id`),
   KEY `fk_to_qr_code` (`qr_code_id`),
@@ -97,5 +97,6 @@ INSERT INTO `schema_migrations` (version) VALUES
   ('20220807073623'),
   ('20220811101855'),
   ('20220904082712'),
-  ('20220906090303');
+  ('20220906090303'),
+  ('20220914090303');
 UNLOCK TABLES;
