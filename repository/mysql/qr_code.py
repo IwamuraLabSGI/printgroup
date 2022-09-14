@@ -12,7 +12,7 @@ class QRCode:
     def __init__(self, mysql: MySQL):
         self._mysql = mysql
 
-    def get(self, qr_code_id: int) -> model.QRCode:
+    def get(self, qr_code_id: int) -> model.QRCode | None:
         qr_code = self._mysql.get_session().query(model.QRCode).\
             filter(model.QRCode.id == qr_code_id).\
             first()

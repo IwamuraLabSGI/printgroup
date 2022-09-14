@@ -1,3 +1,4 @@
+import collections
 import math
 import os
 from datetime import datetime
@@ -36,33 +37,39 @@ if os.path.isfile(args[1]):
 else:
     target_file_paths = utils.list_img_paths_in_dir(args[1])
 
-search_result: list[str] = []
+logs: list[str] = []
+failed_files: list[str] = []
 for file_path in target_file_paths:
     with Image.open(file_path) as img:
         start_time = datetime.now()
 
-        qr_code = qrCodeSvc.find_qr_code(np.array(img, dtype=np.uint8))
+        qr_code_ids = qrCodeSvc.list_qr_code_ids_from_img(np.array(img, dtype=np.uint8))
 
-        total_time = datetime.now() - start_time
-        print(f'time: {total_time}')
-
-        if qr_code is None:
+        if len(qr_code_ids) == 0:
             print('Not found')
-            search_result.append(f'{file_path}: Not found')
+            logs.append(f'{file_path}: Not found')
         else:
+            counter = collections.Counter(qr_code_ids)
+            common = counter.most_common(3)
+            qr_code = qrCodeSvc.get_by_id(common[0][0])
+
             file_id = int(os.path.splitext(os.path.basename(file_path))[0])
             detected_file_id = int(os.path.splitext(os.path.basename(qr_code.file_name))[0])
+            total_time = datetime.now() - start_time
             if file_id - 5000 != detected_file_id:
-                print(f'Not match: {file_id} != {detected_file_id}')
-                search_result.append(f'{file_path}: Not match: {file_id} != {detected_file_id}')
+                failed_files.append(file_path)
+                message = f'Not match[{total_time}]: {file_id} != {detected_file_id} {common}'
+                print(message)
+                logs.append(message)
             else:
-                print(f'Match: {file_id} == {detected_file_id}')
+                message = f'Match[{total_time}]: {file_id} == {detected_file_id} {common}'
+                print(message)
+                logs.append(message)
 
-
-# search_resultをファイルに出力する
-with open('dist/search_result.txt', 'w') as f:
-    f.write('\n'.join(search_result))
-
+with open('dist/logs.txt', 'w') as f:
+    f.write('\n'.join(logs))
+with open('dist/failed.txt', 'w') as f:
+    f.write('\n'.join(failed_files))
 
 
 
