@@ -123,7 +123,7 @@ def register(ID, img):
 
 def binarize_img(img: np.ndarray) -> np.ndarray:
     print("グレースケール")
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    #img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     print("適応2値化")
     img = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 101, 0)
@@ -178,15 +178,17 @@ def binarize_as_cmy(ID, img):
     x_MY = 0.0
     y_MY = 0.0
     x_Cyan = Hue
-    y_Cyan = (-1.043 * x_Cyan) + 186.44
+    y_Cyan = (-0.798 * x_Cyan) + 153.7
     x_MY = Hue
-    y_Cyan = (1.429 * x_MY) + 25.71
-    img_Cyan = np.zeros([size[0], size[1], size[2]])
-    img_Cyan = colorInk(src, img_Cyan, 90, 150, 70, 255, 180, 255)
-    img_Magenda = np.zeros([size[0], size[1], size[2]])
-    img_Magenda = colorInk(src, img_Magenda, 150, 255, 60, 255, 180, 255)
-    img_Yellow = np.zeros([size[0], size[1], size[2]])
-    img_Yellow = colorInk(src, img_Yellow, 15, 65, 60, 255, 180, 255)
+    y_MY = (1.08 * x_MY) + 19.9
+    if(Hue>80):
+        y_MY=110
+        y_Cyan=90
+    print(Hue,y_Cyan,y_MY)
+    img_Cyan = cv2.inRange(src,(90,y_Cyan,80),(150,255,255))
+    img_Magenda = cv2.inRange(src,(150,y_MY,80),(255,255,255))
+    img_Yellow = cv2.inRange(src,(15,y_MY,80),(65,255,255))
+
 
     img_Cyan = binarize_img(img_Cyan)
     img_Magenda = binarize_img(img_Magenda)
@@ -203,3 +205,67 @@ def binarize_as_cmy(ID, img):
         "magenta": img_Magenda,
         "yellow": img_Yellow
     }
+
+def main(ID,img):
+    x = int(img.shape[0]*(1280/img.shape[1]))
+    img = cv2.resize(img, dsize=(1280,x))
+    "1.原画像の入力"
+    print("入力中")
+    cv2.imwrite("./templates/IMG/INPUT.jpg", img)
+    src = img
+    src = img
+    src_img_orig = src
+    print("The Ink Process: " )
+    alpha = 1.0
+    size = src.shape
+
+    
+    "5.画像の彩度の算出(白抜き画像の生成)"
+    print("白抜き中")
+    Hue = 0.0
+    white = np.zeros([size[0], size[1]])
+    src = cv2.cvtColor(src,cv2.COLOR_BGR2HSV)
+    Hue = 0.0
+    H, S, V = cv2.split(src)
+    Hue = abs(H[(S < 120) & (V>120)]-90).mean()
+    "6.インクの抽出"
+    print("インク抽出中")
+    x_Cyan = 0.0
+    y_Cyan = 0.0
+    x_MY = 0.0
+    y_MY = 0.0
+    x_Cyan = Hue
+    y_Cyan = (-0.798 * x_Cyan) + 153.7
+    x_MY = Hue
+    y_MY = (1.08 * x_MY) + 19.9
+    if(Hue>80):
+        y_MY=110
+        y_Cyan=90
+    print(Hue,y_Cyan,y_MY)
+    img_Cyan = cv2.inRange(src,(90,y_Cyan,80),(150,255,255))
+    img_Magenda = cv2.inRange(src,(150,y_MY,80),(255,255,255))
+    img_Yellow = cv2.inRange(src,(15,y_MY,80),(65,255,255))
+
+    "8.適応2値化"
+    print("適応")
+    img_Cyan = cv2.adaptiveThreshold(img_Cyan,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,101,0)
+    img_Magenda = cv2.adaptiveThreshold(img_Magenda,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,101,0)
+    img_Yellow = cv2.adaptiveThreshold(img_Yellow,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,101,0)
+
+    "9.2値化"
+    print("通常")
+    retC, img_Cyan = cv2.threshold(img_Cyan,127,255,cv2.THRESH_BINARY)
+    retM, img_Magenda = cv2.threshold(img_Magenda,127,255,cv2.THRESH_BINARY)
+    retY, img_Yellow = cv2.threshold(img_Yellow,127,255,cv2.THRESH_BINARY)
+    
+    "10.出力画像の保存"
+    print("保存")
+    out = [0,0,0,0]
+    out[0] = "./templates/CyanIMG/" + str(ID) + ".jpg"  
+    out[1] = "./templates/MagendaIMG/" + str(ID) + ".jpg" 
+    out[2] = "./templates/YellowIMG/" + str(ID) + ".jpg" 
+    cv2.imwrite(out[0], img_Cyan)
+    cv2.imwrite(out[1], img_Magenda)
+    cv2.imwrite(out[2], img_Yellow)
+    
+    return None

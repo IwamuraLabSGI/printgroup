@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>真贋判定システム | 岩村研究室</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap Icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#page-top">Iwamura Lab</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#about">Service</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">Features</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://www.rs.tus.ac.jp/iwamuralab/">Lab</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container px-4 px-lg-5 h-100">
+                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-8 align-self-end">
+                        <h1 class="text-white font-weight-bold">インクジェット印刷物の真贋判定システム</h1>
+                        <hr class="divider" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 mb-5">インクジェット印刷物の物理的複製困難な性質を用いた真贋判定システムを実装しました。真贋判定には、高速に画像をマッチングするLLAHと、高精度な特徴量マッチングA-KAZEの組み合わせで構成。
+                        </p>
+                        <a class="btn btn-primary btn-xl" href="#about">実際に真贋判定をしてみる</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- About-->
+        <section class="page-section bg-primary" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="text-white mt-0">高速・高精度な真贋判定システム</h2>
+                        <hr class="divider divider-light" />
+                        <p class="text-white-75 mb-4"></p>
+                        <div style="font-size: 16pt;">
+                        <div style="color: white;">
+                        <p>以下に画像ファイルをアップロードしてください</p>
+                        <p>※使用できる形式：<span style="color:red">jpg,.jpeg</span>のみです。</p>
+                        </div>
+                        </div>
+                        <div class="container px-4 px-lg-5 text-center">
+                            <form action="/" method="post" enctype="multipart/form-data">
+                                <a class="btn btn-light btn-xl" href="#about"><input type="file" name="image" accept="image/png, image/jpeg"></a>
+                                <p> </p>
+                                <a class="btn btn-light btn-xl" href="#about"><button type="submit">真贋判定開始</button></a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+         <!-- About-->
+        {% if time == "画像入力待ち ⇨ 真贋判定開始 ⇨ 真贋判定終了"%}
+         <section class="page-section bg-primary" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 text-center">    
+                        {% if Hantei >= 20 %}
+                        <h2 class="text-white mt-0">真贋判定結果：正規品</h2>
+                        {% else %}
+                        <h2 class="text-white mt-0">真贋判定結果：偽造品</h2>
+                        {% endif %}
+                        <hr class="divider divider-light" />
+                        <p class="text-white-75 mb-4"></p>
+                        <div style="font-size: 16pt;">
+                        <div style="color: white;">
+                        <p>真贋判定状況：{{time}}</p>
+                        <p>真贋判定スコア：{{Hantei}}</p>
+                        {% if Hantei >= 20 %}
+                        <p>該当画像あり：正規品(閾値:20)</p>
+                        {% else %}
+                        <p>該当画像なし：偽造品</p>
+                        {% endif %}
+                        <p style="margin-bottom: 60px;">合計処理時間(秒)：{{alltime}}</p>
+                        
+                        {% if 20 > Hantei %}
+                        <p>候補No.：該当なし　LLAHでの検索結果：該当なし　AKAZEでの真贋判定結果：偽造品</p>
+                        {% else %}
+                        <p>各色のLLAHでの候補とAKAZEマッチングの結果</p>
+                        <p>シアン第1候補：{{LLAH[0][0][0]}}.jpg　　 LLAHスコア：{{LLAH[0][0][1]}} 　　AKAZEマッチングスコア：{{AKAZE[0]}}</p>
+                        <p>シアン第2候補：{{LLAH[0][1][0]}}.jpg　　 LLAHスコア：{{LLAH[0][1][1]}} 　　AKAZEマッチングスコア：{{AKAZE[1]}}</p>
+                        <p>シアン第3候補：{{LLAH[0][2][0]}}.jpg 　　LLAHスコア：{{LLAH[0][2][1]}} 　　AKAZEマッチングスコア：{{AKAZE[2]}}</p>
+                        <p>マゼンダ第1候補：{{LLAH[1][0][0]}}.jpg 　　LLAHスコア：{{LLAH[1][0][1]}}　　 AKAZEマッチングスコア：{{AKAZE[3]}}</p>
+                        <p>マゼンダ第2候補：{{LLAH[1][1][0]}}.jpg 　　LLAHスコア：{{LLAH[1][1][1]}}　　 AKAZEマッチングスコア：{{AKAZE[4]}}</p>
+                        <p>マゼンダ第3候補：{{LLAH[1][2][0]}}.jpg 　　LLAHスコア：{{LLAH[1][2][1]}} 　　AKAZEマッチングスコア：{{AKAZE[5]}}</p>
+                        <p>イエロー第1候補：{{LLAH[2][0][0]}}.jpg 　　LLAHスコア：{{LLAH[2][0][1]}} 　　AKAZEマッチングスコア：{{AKAZE[6]}}</p>
+                        <p>イエロー第2候補：{{LLAH[2][1][0]}}.jpg 　　LLAHスコア：{{LLAH[2][1][1]}} 　　AKAZEマッチングスコア：{{AKAZE[7]}}</p>
+                        <p>イエロー第3候補：{{LLAH[2][2][0]}}.jpg 　　LLAHスコア：{{LLAH[2][2][1]}} 　　AKAZEマッチングスコア：{{AKAZE[8]}}</p>
+                        {% endif %}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% else %}
+        <a></a>
+        {% endif %}
+        <!-- Portfolio-->
+        {% if time == "画像入力待ち ⇨ 真贋判定開始 ⇨ 真贋判定終了"%}
+        <div id="portfolio">
+            <div class="container-fluid p-0">
+                <div class="row g-0">
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="procCyan.JPG" title="Project Name">
+                            <img class="img-fluid" src="procCyan.JPG" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Image Category</div>
+                                <div class="project-name">Cyan Ink</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="procMagenda.JPG" title="Project Name">
+                            <img class="img-fluid" src="procMagenda.JPG" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Image Category</div>
+                                <div class="project-name">Magenda Ink</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="procYellow.JPG" title="Project Name">
+                            <img class="img-fluid" src="procYellow.JPG" alt="..." />
+                            <div class="portfolio-box-caption p-3">
+                                <div class="project-category text-white-50">Image Category</div>
+                                <div class="project-name">Yellow Ink</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="INPUT.JPG" title="Project Name">
+                            <img class="img-fluid" src="INPUT.JPG" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Image Category</div>
+                                <div class="project-name">Original</div>
+                            </div>
+                        </a>
+                    </div>
+                    {% if Hantei >= 20 %}
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="AKAZE.JPG" title="Project Name">
+                            <img class="img-fluid" src="AKAZE.JPG" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Image Category</div>
+                                <div class="project-name">AKAZE Judgement</div>
+                            </div>
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="col-lg-4 col-sm-6">
+                        <a class="portfolio-box" href="FakeAKAZE.JPG" title="Project Name">
+                            <img class="img-fluid" src="FakeAKAZE.JPG" alt="..." />
+                            <div class="portfolio-box-caption">
+                                <div class="project-category text-white-50">Image Category</div>
+                                <div class="project-name">AKAZE Judgement</div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endif %}
+                
+                    
+                    
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p> </p>
+        {% endif %}
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-center mt-0">本提案サービスの4つの特徴</h2>
+                <hr class="divider" />
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">100%の高精度な真贋判定</h3>
+                            <p class="text-muted mb-0">5000枚を超える大量データで100%の正規・偽造データの真贋判定精度!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">3秒以内の高速な真贋判定</h3>
+                            <p class="text-muted mb-0">高速に画像をマッチングさせるLLAHを使用することで非常に高速に判定が可能</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">1枚0.1円で真贋判定可能</h3>
+                            <p class="text-muted mb-0">本技術には、特殊な光学・電気的解析を必要としないため大量生産可能</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2">プリンタの機種に依存なし</h3>
+                            <p class="text-muted mb-0">Canon,EPISON,RICOHの3社の全ての機種で同等の精度を観測</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Call to action-->
+        <section class="page-section bg-dark text-white">
+            <div class="container px-4 px-lg-5 text-center">
+                <h2 class="mb-4">QRコードのシステムへの登録も可能です</h2>
+                <a class="btn btn-light btn-xl" href="{{ url_for('form') }}">登録をしたい方はこちらから</a>
+            </div>
+        </section>
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6 text-center">
+                        <h2 class="mt-0">問い合わせフォーム</h2>
+                        <hr class="divider" />
+                        <p class="text-muted mb-5">本システムに関するご相談は、東京理科大学葛飾キャンパス研究棟5階：岩村研究室か、以下のフォームからご連絡ください。</p>
+                    </div>
+                </div>
+                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+                    <div class="col-lg-6">
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                            <!-- Name input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <label for="name">Full name</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <!-- Email address input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <label for="email">Email address</label>
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            <!-- Phone number input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                <label for="phone">Phone number</label>
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                            </div>
+                            <!-- Message input-->
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <label for="message">Message</label>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            </div>
+                            <!-- Submit success message-->
+                            <!---->
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                    To activate this form, sign up at
+                                    <br />
+                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <!---->
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                            <!-- Submit Button-->
+                            <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">SUBMIT</button></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                        <i class="bi-phone fs-2 mb-3 text-muted"></i>
+                        <div>03-5876-1353</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="bg-light py-5">
+            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - 岩村研究室</div></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
