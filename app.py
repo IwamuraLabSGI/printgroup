@@ -59,11 +59,13 @@ def index():
             all_time = end_time - start_time
             print("終了時間： ", end_time)
             print("処理時間： ", all_time)
-            time = "画像入力待ち ⇨ 真贋判定開始 ⇨ 真贋判定終了(画像左から入力画像、CMY、AKAZE判定)"
+            print(Hantei)
+            print(AKAZE)
+            print(LLAH)
+            time = "画像入力待ち ⇨ 真贋判定開始 ⇨ 真贋判定終了"
     # 画像の保存
 
-    return render_template('index.html', img_name=img_name, Hantei=Hantei, time=time, alltime=all_time, LLAH=LLAH,
-                           AKAZE=AKAZE)
+    return render_template('index2.html', img_name=img_name,Hantei= Hantei,time=time,alltime=all_time,LLAH=LLAH,AKAZE=AKAZE)
 
 
 @app.route('/form', methods=['GET', 'POST'])

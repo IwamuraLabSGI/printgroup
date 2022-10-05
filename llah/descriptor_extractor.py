@@ -168,6 +168,30 @@ class DescriptorExtractor:
             descriptors.append(descriptor)
         return descriptors
 
+    def risannka(rate):
+        risannti=0
+        if (rate < 0.40):
+            risannti = 0
+        elif(0.40 < rate and rate < 0.66):
+            risannti = 1
+        elif(0.66 < rate and rate < 0.80):
+            risannti = 2
+        elif(0.80 < rate and rate < 1.00):
+            risannti = 3
+        elif(1.00 < rate and rate < 1.20):
+            risannti = 4
+        elif(1.20 < rate and rate < 1.40):
+            risannti = 5
+        elif(1.40 < rate and rate < 1.60):
+            risannti = 6
+        elif(1.60 < rate and rate < 1.80):
+            risannti = 7
+        elif(1.80 < rate and rate < 1.90):
+            risannti = 8
+        else:
+            risannti = 9
+        return risannti
+
     def OLDextract(self, keypoints: list[Keypoint]):
         descriptors: list[float] = []
         if len(keypoints) < self._neighbor_total + self._additional_neighbor_total:

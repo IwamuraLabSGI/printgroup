@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/png, image/jpeg">
+    <button type="submit">真贋判定開始</button>
+</form>
+<p>真贋判定状況：{{time}}</p>
+<p>真贋判定スコア：{{Hantei}}</p>
+{% if Hantei >= 20 %}
+<p>該当画像あり：正規品(閾値:20)</p>
+{% else %}
+<p>該当画像なし：偽造品</p>
+{% endif %}
+<p>合計処理時間(秒)：{{alltime}}</p>
+<img src="INPUT.JPG" alt="入力画像", height="300" >
+<img src="procCyan.JPG" alt="シアン画像", height="300" >
+<img src="procMagenda.JPG" alt="マゼンダ画像", height="300" >
+<img src="procYellow.JPG" alt="イエロー画像", height="300" >
+{% if Hantei >= 20 %}
+<img src="AKAZE.JPG" alt="結果の画像", height="300" >
+{% else %}
+<img src="FakeAKAZE.JPG" alt="結果の画像", height="300" >
+{% endif %}
+{% if 20 > Hantei %}
+<p>候補No.：　LLAHでの検索結果：　AKAZEでの真贋判定結果：</p>
+{% else %}
+<p>シアン第1候補：{{LLAH[0][0][0]}}.jpg　　 LLAHマッチングスコア：{{LLAH[0][0][1]}} 　　AKAZEマッチングスコア：{{AKAZE[0]}}</p>
+<p>シアン第2候補：{{LLAH[0][1][0]}}.jpg　　 LLAHマッチングスコア：{{LLAH[0][1][1]}} 　　AKAZEマッチングスコア：{{AKAZE[1]}}</p>
+<p>シアン第3候補：{{LLAH[0][2][0]}}.jpg 　　LLAHマッチングスコア：{{LLAH[0][2][1]}} 　　AKAZEマッチングスコア：{{AKAZE[2]}}</p>
+<p>マゼンダ第1候補：{{LLAH[1][0][0]}}.jpg 　　LLAHマッチングスコア：{{LLAH[1][0][1]}}　　 AKAZEマッチングスコア：{{AKAZE[3]}}</p>
+<p>マゼンダ第2候補：{{LLAH[1][1][0]}}.jpg 　　LLAHマッチングスコア：{{LLAH[1][1][1]}}　　 AKAZEマッチングスコア：{{AKAZE[4]}}</p>
+<p>マゼンダ第3候補：{{LLAH[1][2][0]}}.jpg 　　LLAHマッチングスコア：{{LLAH[1][2][1]}} 　　AKAZEマッチングスコア：{{AKAZE[5]}}</p>
+<p>イエロー第1候補：{{LLAH[2][0][0]}}.jpg 　　LLAHマッチングスコア：{{LLAH[2][0][1]}} 　　AKAZEマッチングスコア：{{AKAZE[6]}}</p>
+<p>イエロー第2候補：{{LLAH[2][1][0]}}.jpg 　　LLAHマッチングスコア：{{LLAH[2][1][1]}} 　　AKAZEマッチングスコア：{{AKAZE[7]}}</p>
+<p>イエロー第3候補：{{LLAH[2][2][0]}}.jpg 　　LLAHマッチングスコア：{{LLAH[2][2][1]}} 　　AKAZEマッチングスコア：{{AKAZE[8]}}</p>
+{% endif %}
+{% if img_name %}
+<div>
+    <img src="{{ url_for('static', filename='images/' + img_name) }}" style="margin-top: 10px; vertical-align: bottom; width: 400px;">
+</div>
+{% endif %}
+
+{% endblock %}
