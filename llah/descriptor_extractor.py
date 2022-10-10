@@ -7,7 +7,6 @@ import numpy as np
 from dataclasses import dataclass
 
 
-
 @dataclass
 class TriangleRateAttribute:
     start_index: int
@@ -120,40 +119,37 @@ class DescriptorExtractor:
 
             descriptor = Descriptor(keypoint, [])
             for combination in itertools.combinations(neighbor_indexes, self._neighbor_total):
-                # TODO: get_neighbors切り出し
                 neighbors = list(map(lambda index: keypoints[index], combination))
                 # 時計回りに近傍点を3点ずつって特徴量を計算
                 neighbors.sort(key=lambda item: np.arctan2(item.x - keypoint.x, item.y - keypoint.y))
-                target_total = math.floor(len(neighbors) / 2)
+                start_indexes = range(0, len(neighbors), 1)
 
                 attributes: TriangleRateAttributes = []
-                for target_num in range(target_total):
-                    target: list[Keypoint] = []
-                    start_index = target_num * 2
+                for start_index in start_indexes:
+                    targets: list[Keypoint] = []
                     end_index = start_index + 3
-                    if end_index > len(neighbors):
-                        target.extend(neighbors[start_index:])
-                        target.extend(neighbors[0:1])
+                    if end_index >= len(neighbors):
+                        targets.extend(neighbors[start_index:])
+                        targets.extend(neighbors[0:end_index - len(neighbors)])
                     else:
-                        target.extend(neighbors[start_index:end_index])
+                        targets.extend(neighbors[start_index:end_index])
 
                     perimeter_rate: float = 0
-                    # add: c++ではrateが1以下になるように逆数をとっていたが特に意味もなさそうなので削除
-                    perimeter = DescriptorExtractor.triangle_perimeter(keypoint, target[0], target[1])
-                    next_perimeter = DescriptorExtractor.triangle_perimeter(keypoint, target[1], target[2])
+                    perimeter = DescriptorExtractor.triangle_perimeter(keypoint, targets[0], targets[1])
+                    next_perimeter = DescriptorExtractor.triangle_perimeter(keypoint, targets[1], targets[2])
                     # TODO: 分母が0になるような場合を確認
                     if next_perimeter != 0:
                         perimeter_rate = perimeter / next_perimeter
 
                     area_rate: float = 0
-                    area = DescriptorExtractor.triangle_area(keypoint, target[0], target[1])
-                    next_area = DescriptorExtractor.triangle_area(keypoint, target[1], target[2])
+                    area = DescriptorExtractor.triangle_area(keypoint, targets[0], targets[1])
+                    next_area = DescriptorExtractor.triangle_area(keypoint, targets[1], targets[2])
                     if next_area != 0:
                         area_rate = area / next_area
 
                     arg_rate: float = 0
-                    arg = DescriptorExtractor.triangle_arg(keypoint, target[0], target[1])
-                    next_arg = DescriptorExtractor.triangle_arg(keypoint, target[1], target[2])
+                    arg = DescriptorExtractor.triangle_arg(keypoint, targets[0], targets[1])
+                    next_arg = DescriptorExtractor.triangle_arg(keypoint, targets[1], targets[2])
                     if next_arg != 0:
                         arg_rate = arg / next_arg
 
@@ -168,90 +164,70 @@ class DescriptorExtractor:
             descriptors.append(descriptor)
         return descriptors
 
-    def risannka(rate):
-        risannti=0
-        if (rate < 0.40):
-            risannti = 0
-        elif(0.40 < rate and rate < 0.66):
-            risannti = 1
-        elif(0.66 < rate and rate < 0.80):
-            risannti = 2
-        elif(0.80 < rate and rate < 1.00):
-            risannti = 3
-        elif(1.00 < rate and rate < 1.20):
-            risannti = 4
-        elif(1.20 < rate and rate < 1.40):
-            risannti = 5
-        elif(1.40 < rate and rate < 1.60):
-            risannti = 6
-        elif(1.60 < rate and rate < 1.80):
-            risannti = 7
-        elif(1.80 < rate and rate < 1.90):
-            risannti = 8
+    @classmethod
+    def risannka(cls, rate: float) -> int:
+        if rate < 0.40:
+            return 0
+        elif rate < 0.66:
+            return 1
+        elif rate < 0.80:
+            return 2
+        elif rate < 1.00:
+            return 3
+        elif rate < 1.20:
+            return 4
+        elif rate < 1.40:
+            return 5
+        elif rate < 1.60:
+            return 6
+        elif rate < 1.80:
+            return 7
+        elif rate < 1.90:
+            return 8
         else:
-            risannti = 9
-        return risannti
+            return 9
 
-    def OLDextract(self, keypoints: list[Keypoint]):
+    def old_extract(self, keypoints: list[Keypoint]):
         descriptors: list[float] = []
         if len(keypoints) < self._neighbor_total + self._additional_neighbor_total:
             try:
                 raise ValueError('特徴点の数が少ないです。')
             except ValueError as e:
                 return descriptors
-        j = 0
-        kk = 0
-        # TODO: sampling処理追加
-        kdTree = Keypoint.get_kd_tree(keypoints)
 
+        kd_tree = Keypoint.get_kd_tree(keypoints)
         for i, keypoint in enumerate(keypoints):
             limit = self._neighbor_total + self._additional_neighbor_total + 1
-            _, indexes = kdTree.query([keypoint.x, keypoint.y], limit)
+            _, indexes = kd_tree.query([keypoint.x, keypoint.y], limit)
             # 近傍点から特徴量を全パターン計算
-            neighborIndexes = indexes[1:]
+            neighbor_indexes = indexes[1:]
             keypoint_attributes: list[float] = []
-            for combination in itertools.combinations(neighborIndexes, self._neighbor_total):
-                d = 0
-                e = 0
+            for combination in itertools.combinations(neighbor_indexes, self._neighbor_total):
+                attribute = 0
                 c = list(range(0, self._neighbor_total - 1))
-                a = itertools.combinations(c, 3)
-                a = list(a)
-                b = itertools.combinations(c, 4)
-                b = list(b)
-                # TODO: get_neighbors切り出し
+                a = list(itertools.combinations(c, 3))
+                b = list(itertools.combinations(c, 4))
                 neighbors = list(map(lambda index: keypoints[index], combination))
                 # 時計回りに近傍点を3点ずつって特徴量を計算
                 neighbors.sort(key=lambda item: np.arctan2(item.x - keypoint.x, item.y - keypoint.y))
-                perimeter_rate_attributes: list[float] = []
-                for i in range(len(a)):
-                    if (DescriptorExtractor.triangle_perimeter(keypoint, neighbors[a[i][1]], neighbors[
-                        a[i][2]]) != 0 and DescriptorExtractor.triangle_perimeter(keypoint, neighbors[a[i][0]],
-                                                                                  neighbors[a[i][1]]) != 0):
-                        triangle_perimeter_rate = \
-                            DescriptorExtractor.triangle_perimeter(keypoint, neighbors[a[i][0]], neighbors[a[i][1]]) \
-                            / DescriptorExtractor.triangle_perimeter(keypoint, neighbors[a[i][1]], neighbors[a[i][2]])
+                for j in range(len(a)):
+                    triangle_perimeter_1 = DescriptorExtractor \
+                        .triangle_perimeter(keypoint, neighbors[a[j][0]], neighbors[a[j][1]])
+                    triangle_perimeter_2 = DescriptorExtractor \
+                        .triangle_perimeter(keypoint, neighbors[a[j][1]], neighbors[a[j][2]])
+                    if triangle_perimeter_1 != 0 and triangle_perimeter_2 != 0:
+                        triangle_perimeter_rate = triangle_perimeter_1 / triangle_perimeter_2
                         triangle_perimeter_rate = DescriptorExtractor.risannka(triangle_perimeter_rate)
-                        e = e + triangle_perimeter_rate * (10 ** d)
-                        d = d + 1
-                    # TODO: 離散化
-                for i in range(len(b)):
-                    if (DescriptorExtractor.triangle_perimeter(neighbors[b[i][0]], neighbors[b[i][1]], neighbors[
-                        b[i][2]]) != 0 and DescriptorExtractor.triangle_perimeter(neighbors[b[i][0]],
-                                                                                  neighbors[b[i][2]],
-                                                                                  neighbors[b[i][3]])):
-                        triangle_perimeter_rate = \
-                            DescriptorExtractor.triangle_perimeter(neighbors[b[i][0]], neighbors[b[i][1]],
-                                                                   neighbors[b[i][2]]) \
-                            / DescriptorExtractor.triangle_perimeter(neighbors[b[i][0]], neighbors[b[i][2]],
-                                                                     neighbors[b[i][3]])
+                        attribute = attribute + triangle_perimeter_rate * (10 ** j)
+                for j in range(len(b)):
+                    triangle_perimeter_1 = DescriptorExtractor \
+                        .triangle_perimeter(neighbors[b[j][0]], neighbors[b[j][1]], neighbors[b[j][2]])
+                    triangle_perimeter_2 = DescriptorExtractor \
+                        .triangle_perimeter(neighbors[b[j][0]], neighbors[b[j][2]], neighbors[b[j][3]])
+                    if triangle_perimeter_1 != 0 and triangle_perimeter_2 != 0:
+                        triangle_perimeter_rate = triangle_perimeter_1 / triangle_perimeter_2
                         triangle_perimeter_rate = DescriptorExtractor.risannka(triangle_perimeter_rate)
-                        e = e + triangle_perimeter_rate * (10 ** d)
-                        d = d + 1
-                # TODO: 離散化
-                perimeter_rate_attributes.append(e)
-                keypoint_attributes.append(e)
-                j = j + 1
-                # TODO: 必要なら面積比の特徴量も
+                        attribute = attribute + triangle_perimeter_rate * (10 ** (j + len(a) + 1))
+                keypoint_attributes.append(attribute)
             descriptors.extend(keypoint_attributes)
-        print("総特徴量数：", len(descriptors))
         return descriptors

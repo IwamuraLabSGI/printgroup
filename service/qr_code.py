@@ -31,7 +31,7 @@ class QRCode:
 
     @classmethod
     def __sample_features(cls, features: model.QRCodeFeatures) -> model.QRCodeFeatures:
-        sample_total = 500
+        sample_total = 100
         sampled_features: model.QRCodeFeatures = []
         sample_span = math.floor(len(features) / sample_total)
         for i in range(sample_total):
@@ -63,31 +63,43 @@ class QRCode:
     ) -> model.QRCode | None:
         cmy_keypoints = CmykKeypointExtractor.extract(img)
 
-        descriptor_extractor = llah.DescriptorExtractor(6, 2)
+        descriptor_extractor = llah.DescriptorExtractor(6, 0)
 
         cyan_descriptors = descriptor_extractor.extract(cmy_keypoints.get('cyan'))
         magenta_descriptors = descriptor_extractor.extract(cmy_keypoints.get('magenta'))
         yellow_descriptors = descriptor_extractor.extract(cmy_keypoints.get('yellow'))
 
+        cyan_features = FeatureCalculator.calc(cyan_descriptors)
+        magenta_features = FeatureCalculator.calc(magenta_descriptors)
+        yellow_features = FeatureCalculator.calc(yellow_descriptors)
+
+        # cyan_features = descriptor_extractor.old_extract(cmy_keypoints.get('cyan'))
+        # magenta_features = descriptor_extractor.old_extract(cmy_keypoints.get('magenta'))
+        # yellow_features = descriptor_extractor.old_extract(cmy_keypoints.get('yellow'))
+
         cyan_features = list(map(lambda item: model.QRCodeFeature(
             feature=item,
             color=model.QRCodeFeatureColor.cyan
-        ), FeatureCalculator.calc(cyan_descriptors)))
+        ), cyan_features))
 
         magenta_features = list(map(lambda item: model.QRCodeFeature(
             feature=item,
             color=model.QRCodeFeatureColor.magenta
-        ), FeatureCalculator.calc(magenta_descriptors)))
+        ), magenta_features))
 
         yellow_features = list(map(lambda item: model.QRCodeFeature(
             feature=item,
             color=model.QRCodeFeatureColor.yellow
-        ), FeatureCalculator.calc(yellow_descriptors)))
+        ), yellow_features))
+
+        # cyan_features = QRCode.__sample_features(cyan_features)
+        # magenta_features = QRCode.__sample_features(magenta_features)
+        # yellow_features = QRCode.__sample_features(yellow_features)
 
         features: model.QRCodeFeatures = []
-        features.extend(QRCode.__sample_features(cyan_features))
-        features.extend(QRCode.__sample_features(magenta_features))
-        features.extend(QRCode.__sample_features(yellow_features))
+        features.extend(cyan_features)
+        features.extend(magenta_features)
+        features.extend(yellow_features)
 
         features = self._repo.list_features(features)
         qr_code_ids = list(map(lambda feature: feature.qr_code_id, features))

@@ -15,16 +15,6 @@ from schema.mysql import load_mysql
 from service.qr_code import QRCode as QRCodeSvc
 import model.mysql as model
 
-
-def sample_features(features: model.QRCodeFeatures) -> model.QRCodeFeatures:
-    sample_total = 500
-    sampled_features: model.QRCodeFeatures = []
-    sample_span = math.floor(len(features) / sample_total)
-    for i in range(sample_total):
-        sampled_features.append(features[i * sample_span])
-    return sampled_features
-
-
 mysql = load_mysql()
 mysql.connect()
 qrCodeRepo = QRCodeRepo(mysql)
@@ -50,19 +40,21 @@ for file_path in target_file_paths:
             logs.append(f'{file_path}: Not found')
         else:
             counter = collections.Counter(qr_code_ids)
-            common = counter.most_common(3)
-            qr_code = qrCodeSvc.get_by_id(common[0][0])
+            common = counter.most_common(10)
+            found_qr_code_ids = [c[0] for c in common]
+            found_qr_codes = list(map(lambda id: qrCodeSvc.get_by_id(id), found_qr_code_ids))
+            found_qr_code_file_names = list(map(lambda qr_code: qr_code.file_name, found_qr_codes))
 
             file_id = int(os.path.splitext(os.path.basename(file_path))[0])
-            detected_file_id = int(os.path.splitext(os.path.basename(qr_code.file_name))[0])
+            best_qr_code_file_id = int(os.path.splitext(os.path.basename(found_qr_codes[0].file_name))[0])
             total_time = datetime.now() - start_time
-            if file_id - 5000 != detected_file_id:
+            if file_id - 5000 != best_qr_code_file_id:
                 failed_files.append(file_path)
-                message = f'Not match[{total_time}]: {file_id} != {detected_file_id} {common}'
+                message = f'{file_id} Not match[{total_time}]: {found_qr_code_file_names}, {common}'
                 print(message)
                 logs.append(message)
             else:
-                message = f'Match[{total_time}]: {file_id} == {detected_file_id} {common}'
+                message = f'{file_id} Match[{total_time}]: {found_qr_code_file_names}, {common}'
                 print(message)
                 logs.append(message)
 
@@ -70,8 +62,3 @@ with open('dist/logs.txt', 'w') as f:
     f.write('\n'.join(logs))
 with open('dist/failed.txt', 'w') as f:
     f.write('\n'.join(failed_files))
-
-
-
-
-

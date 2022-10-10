@@ -19,8 +19,8 @@ class FeatureCalculator:
         for attrs in descriptor.multi_pattern_attributes:
             feature_elements: list[int] = []
             for attr in attrs:
-                feature_elements.append(cls.__discretize(attr.perimeter_rate, 3))
-                feature_elements.append(cls.__discretize(attr.area_rate, 2))
+                # feature_elements.append(cls.__discretize(attr.perimeter_rate, 3))
+                feature_elements.append(cls.__discretize(attr.area_rate, 5))
 
             feature = 0
             for i, elem in enumerate(feature_elements):
@@ -34,7 +34,7 @@ class FeatureCalculator:
         if val > 1:
             val = 1 / val
         result = math.floor(val * (10 ** cls.EFFECTIVE_DECIMAL_DIGIT))
-        result = math.floor(result / multiple) * multiple
+        result = math.floor(result / multiple)
         return result
 
 
