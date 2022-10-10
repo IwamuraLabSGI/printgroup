@@ -46,6 +46,10 @@ def add_qr_code(file_path: str):
         magenta_features = FeatureCalculator.calc(magenta_descriptors)
         yellow_features = FeatureCalculator.calc(yellow_descriptors)
 
+        # cyan_features = descriptor_extractor.old_extract(cmy_keypoints.get('cyan'))
+        # magenta_features = descriptor_extractor.old_extract(cmy_keypoints.get('magenta'))
+        # yellow_features = descriptor_extractor.old_extract(cmy_keypoints.get('yellow'))
+
         features: mysql_model.QRCodeFeatures = []
         for cmy_feature in cyan_features:
             features.append(mysql_model.QRCodeFeature(
