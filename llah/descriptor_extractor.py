@@ -227,7 +227,7 @@ class DescriptorExtractor:
                     if triangle_perimeter_1 != 0 and triangle_perimeter_2 != 0:
                         triangle_perimeter_rate = triangle_perimeter_1 / triangle_perimeter_2
                         triangle_perimeter_rate = DescriptorExtractor.risannka(triangle_perimeter_rate)
-                        attribute = attribute + triangle_perimeter_rate * (10 ** (j + len(a) + 1))
+                        attribute = attribute + triangle_perimeter_rate * (10 ** (j + len(a)))
                 keypoint_attributes.append(attribute)
             descriptors.extend(keypoint_attributes)
         return descriptors
